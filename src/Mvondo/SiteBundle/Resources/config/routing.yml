@@ -1,0 +1,23 @@
+mvondo_site_homepage:
+    path:     /
+    defaults: { _controller: MvondoSiteBundle:Homepage:index }
+
+mvondo_site_contact:
+    path:     /contact
+    defaults: { _controller: MvondoSiteBundle:Contact:contact }
+    
+mvondo_site_aboutus:
+    path:     /aboutus
+    defaults: { _controller: MvondoSiteBundle:CMS:aboutus }
+
+mvondo_site_help:
+    path:     /help
+    defaults: { _controller: MvondoSiteBundle:CMS:help }
+
+mvondo_site_faq:
+    path:     /faq
+    defaults: { _controller: MvondoSiteBundle:CMS:faq }
+    
+mvondo_site_partners:
+    path:     /partners
+    defaults: { _controller: MvondoSiteBundle:CMS:partners }

@@ -1,0 +1,7 @@
+mvondo_site:
+    resource: "@MvondoSiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

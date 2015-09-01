@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Meta Tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>{% block title %}Mvondo!{% endblock %}</title>
+
+        <meta name="description" content="African culture promotion">
+        <meta name="robots" content="noindex,follow">
+
+        {% stylesheets 
+            'bundles/mvondosite/css/*'filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+
+    <body>
+        
+        <div id="page">
+
+            {% include '::header.html.twig' %}
+            
+            {% include '::menu.html.twig' %}
+            
+            <div id="main">
+                <div class="wrap cf">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+
+            {% include '::footer.html.twig' %}
+            
+            {% javascripts'@MvondoSiteBundle/Resources/public/js/*' %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            
+            {% block javascripts %}{% endblock %}
+        </div>
+        
+    </body>
+    
+</html>

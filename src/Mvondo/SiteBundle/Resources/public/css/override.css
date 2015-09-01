@@ -1,0 +1,41 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 1 sept. 2015, 17:06:17
+    Author     : rodrigue
+*/
+
+#header{
+    background: white;
+}
+#main-nav .btn-buynow {
+    text-transform: uppercase;
+    float: right;
+    margin: 6px 0 0;
+    font-size: 12px;
+}
+
+.btn-lightblue, .btn-lightblue {
+    border-color: #2f96b4 #2f96b4 #1f6377 !important;
+    background-color: #49afcd;
+    background-image: -moz-linear-gradient(top,#5bc0de,#2f96b4);
+    background-image: -ms-linear-gradient(top,#5bc0de,#2f96b4);
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#5bc0de),to(#2f96b4));
+    background-image: -webkit-linear-gradient(top,#5bc0de,#2f96b4);
+    background-image: -o-linear-gradient(top,#5bc0de,#2f96b4);
+    background-image: linear-gradient(top,#5bc0de,#2f96b4);
+    color: #FFF;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+        border-radius: 3px;
+    outline: none;
+    font: 13px sans-serif;
+    line-height: 19px;
+    cursor: pointer;
+    width: auto;
+    text-align: center;
+    font-weight: bold;
+    padding: 4px 12px;
+}
