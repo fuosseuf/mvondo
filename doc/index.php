@@ -56,31 +56,81 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Installation du projet</a></li>
-                        <li><a href="#">Commandes Git</a></li>
-                        <li><a href="#">Mise</a></li>
-                    </ul>
-                    <ul class="nav nav-sidebar">
-                        <li><a href="">Nav item</a></li>
-                        <li><a href="">Nav item again</a></li>
-                        <li><a href="">One more nav</a></li>
-                        <li><a href="">Another nav item</a></li>
-                        <li><a href="">More navigation</a></li>
+                        <li><a href="#install">Installation du projet</a></li>
+                        <li><a href="#symfony">Commandes Symfony II</a></li>
+                        <li><a href="http://tilap.net/gitliste-des-commandes-a-connaitre/" target="_blank">Tuto rapide Git</a></li>
+                        <li><a href="./detube/" target="_blank">Fichiers du thème</a></li>
+                        <li><a href="./arch/symfony.html" target="_blank">Architechture du projet</a></li>
+                        <li><a href="./arch/bdd.html" target="_blank">Architechture base de données</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <h1 class="page-header">Get started</h1>
+                    <p>
+                        Ce document présente les inos nécessaire pour la montée rapide sur le projet
+                        Mvondo. Il sera mis à jour au fur et à mésure par les différents membres de l'équipe Tech.
+                    </p>
+                    <div class="alert alert-warning">
+                        <strong>SQLdesigner!</strong> Cet outil permet de contruire le schéma E-R d'une base de données.
+                        Pour le projet, vous pouvez récupérer le schéma qui est disponible dans le fichier /doc/schema_bdd.xml et l'importer dans l'outil.
+                    </div>
                     <div>
-                        <h2 class="sub-header">Installation du projet</h2>
+                        <h2 id="install" class="sub-header">Installation du projet</h2>
                         <div>
                             <ol>
                                 <li>Installer <a href="https://git-scm.com/book/fr/v1/D%C3%A9marrage-rapide-Installation-de-Git">GIT</a> sur la machine si cela n'est pas encore le cas</li>
                                 <li>Ouvrir le terminal ou l'Invite de commande depuis Windows et se placer dans le repertoire ou le projet doit être installer</li>
-                                <li>lancer les commandes suivantes:<br><br> 
-                                    <span>Récupération des sources du projet</span>
-                                    <pre>cd /var/wwww </pre>
+                                <li>lancer les commandes suivantes:
+                                    <ul>
+                                        <li>Récupération des sources du projet
+                                            <pre>git clone </pre>                                          
+                                        </li>
+                                        <li>Télécharger Composer
+                                            <pre>curl -s http://getcomposer.org/installer | php</pre>
+                                        </li>
+                                        <li>Mettre à jours les librairies via le composer
+                                            <pre>php composer.phar install</pre>
+                                        </li>
+                                        <li>Modifier les droits des repertoires de cache
+                                            <pre>
+rm -rf app/cache/*
+rm -rf app/logs/*
+
+sudo chmod -R 777 app/cache/*
+sudo chmod -R 777 app/logs/*
+                                            </pre>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>Configurer le projet depuis le navigateur via le lien 
+                                    <pre>http://localhost/path_repertoire_projet/config.php</pre>
                                 </li>
                             </ol>
+                        </div>
+                        <br><br>
+                        <h2 id="symfony" class="sub-header"> Commandes Utiles Symfony</h2>
+                        <div>
+                            <p>Création d'un bundle :</p>
+                            <pre>php app/console generate:bundle</pre>
+                            <p>Génération des entités :</p>
+                            <pre>php app/console doctrine:generate:entities MyApp</pre>
+                            <p>Création de la base de donnée :</p>
+                            <pre>php app/console doctrine:database:create</pre>
+                            <p>Création des tables :</p>
+                            <pre>php app/console doctrine:schema:create</pre>
+                            <p>Mettre à jour les tables :</p>
+                            <pre>php app/console doctrine:schema:update --force</pre>
+                            <p>Mettre à jour les CSS, JS et images :</p>
+                            <pre>php app/console assets:install web</pre>
+                            <p>Vider le cache :</p>
+                            <pre>php app/console cache:clear</pre>
+                            <p>Création d&rsquo;un utilisateur pour FOSUserBundle :</p>
+                            <pre>php app/console fos:user:create username email password</pre>
+                            <p>Rendre un utilisateur admin :</p>
+                            <pre>php app/console fos:user:promote username<br/>
+ROLE_ADMIN</pre>
+                            <p>En cas de problème, pour vérifier les entités :</p>
+                            <pre>php app/console cache:warmup --env=prod --no-debug</pre>
                         </div>
                     </div>
 
