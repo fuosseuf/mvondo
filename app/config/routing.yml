@@ -1,3 +1,7 @@
+mvondo_video:
+    resource: "@MvondoVideoBundle/Resources/config/routing.yml"
+    prefix:   /
+
 mvondo_site:
     resource: "@MvondoSiteBundle/Resources/config/routing.yml"
     prefix:   /
