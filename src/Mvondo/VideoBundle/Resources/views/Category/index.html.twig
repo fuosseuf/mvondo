@@ -24,8 +24,8 @@
                         <td>{{ category.description }}</td>
                         <td>{% if category.parent is not null %}{{ category.parent.name }}{% else %} - {% endif %}</td>
                         <td><img src='../{{ category.getImage().getWeblink() }}' alt='{{ category.getImage().title }}' width='100' heigth='50'/></td>
-                        <td><a href='{{ path('mvondo_video_update', {'id':category.id } ) }}'>Editer</a></td>
-                        <td><a href='{{ path('mvondo_video_delete', {'id':category.id } ) }}'>Supprimer</a></td>
+                        <td><a href='{{ path('mvondo_category_update', {'id':category.id } ) }}'>Editer</a></td>
+                        <td><a href='{{ path('mvondo_category_delete', {'id':category.id } ) }}'>Supprimer</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

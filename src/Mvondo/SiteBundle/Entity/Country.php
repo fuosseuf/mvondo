@@ -20,6 +20,13 @@ class Country
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    
+        /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="Mvondo\VideoBundle\Entity\Video", mappedBy="country")
+     */
+    private $videos;
 
     /**
      * @var string
@@ -34,7 +41,6 @@ class Country
      * @ORM\Column(name="name", type="string", length=100)
      */
     private $name;
-
 
     /**
      * Get id
@@ -90,5 +96,45 @@ class Country
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add video
+     *
+     * @param \Mvondo\VideoBundle\Entity\Video $video
+     * @return Country
+     */
+    public function addVideo(\Mvondo\VideoBundle\Entity\Video $video)
+    {
+        $this->videos[] = $video;
+
+        return $this;
+    }
+
+    /**
+     * Remove video
+     *
+     * @param \Mvondo\VideoBundle\Entity\Video $video
+     */
+    public function removeVideo(\Mvondo\VideoBundle\Entity\Video $video)
+    {
+        $this->videos->removeElement($video);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
     }
 }

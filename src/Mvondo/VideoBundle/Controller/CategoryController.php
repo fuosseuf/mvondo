@@ -38,7 +38,7 @@ class CategoryController extends Controller {
             $em->flush();
 
             $request->getSession()->getFlashBag()->add('notice', 'Categorie ' . $category->getName() . ' updated');
-            return $this->redirect($this->generateUrl('mvondo_video_list'));
+            return $this->redirect($this->generateUrl('mvondo_category_list'));
         }
 
         $categories = $em->getRepository('MvondoVideoBundle:Category')->findAll();
@@ -53,7 +53,7 @@ class CategoryController extends Controller {
         $request->getSession()->getFlashBag()->add('notice', 'Categorie ' . $category->getName() . ' updated');
         $em->remove($category);
         $em->flush();
-        return $this->redirect($this->generateUrl('mvondo_video_list'));
+        return $this->redirect($this->generateUrl('mvondo_category_list'));
     }
 
 }

@@ -43,6 +43,13 @@ class Category
     private $image;
 
         /**
+     * @var array
+     *
+     * @ORM\ManyToMany(targetEntity="Mvondo\VideoBundle\Entity\Video",  mappedBy="categories")
+     */
+    private $videos;
+    
+        /**
      * @var Category
      *
      * @ORM\ManyToOne(targetEntity="Mvondo\VideoBundle\Entity\Category")
@@ -149,5 +156,45 @@ class Category
     public function getParent()
     {
         return $this->parent;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add videos
+     *
+     * @param \Mvondo\VideoBundle\Entity\Video $videos
+     * @return Category
+     */
+    public function addVideo(\Mvondo\VideoBundle\Entity\Video $videos)
+    {
+        $this->videos[] = $videos;
+
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \Mvondo\VideoBundle\Entity\Video $videos
+     */
+    public function removeVideo(\Mvondo\VideoBundle\Entity\Video $videos)
+    {
+        $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
     }
 }
