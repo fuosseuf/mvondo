@@ -29,6 +29,14 @@ class VideoController extends Controller {
         ));
     }
 
+    public function viewAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $video = $em->getRepository('MvondoVideoBundle:Video')->find($id);
+        return $this->render('MvondoVideoBundle:Video:view.html.twig', array(
+                    'video' => $video
+        ));
+    }
+
     public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
         $video = $em->getRepository('MvondoVideoBundle:Video')->find($id);
@@ -37,7 +45,7 @@ class VideoController extends Controller {
         if ($form->handleRequest($request)->isValid()) {
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('notice', 'Categorie ' . $video->getName() . ' updated');
+            $request->getSession()->getFlashBag()->add('notice', 'Categorie ' . $video->getTitle() . ' updated');
             return $this->redirect($this->generateUrl('mvondo_video_list'));
         }
 

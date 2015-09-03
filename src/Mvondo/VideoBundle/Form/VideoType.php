@@ -15,6 +15,7 @@ class VideoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('author', 'text')
             ->add('title', 'text')
             ->add('description', 'textarea')
             ->add('playerKey', 'text')

@@ -51,6 +51,13 @@ class Video {
      */
     private $country;
 
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="author", type="string", length=255)
+     */
+    private $author;
+    
     /**
      * @var string
      *
@@ -393,5 +400,28 @@ class Video {
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set author
+     *
+     * @param string $author
+     * @return Video
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return string 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }

@@ -18,6 +18,12 @@ mvondo_video_list:
     path:     /admin/video/list
     defaults: { _controller: MvondoVideoBundle:Video:index }
 
+mvondo_video_view:
+    path:     /admin/video/view/{id}
+    defaults: { _controller: MvondoVideoBundle:Video:view }
+    requirements:
+        id: \d
+        
 mvondo_video_update:
     path:     /admin/video/update/{id}
     defaults: { _controller: MvondoVideoBundle:Video:update }

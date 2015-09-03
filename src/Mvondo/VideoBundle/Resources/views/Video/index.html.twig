@@ -10,6 +10,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Author</th>
                     <th>Title</th>
                     <th>Description</th>
                     <th>Add Date</th>
@@ -21,11 +22,13 @@
                 {% for video in videos %}
                     <tr>
                         <td>{{ video.id }}</td>
+                        <td>{{ video.author }}</td>
                         <td>{{ video.title }}</td>
                         <td>{{ video.description }}</td>
                         <td>{{ video.dateAdd|date('d-m-y') }}</td>
                         <td>{% if video.status == true %} activé {% else %} désactivé {% endif %}</td>
                         <td><img src='../../{{ video.image.getWeblink() }}' alt='{{ video.image.title }}' width='100' heigth='50'/></td>
+                        <td><a href='{{ path('mvondo_video_view', {'id':video.id } ) }}'>Voir</a></td>
                         <td><a href='{{ path('mvondo_video_update', {'id':video.id } ) }}'>Editer</a></td>
                         <td><a href='{{ path('mvondo_video_delete', {'id':video.id } ) }}'>Supprimer</a></td>
                     </tr>
@@ -33,14 +36,14 @@
             </tbody>
         </table>
     {% endif %}    
-    
+
     {% for flashMessage in app.session.flashbag.get('notice') %}
         <div class="flash-notice">
             {{ flashMessage }}
         </div>
     {% endfor %}
-    
-    
+
+
     <div>
         {{ form(form) }}
 
