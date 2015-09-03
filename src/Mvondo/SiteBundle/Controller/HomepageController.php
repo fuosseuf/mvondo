@@ -26,5 +26,6 @@ class HomepageController extends Controller
         }
         return $this->render('MvondoSiteBundle:Homepage:index.html.twig', array('form' => $form->createView() ));
     }
+    
 }
 

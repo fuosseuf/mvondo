@@ -35,6 +35,19 @@ class Category
      */
     private $description;
 
+    /**
+     * @var Image
+     *
+     * @ORM\OneToOne(targetEntity="Mvondo\SiteBundle\Entity\Image", cascade={"persist"})
+     */
+    private $image;
+
+        /**
+     * @var Category
+     *
+     * @ORM\ManyToOne(targetEntity="Mvondo\VideoBundle\Entity\Category")
+     */
+    private $parent;
 
     /**
      * Get id
@@ -90,5 +103,51 @@ class Category
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \Mvondo\SiteBundle\Entity\Image $image
+     * @return Category
+     */
+    public function setImage(\Mvondo\SiteBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \Mvondo\SiteBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \Mvondo\VideoBundle\Entity\Category $parent
+     * @return Category
+     */
+    public function setParent(\Mvondo\VideoBundle\Entity\Category $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \Mvondo\VideoBundle\Entity\Category 
+     */
+    public function getParent()
+    {
+        return $this->parent;
     }
 }

@@ -4,5 +4,43 @@
 
 {% block body %}
     <h1 class='loop-header'>Dashboard</h1>
+    {% if categories is defined %}
+        <h2>Lists of categories</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Parent</th>
+                    <th>thumbnail</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>{{ category.name }}</td>
+                        <td>{{ category.description }}</td>
+                        <td>{% if category.parent is not null %}{{ category.parent.name }}{% else %} - {% endif %}</td>
+                        <td><img src='../{{ category.getImage().getWeblink() }}' alt='{{ category.getImage().title }}' width='100' heigth='50'/></td>
+                        <td><a href='{{ path('mvondo_video_update', {'id':category.id } ) }}'>Editer</a></td>
+                        <td><a href='{{ path('mvondo_video_delete', {'id':category.id } ) }}'>Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}    
     
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    
+    
+    <div>
+        {{ form(form) }}
+
+    </div>
 {% endblock %}

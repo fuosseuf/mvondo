@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+
+{% block title %} {{ parent() }} - Dashboard {% endblock %}
+
+{% block body %}
+    <h1 class='loop-header'>Dashboard</h1>
+    
+    <div>
+        <h2>Category update</h2>
+        {{ form(form) }}
+
+    </div>
+{% endblock %}

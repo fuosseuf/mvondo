@@ -1,3 +1,15 @@
-mvondo_video_homepage:
+mvondo_video_list:
     path:     /admin/dashboard
     defaults: { _controller: MvondoVideoBundle:Category:index }
+
+mvondo_video_update:
+    path:     /admin/video/update/{id}
+    defaults: { _controller: MvondoVideoBundle:Category:update }
+    requirements:
+        id: \d
+    
+mvondo_video_delete:
+    path:     /admin/video/delete/{id}
+    defaults: { _controller: MvondoVideoBundle:Category:delete }
+    requirements:
+        id: \d
