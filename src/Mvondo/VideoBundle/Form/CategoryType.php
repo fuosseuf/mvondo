@@ -23,7 +23,7 @@ class CategoryType extends AbstractType {
                     'multiple' => false,
                     'required' => false
                         ))
-                ->add('Save', 'submit')
+                ->add('save', 'submit')
         ;
     }
 

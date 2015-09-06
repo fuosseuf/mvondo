@@ -1,0 +1,4 @@
+services:
+#    mvondo_user.example:
+#        class: Mvondo\UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
