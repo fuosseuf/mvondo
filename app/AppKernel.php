@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Mvondo\SiteBundle\MvondoSiteBundle(),
             new Mvondo\VideoBundle\MvondoVideoBundle(),
+            new CommentBundle\CommentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
