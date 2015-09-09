@@ -1,6 +1,6 @@
 <?php
 
-namespace CommentBundle\DependencyInjection;
+namespace Mvondo\CommentBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace CommentBundle;
+namespace Mvondo\CommentBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
