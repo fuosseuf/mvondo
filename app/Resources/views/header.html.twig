@@ -1,6 +1,6 @@
 <header id="header">
     <div class="wrap cf">
-        
+
         <div id="branding" class="image-branding" role="banner">
             <h1 id="site-title"><a rel="home" href="{{ path('mvondo_site_homepage') }}">Mvondo</a></h1>
             <a id="site-logo" rel="home" href="{{ path('mvondo_site_homepage') }}"><img src="{{ asset('bundles/mvondosite/images/logo.png') }}" alt="Mvondo"></a>
@@ -9,6 +9,13 @@
         </div><!-- end #branding -->
 
         <div id="header-actions" class="cf">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                Log as {{ app.user.username }}
+                -
+                <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">LogIn</a> / <a href="{{ path('fos_user_registration_register') }}">Register</a>
+            {% endif %}
         </div><!-- end #header-actions -->
 
         <div id="header-search">

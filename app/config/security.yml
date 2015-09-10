@@ -17,10 +17,6 @@ security:
                     admin: { password: adminpass, roles: ['ROLE_ADMIN'] }
         main:
             id: fos_user.user_provider.username
-            
-#            entity:
-#                class: MvondoUserBundle:User
-#                property: username
 
     firewalls:
         dev:
@@ -30,23 +26,20 @@ security:
         main:
             pattern: ^/
             anonymous: true
-#            provider: main
+            provider: main
             form_login:
-                provider: main
-                csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
-            logout: true
-#                login_path: fos_user_security_login
-#                check_path: fos_user_security_login_check
-#            logout:
-#                path: fos_user_security_logout
-#                target: /
+                csrf_provider: security.csrf.token_manager
+                login_path: fos_user_security_login
+                check_path: fos_user_security_login_check
+            logout:
+                path: fos_user_security_logout
+                target: /     
             remember_me:
                 key: %secret%
                 lifetime: 360000
             
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/profile, role: ROLE_USER }
+        - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

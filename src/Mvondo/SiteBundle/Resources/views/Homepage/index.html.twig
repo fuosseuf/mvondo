@@ -10,6 +10,10 @@
         <ul>
             <li><a href="{{ path('mvondo_category_list') }}" >Categories</a></li>
             <li><a href="{{ path('mvondo_category_admin_list') }}" >Admin Categories</a></li>
+            {% if is_granted('ROLE_ARTIST') %}
+                <li><a href="{{ path('mvondo_video_user_list', {'username': app.user.username} ) }}" >User Videos</a></li>
+            {% endif %}
+            <li><a href="{{ path('fos_user_group_list') }}" >Admin Group User</a></li>
             <li><em>Pages CMS</em>
                 <ul>
                     <li><a href="{{ path('mvondo_site_help') }}">Help!</a></li>

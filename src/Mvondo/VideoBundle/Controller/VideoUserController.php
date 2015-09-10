@@ -9,61 +9,76 @@ use Symfony\Component\HttpFoundation\Request;
 
 class VideoUserController extends Controller {
 
-    public function indexAction(Request $request, $page) {
-        $em = $this->getDoctrine()->getManager();
+    public function indexAction(Request $request, $username, $page) {
+
+        $user = $this->getUser();
+        if ($user->getUsername() != $username)
+            return $this->redirect($this->generateUrl('mvondo_video_user_list', array('username' => $user->getUsername())));
+
         $video = new Video();
         $form = $this->get('form.factory')->create(new VideoType(), $video);
+
         if ($request->isMethod('POST')) {
             if ($form->handleRequest($request)->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $video->setUser($user);
                 $em->persist($video);
                 $em->flush();
 
                 $request->getSession()->getFlashBag()->add('notice', 'Video created.');
             }
-            
+
             $form = $this->get('form.factory')->create(new VideoType(), new Video());
         }
 
-        $videos = $em->getRepository('MvondoVideoBundle:Video')->findAll();
-        return $this->render('MvondoVideoBundle:Video:index.html.twig', array(
-                    'videos' => $videos,
+        return $this->render('MvondoVideoBundle:VideoUser:index.html.twig', array(
+                    'videos' => $user->getVideos(),
                     'form' => $form->createView()
         ));
     }
 
-    public function viewAction($id) {
-        $em = $this->getDoctrine()->getManager();
-        $video = $em->getRepository('MvondoVideoBundle:Video')->find($id);
-        return $this->render('MvondoVideoBundle:Video:view.html.twig', array(
-                    'video' => $video
-        ));
-    }
+    public function updateAction(Request $request, $id, $username) {
+        $user = $this->getUser();
+        if ($user->getUsername() != $username)
+            return $this->redirect($this->generateUrl('mvondo_video_user_update', array(
+                                'username' => $user->getUsername(),
+                                'id' => $id
+            )));
 
-    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
-        $video = $em->getRepository('MvondoVideoBundle:Video')->find($id);
+        if(!($video = $em->getRepository('MvondoVideoBundle:Video')->findOneBy(array('id' => $id, 'user' => $user))))
+            throw $this->createNotFoundException("Video not found!!");
+        
         $form = $this->get('form.factory')->create(new VideoType(), $video);
 
         if ($form->handleRequest($request)->isValid()) {
+            
+            $em = $this->getDoctrine()->getManager();
             $em->flush();
-
             $request->getSession()->getFlashBag()->add('notice', 'Categorie ' . $video->getTitle() . ' updated');
-            return $this->redirect($this->generateUrl('mvondo_video_list'));
+            
+            return $this->redirect($this->generateUrl('mvondo_video_user_list', array('username' => $username)));
         }
 
-        $videos = $em->getRepository('MvondoVideoBundle:Video')->findAll();
-        return $this->render('MvondoVideoBundle:Video:edit.html.twig', array(
-                    'form' => $form->createView()
-        ));
+        return $this->render('MvondoVideoBundle:VideoUser:edit.html.twig', array('form' => $form->createView()));
     }
 
-    public function deleteAction(Request $request, $id) {
+    public function deleteAction(Request $request, $id, $username) {
+        $user = $this->getUser();
+        if ($user->getUsername() != $username)
+            return $this->redirect($this->generateUrl('mvondo_video_user_update', array(
+                                'username' => $user->getUsername(),
+                                'id' => $id
+            )));
+
         $em = $this->getDoctrine()->getManager();
-        $video = $em->getRepository('MvondoVideoBundle:Video')->find($id);
-        $request->getSession()->getFlashBag()->add('notice', 'Categorie ' . $video->getName() . ' updated');
+        if(!($video = $em->getRepository('MvondoVideoBundle:Video')->findOneBy(array('id' => $id, 'user' => $user))))
+            throw $this->createNotFoundException("Video not found!!");
+        
+        $request->getSession()->getFlashBag()->add('notice', 'Categorie ' . $video->getTitle() . ' deleted');
         $em->remove($video);
         $em->flush();
-        return $this->redirect($this->generateUrl('mvondo_video_list'));
+        return $this->redirect($this->generateUrl('mvondo_video_list', array('username' => $user->getUsername())));
     }
 
 }

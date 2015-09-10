@@ -1,0 +1,15 @@
+mvondo_category:
+    resource: "@MvondoVideoBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+mvondo_category_admin:
+    resource: "@MvondoVideoBundle/Resources/config/routing/category_admin.yml"
+    prefix:   /admin/category
+    
+mvondo_video_user:
+    resource: "@MvondoVideoBundle/Resources/config/routing/video_user.yml"
+    prefix:   /profile/{username}/video
+    
+mvondo_video:
+    resource: "@MvondoVideoBundle/Resources/config/routing/video.yml"
+    prefix:   /video

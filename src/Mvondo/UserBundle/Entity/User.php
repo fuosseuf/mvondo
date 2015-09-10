@@ -10,6 +10,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  *
  * @ORM\Table(name="mvondo_users")
  * @ORM\Entity(repositoryClass="Mvondo\UserBundle\Entity\UserRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class User extends BaseUser {
 
@@ -42,6 +43,13 @@ class User extends BaseUser {
      * @ORM\ManyToOne(targetEntity="Mvondo\SiteBundle\Entity\Country", inversedBy="users")
      */
     private $country;
+
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="Mvondo\VideoBundle\Entity\Video", mappedBy="user")
+     */
+    private $videos;
 
     /**
      * @var array
@@ -97,8 +105,7 @@ class User extends BaseUser {
      */
     public function __construct() {
         parent::__construct();
-        if($this->getId() == null)
-            $this->dateAdd = new \DateTime();
+        $this->dateAdd = new \DateTime();
         $this->dateUp = new \DateTime();
         $this->fans = new \Doctrine\Common\Collections\ArrayCollection();
         $this->artists = new \Doctrine\Common\Collections\ArrayCollection();
@@ -320,15 +327,13 @@ class User extends BaseUser {
         return $this->artists;
     }
 
-
     /**
      * Set group
      *
      * @param \Mvondo\UserBundle\Entity\Group $group
      * @return User
      */
-    public function setGroup(\Mvondo\UserBundle\Entity\Group $group = null)
-    {
+    public function setGroup(\Mvondo\UserBundle\Entity\Group $group = null) {
         $this->group = $group;
         $this->setRoles($this->group->getRoles());
 
@@ -340,8 +345,48 @@ class User extends BaseUser {
      *
      * @return \Mvondo\UserBundle\Entity\Group 
      */
-    public function getGroup()
-    {
+    public function getGroup() {
         return $this->group;
     }
+
+    /**
+     * Add videos
+     *
+     * @param \Mvondo\VideoBundle\Entity\Video $videos
+     * @return User
+     */
+    public function addVideo(\Mvondo\VideoBundle\Entity\Video $videos) {
+        $this->videos[] = $videos;
+
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \Mvondo\VideoBundle\Entity\Video $videos
+     */
+    public function removeVideo(\Mvondo\VideoBundle\Entity\Video $videos) {
+        $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos() {
+        return $this->videos;
+    }
+
+    /**
+     * update dateAdd
+     *
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function updateDateUp() {
+        $this->dateUp = new \DateTime();
+    }
+
 }

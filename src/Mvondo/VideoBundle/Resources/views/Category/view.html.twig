@@ -30,7 +30,7 @@
                             <td>{{ video.dateAdd|date('d-m-y') }}</td>
                             <td>{% if video.status == true %} activé {% else %} désactivé {% endif %}</td>
                             <td><img src='{{ app.request.baseUrl }}/{{ video.image.getWeblink() }}' alt='{{ video.image.title }}' width='100' heigth='50'/></td>
-                            <td><a href='{{ path('mvondo_video_view', {'id':video.id } ) }}'>Voir</a></td>
+                            <td><a href='{{ path('mvondo_video_view', {'slug':video.slug } ) }}'>Voir</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

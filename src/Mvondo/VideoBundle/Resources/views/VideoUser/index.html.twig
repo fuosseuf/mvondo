@@ -3,7 +3,7 @@
 {% block title %} {{ parent() }} - Dashboard {% endblock %}
 
 {% block body %}
-    <h1 class='loop-header'>Dashboard</h1>
+    <h1 class='loop-header'>Dashboard - {{ app.user.username }}</h1>
     {% if videos is defined %}
         <h2>Lists of videos</h2>
         <table>
@@ -27,10 +27,10 @@
                         <td>{{ video.description }}</td>
                         <td>{{ video.dateAdd|date('d-m-y') }}</td>
                         <td>{% if video.status == true %} activé {% else %} désactivé {% endif %}</td>
-                        <td><img src='../../{{ video.image.getWeblink() }}' alt='{{ video.image.title }}' width='100' heigth='50'/></td>
-                        <td><a href='{{ path('mvondo_video_view', {'id':video.id } ) }}'>Voir</a></td>
-                        <td><a href='{{ path('mvondo_video_update', {'id':video.id } ) }}'>Editer</a></td>
-                        <td><a href='{{ path('mvondo_video_delete', {'id':video.id } ) }}'>Supprimer</a></td>
+                        <td><img src='{{ app.request.baseUrl }}/{{ video.image.getWeblink() }}' alt='{{ video.image.title }}' width='100' heigth='50'/></td>
+                        <td><a href='{{ path('mvondo_video_view', {'slug':video.slug } ) }}'>Voir</a></td>
+                        <td><a href='{{ path('mvondo_video_user_update', {'id':video.id, 'username': app.user.username } ) }}'>Editer</a></td>
+                        <td><a href='{{ path('mvondo_video_user_delete', {'id':video.id, 'username': app.user.username } ) }}'>Supprimer</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

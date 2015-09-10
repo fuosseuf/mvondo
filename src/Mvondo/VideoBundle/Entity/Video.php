@@ -10,6 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Mvondo\VideoBundle\Entity\VideoRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Video {
 
@@ -29,6 +30,14 @@ class Video {
      * @ORM\JoinColumn(nullable = false)
      */
     private $origin;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="Mvondo\UserBundle\Entity\User", inversedBy="videos")
+     * @ORM\JoinColumn(nullable = false)
+     */
+    private $user;
 
     /**
      * @var array
@@ -75,7 +84,7 @@ class Video {
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"title"})
+     * @Gedmo\Slug(fields={"title", "author"})
      * @ORM\Column(name="slug", type="string", length=100, unique=true)
      */
     private $slug;
@@ -348,7 +357,7 @@ class Video {
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dateAdd = new \DateTime();
         $this->dateUp = new \DateTime();
-        $this->status = FALSE;
+        $this->status = true;
         $this->signaled = FALSE;
         $this->deleted = FALSE;
     }
@@ -425,15 +434,13 @@ class Video {
         return $this->author;
     }
 
-
     /**
      * Set slug
      *
      * @param string $slug
      * @return Video
      */
-    public function setSlug($slug)
-    {
+    public function setSlug($slug) {
         $this->slug = $slug;
 
         return $this;
@@ -444,8 +451,39 @@ class Video {
      *
      * @return string 
      */
-    public function getSlug()
-    {
+    public function getSlug() {
         return $this->slug;
     }
+
+    /**
+     * Set user
+     *
+     * @param \Mvondo\UserBundle\Entity\User $user
+     * @return Video
+     */
+    public function setUser(\Mvondo\UserBundle\Entity\User $user) {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Mvondo\UserBundle\Entity\User 
+     */
+    public function getUser() {
+        return $this->user;
+    }
+
+    /**
+     * update dateAdd
+     *
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function updateDateUp() {
+        $this->dateUp = new \DateTime();
+    }
+
 }

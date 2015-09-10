@@ -1,42 +1,8 @@
-mvondo_site:
+mvondo_site_bundle:
     resource: "@MvondoSiteBundle/Resources/config/routing.yml"
-    prefix:   /
 
-mvondo_category:
-    resource: "@MvondoVideoBundle/Resources/config/routing/category.yml"
-    prefix:   /category
-
-mvondo_category_admin:
-    resource: "@MvondoVideoBundle/Resources/config/routing/category_admin.yml"
-    prefix:   /admin/category
+mvondo_video_bundle:
+    resource: "@MvondoVideoBundle/Resources/config/routing.yml"
     
-mvondo_video:
-    resource: "@MvondoVideoBundle/Resources/config/routing/video.yml"
-    prefix:   /video
-    
-mvondo_user:
+mvondo_user_bundle:
     resource: "@MvondoUserBundle/Resources/config/routing.yml"
-    prefix:   /profile
-
-fos_user_security:
-    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
-
-fos_user_profile:
-    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /profile
-
-fos_user_register:
-    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /register
-
-fos_user_resetting:
-    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /resetting
-
-fos_user_change_password:
-    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /profile
-    
-fos_user_group:
-    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
-    prefix: /group

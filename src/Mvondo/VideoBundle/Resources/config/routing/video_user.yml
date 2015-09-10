@@ -1,10 +1,12 @@
       
 mvondo_video_user_list:
-    path:     /list
-    defaults: { _controller: MvondoVideoBundle:VideoUser:index }
+    path:     /list/{page}
+    defaults: { _controller: MvondoVideoBundle:VideoUser:index, page: 1 }
+    requirements:
+        page: \d+
         
 mvondo_video_user_update:
-    path:     /{id}
+    path:     /update/{id}
     defaults: { _controller: MvondoVideoBundle:VideoUser:update }
     requirements:
         id: \d+
