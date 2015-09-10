@@ -3,8 +3,9 @@
 {% block title %} {{ parent() }} - Dashboard {% endblock %}
 
 {% block body %}
-    <h1 class='loop-header'>Lists of categories</h1>
+    <h1 class='loop-header'>Dashboard</h1>
     {% if categories is defined %}
+        <h2>Lists of categories</h2>
         <table>
             <thead>
                 <tr>
@@ -23,11 +24,24 @@
                         <td>{{ category.description }}</td>
                         <td>{% if category.parent is not null %}{{ category.parent.name }}{% else %} - {% endif %}</td>
                         <td><img src='{{ app.request.baseUrl }}/{{ category.getImage().getWeblink() }}' alt='{{ category.getImage().title }}' width='100' heigth='50'/></td>
-                        <td><a href='{{ path('mvondo_category_view', {'slug':category.slug } ) }}'>Voir</a></td>
+                        <td><a href='{{ path('mvondo_category_admin_update', {'id':category.id } ) }}'>Editer</a></td>
+                        <td><a href='{{ path('mvondo_category_admin_delete', {'id':category.id } ) }}'>Supprimer</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-    {% endif %}  
-    
+    {% endif %}    
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+
+    <div>
+        <h2>Create a new category</h2>
+        
+        {{ form(form) }}
+    </div>
 {% endblock %}

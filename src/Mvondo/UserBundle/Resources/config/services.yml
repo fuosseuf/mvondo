@@ -2,3 +2,12 @@ services:
 #    mvondo_user.example:
 #        class: Mvondo\UserBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+    mvondo_user.form.group:
+        class: Mvondo\UserBundle\Form\GroupType
+        tags:
+            - { name: form.type, alias: mvondo_userbundle_group }
+    
+    mvondo_user.form.user:
+        class: Mvondo\UserBundle\Form\UserType
+        tags:
+            - { name: form.type, alias: mvondo_userbundle_user }

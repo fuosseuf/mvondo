@@ -1,0 +1,17 @@
+mvondo_category_admin_list:
+    path:     /list/{page}
+    defaults: { _controller: MvondoVideoBundle:CategoryAdmin:index, page: 1 }
+    requirements:
+        page: \d*
+
+mvondo_category_admin_update:
+    path:     /update/{id}
+    defaults: { _controller: MvondoVideoBundle:CategoryAdmin:update }
+    requirements:
+        id: \d*
+    
+mvondo_category_admin_delete:
+    path:     /admin/category/delete/{id}
+    defaults: { _controller: MvondoVideoBundle:CategoryAdmin:delete }
+    requirements:
+        id: \d*

@@ -1,0 +1,16 @@
+      
+mvondo_video_user_list:
+    path:     /list
+    defaults: { _controller: MvondoVideoBundle:VideoUser:index }
+        
+mvondo_video_user_update:
+    path:     /{id}
+    defaults: { _controller: MvondoVideoBundle:VideoUser:update }
+    requirements:
+        id: \d+
+    
+mvondo_video_user_delete:
+    path:     /delete/{id}
+    defaults: { _controller: MvondoVideoBundle:VideoUser:delete }
+    requirements:
+        id: \d+

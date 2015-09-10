@@ -16,7 +16,7 @@ class CategoryType extends AbstractType {
         $builder
                 ->add('name', 'text')
                 ->add('description', 'textarea')
-                ->add('image', new \Mvondo\SiteBundle\Form\ImageType(), array('required' => false))
+                ->add('image', new \Mvondo\SiteBundle\Form\ImageType(), array('required' => true))
                 ->add('parent', 'entity', array(
                     'class' => 'MvondoVideoBundle:Category',
                     'property' => 'name',

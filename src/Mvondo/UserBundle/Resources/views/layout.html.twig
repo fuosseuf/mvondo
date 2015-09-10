@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+
+{% block title %} {{ parent() }} - Login{% endblock %}
+
+{% block body %}
+
+    <h1 class="loop-title"><em>Login</em></h1>
+    {% if app.session.flashbag.all() is not empty %}
+        {% for key, message in app.session.flashbag.all() %}
+            <div class="alert alert-{{ key }}">
+                {{ message|trans({}, 'FOSUserBundle') }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {# On définit ce block, dans lequel vont venir s'insérer les autres vues du bundle #}
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+
+{% endblock %}

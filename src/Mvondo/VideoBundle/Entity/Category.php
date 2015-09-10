@@ -3,6 +3,7 @@
 namespace Mvondo\VideoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Category
@@ -10,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Mvondo\VideoBundle\Entity\CategoryRepository")
  */
-class Category
-{
+class Category {
+
     /**
      * @var integer
      *
@@ -36,20 +37,28 @@ class Category
     private $description;
 
     /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(name="slug", type="string", length=100, unique=true)
+     */
+    private $slug;
+
+    /**
      * @var Image
      *
      * @ORM\OneToOne(targetEntity="Mvondo\SiteBundle\Entity\Image", cascade={"persist"})
      */
     private $image;
 
-        /**
+    /**
      * @var array
      *
      * @ORM\ManyToMany(targetEntity="Mvondo\VideoBundle\Entity\Video",  mappedBy="categories")
      */
     private $videos;
-    
-        /**
+
+    /**
      * @var Category
      *
      * @ORM\ManyToOne(targetEntity="Mvondo\VideoBundle\Entity\Category")
@@ -61,8 +70,7 @@ class Category
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -72,8 +80,7 @@ class Category
      * @param string $name
      * @return Category
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -84,8 +91,7 @@ class Category
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -95,8 +101,7 @@ class Category
      * @param string $description
      * @return Category
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -107,8 +112,7 @@ class Category
      *
      * @return string 
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -118,8 +122,7 @@ class Category
      * @param \Mvondo\SiteBundle\Entity\Image $image
      * @return Category
      */
-    public function setImage(\Mvondo\SiteBundle\Entity\Image $image = null)
-    {
+    public function setImage(\Mvondo\SiteBundle\Entity\Image $image = null) {
         $this->image = $image;
 
         return $this;
@@ -130,8 +133,7 @@ class Category
      *
      * @return \Mvondo\SiteBundle\Entity\Image 
      */
-    public function getImage()
-    {
+    public function getImage() {
         return $this->image;
     }
 
@@ -141,8 +143,7 @@ class Category
      * @param \Mvondo\VideoBundle\Entity\Category $parent
      * @return Category
      */
-    public function setParent(\Mvondo\VideoBundle\Entity\Category $parent = null)
-    {
+    public function setParent(\Mvondo\VideoBundle\Entity\Category $parent = null) {
         $this->parent = $parent;
 
         return $this;
@@ -153,15 +154,14 @@ class Category
      *
      * @return \Mvondo\VideoBundle\Entity\Category 
      */
-    public function getParent()
-    {
+    public function getParent() {
         return $this->parent;
     }
+
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -171,8 +171,7 @@ class Category
      * @param \Mvondo\VideoBundle\Entity\Video $videos
      * @return Category
      */
-    public function addVideo(\Mvondo\VideoBundle\Entity\Video $videos)
-    {
+    public function addVideo(\Mvondo\VideoBundle\Entity\Video $videos) {
         $this->videos[] = $videos;
 
         return $this;
@@ -183,8 +182,7 @@ class Category
      *
      * @param \Mvondo\VideoBundle\Entity\Video $videos
      */
-    public function removeVideo(\Mvondo\VideoBundle\Entity\Video $videos)
-    {
+    public function removeVideo(\Mvondo\VideoBundle\Entity\Video $videos) {
         $this->videos->removeElement($videos);
     }
 
@@ -193,8 +191,29 @@ class Category
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getVideos()
-    {
+    public function getVideos() {
         return $this->videos;
     }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Category
+     */
+    public function setSlug($slug) {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug() {
+        return $this->slug;
+    }
+
 }

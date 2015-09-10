@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block title %} {{ parent() }} - Dashboard {% endblock %}
+
+{% block body %}
+    <h1 class='loop-header'>Dashboard</h1>
+    
+    <div>
+        <h2>{{ video.author }}: {{ video.title }}</h2>
+        <iframe src="http://www.youtube.com/embed/{{ video.playerKey }}" width="640" height="385"></iframe>
+
+
+    </div>
+{% endblock %}

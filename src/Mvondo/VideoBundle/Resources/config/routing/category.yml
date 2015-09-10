@@ -1,0 +1,9 @@
+mvondo_category_list:
+    path:     /list/{page}
+    defaults: { _controller: MvondoVideoBundle:Category:index, page: 1 }
+    requirements:
+        page: \d+
+
+mvondo_category_view:
+    path:     /{slug}
+    defaults: { _controller: MvondoVideoBundle:Category:view, slug: all }

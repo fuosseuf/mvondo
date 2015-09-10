@@ -3,6 +3,7 @@
 namespace Mvondo\VideoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Video
@@ -28,8 +29,7 @@ class Video {
      * @ORM\JoinColumn(nullable = false)
      */
     private $origin;
-    
-    
+
     /**
      * @var array
      *
@@ -51,13 +51,13 @@ class Video {
      */
     private $country;
 
-        /**
+    /**
      * @var string
      *
      * @ORM\Column(name="author", type="string", length=255)
      */
     private $author;
-    
+
     /**
      * @var string
      *
@@ -71,6 +71,14 @@ class Video {
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(name="slug", type="string", length=100, unique=true)
+     */
+    private $slug;
 
     /**
      * @var string
@@ -336,8 +344,7 @@ class Video {
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dateAdd = new \DateTime();
         $this->dateUp = new \DateTime();
@@ -352,8 +359,7 @@ class Video {
      * @param \Mvondo\VideoBundle\Entity\Category $categories
      * @return Video
      */
-    public function addCategory(\Mvondo\VideoBundle\Entity\Category $categories)
-    {
+    public function addCategory(\Mvondo\VideoBundle\Entity\Category $categories) {
         $this->categories[] = $categories;
 
         return $this;
@@ -364,8 +370,7 @@ class Video {
      *
      * @param \Mvondo\VideoBundle\Entity\Category $categories
      */
-    public function removeCategory(\Mvondo\VideoBundle\Entity\Category $categories)
-    {
+    public function removeCategory(\Mvondo\VideoBundle\Entity\Category $categories) {
         $this->categories->removeElement($categories);
     }
 
@@ -374,8 +379,7 @@ class Video {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCategories()
-    {
+    public function getCategories() {
         return $this->categories;
     }
 
@@ -385,8 +389,7 @@ class Video {
      * @param \Mvondo\SiteBundle\Entity\Image $image
      * @return Video
      */
-    public function setImage(\Mvondo\SiteBundle\Entity\Image $image = null)
-    {
+    public function setImage(\Mvondo\SiteBundle\Entity\Image $image = null) {
         $this->image = $image;
 
         return $this;
@@ -397,8 +400,7 @@ class Video {
      *
      * @return \Mvondo\SiteBundle\Entity\Image 
      */
-    public function getImage()
-    {
+    public function getImage() {
         return $this->image;
     }
 
@@ -408,8 +410,7 @@ class Video {
      * @param string $author
      * @return Video
      */
-    public function setAuthor($author)
-    {
+    public function setAuthor($author) {
         $this->author = $author;
 
         return $this;
@@ -420,8 +421,31 @@ class Video {
      *
      * @return string 
      */
-    public function getAuthor()
-    {
+    public function getAuthor() {
         return $this->author;
+    }
+
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Video
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

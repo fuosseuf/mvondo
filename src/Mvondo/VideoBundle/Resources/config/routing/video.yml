@@ -1,0 +1,4 @@
+
+mvondo_video_view:
+    path:     /{slug}
+    defaults: { _controller: MvondoVideoBundle:Video:view }

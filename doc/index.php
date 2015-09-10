@@ -83,7 +83,7 @@
                                 <li>lancer les commandes suivantes:
                                     <ul>
                                         <li>Récupération des sources du projet
-                                            <pre>git clone </pre>                                          
+                                            <pre>git clone https://github.com/fuosseuf/mvondo.git</pre>                                          
                                         </li>
                                         <li>Télécharger Composer
                                             <pre>curl -s http://getcomposer.org/installer | php</pre>
@@ -104,6 +104,9 @@ sudo chmod -R 777 app/logs/*
                                 </li>
                                 <li>Configurer le projet depuis le navigateur via le lien 
                                     <pre>http://localhost/path_repertoire_projet/config.php</pre>
+                                </li>
+                                <li>Créer les tables de la base de données
+                                    <pre>php app/console doctrine:schema:update --force</pre>
                                 </li>
                             </ol>
                         </div>
