@@ -50,7 +50,7 @@ class Comment
     private $video;
     
     /**
-     * @ORM\OneToMany(targetEntity="Mvondo\CommentBundle\Entity\Comment", cascade={"persist})
+     * @ORM\OneToMany(targetEntity="Mvondo\CommentBundle\Entity\Comment", cascade={"persist"}, mappedBy="parent")
      */
     private $parent;
 
