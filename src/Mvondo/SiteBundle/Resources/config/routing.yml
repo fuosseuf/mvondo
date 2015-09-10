@@ -21,3 +21,7 @@ mvondo_site_faq:
 mvondo_site_partners:
     path:     /partners
     defaults: { _controller: MvondoSiteBundle:CMS:partners }
+    
+mvondo_site_video:
+    path:     /video{id}
+    defaults: { _controller: MvondoSiteBundle:Video:reader }
