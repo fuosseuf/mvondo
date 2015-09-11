@@ -3,31 +3,64 @@
 {% block title %} {{ parent() }} - Dashboard {% endblock %}
 
 {% block body %}
-    <h1 class='loop-header'>Lists of categories</h1>
-    {% if categories is defined %}
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Parent</th>
-                    <th>thumbnail</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for category in categories %}
+    <!-- left content-->
+    <div id="content">
+
+        <h1 class='loop-header'>Lists of categories</h1>
+        {% if categories is defined %}
+            <table>
+                <thead>
                     <tr>
-                        <td>{{ category.id }}</td>
-                        <td>{{ category.name }}</td>
-                        <td>{{ category.description }}</td>
-                        <td>{% if category.parent is not null %}{{ category.parent.name }}{% else %} - {% endif %}</td>
-                        <td><img src='{{ app.request.baseUrl }}/{{ category.getImage().getWeblink() }}' alt='{{ category.getImage().title }}' width='100' heigth='50'/></td>
-                        <td><a href='{{ path('mvondo_category_view', {'slug':category.slug } ) }}'>Voir</a></td>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Parent</th>
+                        <th>thumbnail</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}  
-    
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                        <tr>
+                            <td>{{ category.id }}</td>
+                            <td>{{ category.name }}</td>
+                            <td>{{ category.description }}</td>
+                            <td>{% if category.parent is not null %}{{ category.parent.name }}{% else %} - {% endif %}</td>
+                            <td><img src='{{ app.request.baseUrl }}/{{ category.getImage().getWeblink() }}' alt='{{ category.getImage().title }}' width='100' heigth='50'/></td>
+                            <td><a href='{{ path('mvondo_category_view', {'slug':category.slug } ) }}'>Voir</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}  
+
+    </div>
+    <!-- end left content -->
+    <!-- sidebar -->
+    <div id="sidebar" role="complementary" class="masonry" style="position: relative; min-height: 500px">
+        <div id="text-2" class="widget widget_text masonry-brick" style="position: absolute; top: 0px; left: 0px;">
+            <div class="widget-header"><h3 class="widget-title">Principales fonctionnalités</h3></div>	
+            <div class="textwidget">
+                <ul>
+                    <li><a href="{{ path('mvondo_category_list') }}" >Categories</a></li>
+                    <li><a href="{{ path('mvondo_category_admin_list') }}" >Admin Categories</a></li>
+                        {% if is_granted('ROLE_ARTIST') %}
+                        <li><a href="{{ path('mvondo_video_user_list', {'username': app.user.username} ) }}" >User Videos</a></li>
+                        {% endif %}
+                    <li><a href="{{ path('fos_user_group_list') }}" >Admin Group User</a></li>
+                    <li><em>Pages CMS</em>
+                        <ul>
+                            <li><a href="{{ path('mvondo_site_help') }}">Help!</a></li>
+                            <li><a href="{{ path('mvondo_site_aboutus') }}">About Us</a></li>
+                            <li><a href="{{ path('mvondo_site_partners') }}">Partners</a></li>
+                            <li><a href="{{ path('mvondo_site_faq') }}">F.A.Q</a></li>
+                            <li><a href="{{ path('mvondo_site_contact') }}">Contact</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end sidebar -->
+
+
 {% endblock %}

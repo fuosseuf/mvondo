@@ -1,0 +1,41 @@
+<!-- Item big square video -->
+<div class="item cf item-video">
+   
+    <div class="thumb">
+        <a class="clip-link"title="{{ video.author }} - {{ video.title }}" href="{{ path('mvondo_video_view', {'slug': video.slug })}}">
+            <span class="clip">
+                <img src="{{ app.request.baseUrl }}/{{ video.image.getWebLink() }}" alt="{{ video.author }} - {{ video.title }}">
+                <span class="vertical-align"></span>
+            </span>
+
+            <span class="overlay"></span>
+        </a>
+    </div>		
+                
+    <div class="data">
+        
+        <h2 class="entry-title">
+            <a href="{{ path('mvondo_video_view', {'slug': video.slug })}}" rel="bookmark" title="{{ video.author }} - {{ video.title }}">
+                {{ video.author }} - {{ video.title }}
+            </a>
+        </h2>
+
+        <p class="entry-meta">
+            <span class="author vcard">
+                <a class="url fn n" href="" title="View all posts by {{ video.author }} - {{ video.title }}" rel="author">{{ video.author }} - {{ video.title }}</a>
+            </span>
+
+            <time class="entry-date" datetime="2012-06-19T19:55:04+00:00">3 years ago</time>
+        </p>
+
+        <p class="stats">
+            <span class="views"><i class="count">0K</i> <span class="suffix">Views</span></span>
+            <span class="comments"><i class="count">0</i> <span class="suffix">Comments</span></span>
+            <span class="dp-post-likes likes"><i class="count" data-pid="1731">0</i> <span class="suffix">Likes</span></span>
+        </p>
+
+        <p class="entry-summary">{{ video.description }}</p>
+        
+    </div>
+</div>
+<!-- end Item big square video -->

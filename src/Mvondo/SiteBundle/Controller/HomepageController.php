@@ -27,5 +27,9 @@ class HomepageController extends Controller
         return $this->render('MvondoSiteBundle:Homepage:index.html.twig', array('form' => $form->createView() ));
     }
     
+    public function menuAction() {
+        $em = $this->getDoctrine()->getManager();
+    }
+    
 }
 

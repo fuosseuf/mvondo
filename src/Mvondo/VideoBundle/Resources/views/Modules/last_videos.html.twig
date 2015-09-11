@@ -1,0 +1,22 @@
+<!-- module last_videos -->
+<div class="section-box">
+    <div class="section-header">
+        <h2 class="section-title">
+            <a class="name-link" href="{{ path('mvondo_category_view') }}">
+                <span class="name">Last Videos</span>
+            </a>
+        </h2>
+        <a class="more-link" href="{{ path('mvondo_category_view') }}">
+            <span>More <i class="mini-arrow-right"></i></span>
+        </a>
+    </div>
+
+    <div class="section-content grid-small">
+        <div class="nag cf">
+            {% for video in videos %}
+                {% include 'MvondoVideoBundle:template:small_square_video.html.twig' %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- end module home_lecteur -->
