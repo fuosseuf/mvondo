@@ -170,4 +170,13 @@ class Comment
     {
         return $this->status;
     }
+    
+    function __construct() {
+        
+        
+        $this->date = new \DateTime();
+        $this->status = FALSE;
+        
+    }
+
 }

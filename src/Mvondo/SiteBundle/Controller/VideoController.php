@@ -13,7 +13,11 @@
  */
 namespace Mvondo\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Mvondo\VideoBundle\Entity\Video;
+use Mvondo\CommentBundle\Form\CommentType;
+
+
+use Mvondo\CommentBundle\Entity\Comment;
+
 class VideoController extends Controller{
     
     public function readerAction($id){
@@ -22,6 +26,12 @@ class VideoController extends Controller{
         
         $video=$em->getRepository("MvondoVideoBundle:Video")->find($id);
         
-        return $this->render('MvondoSiteBundle:Video:video.html.twig', array('video' => $video ));
+        $commentsLst=$em->getRepository("CommentBundle:Comment")->findBy(array("video" => $video));
+        
+        
+        $comment=new Comment();
+        $form = $this->get('form.factory')->create(new CommentType(), $comment);
+        
+        return $this->render('MvondoSiteBundle:Video:video.html.twig', array('video' => $video , 'commentLst' => $commentsLst, 'form'=>$form->createView()));
     }
 }

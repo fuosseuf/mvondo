@@ -2,6 +2,46 @@
 
 {% block title %} {{ parent() }} - Video{% endblock %}
 
+
+
+
+
 {% block body %}
     <h1>{{video.title}}</h1>
+    
+    
+    <h2>Comments</h2>
+    <form method="POST" id="commentForm" action="#" onsubmit="return false;" >
+    
+    <textarea name="comcontent" id="comcontent"></textarea>
+    <button id="btn-primary">Submit</button>
+    </form>
+    
+    <div id="comLst">
+        
+        
+    </div>
+        
+ 
+
+{% block javascripts %}
+  <script type="text/javascript" src="{{ asset('bundles/mvondosite/js/jquery-2.1.4.js') }}"></script>
+  <script>
+      
+          $('#comLst').load('{{path('comment_getcommentLst', {'video_id': video.id})}}');
+          $('#btn-primary').on('click', function(){
+              
+              $.post('{{path('comment_ajax_update_comments', {'video_id': video.id})}}', {'comcontent':$('#comcontent').val()}, function(){
+                  $('#comLst').load('{{path('comment_getcommentLst', {'video_id': video.id})}}');
+                  $('#comcontent').val('');
+              }
+                      
+                      );
+              //alert('On a clique!!!');
+          });
+      
+  </script>
+{% endblock %}
+    
+    
 {% endblock %}
