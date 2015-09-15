@@ -25,7 +25,7 @@
  
 
 {% block javascripts %}
-  <script type="text/javascript" src="{{ asset('bundles/mvondosite/js/jquery-2.1.4.js') }}"></script>
+  
   <script>
       
           $('#comLst').load('{{path('comment_getcommentLst', {'video_id': video.id})}}');
