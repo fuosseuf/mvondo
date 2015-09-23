@@ -1,0 +1,44 @@
+{% extends "::base.html.twig" %}
+
+{% block title %} {{ parent() }} - Youtube Search {% endblock %}
+
+{% block body %}
+    <form method="POST" action="{{ path('mvondo_youtube_search') }}">
+        <input type ="search" name="keyword"/>
+        <input type="submit" value="YouTube Search"/>
+    </form>
+    {% if videos is defined %}
+    <h1 class='loop-header'Youtube Search >Result</h1>
+    {% if videos is not empty %}
+            <h2>Lists of videos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Author</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Add Date</th>
+                        <th>Status</th>
+                        <th>thumbnail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for video in videos %}
+                        <tr>
+                            <td>{{ video.id.videoId }}</td>
+                            <td></td>
+                            <td>{{ video.snippet.title }}</td>
+                            <td>{{ video.snippet.description }}</td>
+                            <td></td>
+                            <td></td>
+                            <td><img src='{{ video.snippet.thumbnails.default.url }}' alt='{{ video.snippet.title  }}' width='100' heigth='50'/></td>
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}  
+    {% endif %}
+
+{% endblock %}

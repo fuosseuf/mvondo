@@ -1,3 +1,7 @@
+mvondo_youtube:
+    resource: "@MvondoYoutubeBundle/Resources/config/routing.yml"
+    prefix:   /
+
 mvondo_site_bundle:
     resource: "@MvondoSiteBundle/Resources/config/routing.yml"
 

@@ -47,25 +47,12 @@ class Video {
     private $categories;
 
     /**
-     * @var Image
-     *
-     * @ORM\OneToOne(targetEntity="Mvondo\SiteBundle\Entity\Image", cascade={"persist"})
-     */
-    private $image;
-
-    /**
      * @var Country
      *
      * @ORM\ManyToOne(targetEntity="Mvondo\SiteBundle\Entity\Country", inversedBy="videos")
      */
     private $country;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="author", type="string", length=255)
-     */
-    private $author;
 
     /**
      * @var string
@@ -73,6 +60,34 @@ class Video {
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
+    
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="duration", type="string", length=10)
+     */
+    private $duration;
+    
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="image_small", type="string", length=255)
+     */
+    private $image_small;
+    
+            /**
+     * @var string
+     *
+     * @ORM\Column(name="image_medium", type="string", length=255)
+     */
+    private $image_medium;
+    
+            /**
+     * @var string
+     *
+     * @ORM\Column(name="image_large", type="string", length=255)
+     */
+    private $image_large;
 
     /**
      * @var string
@@ -84,7 +99,7 @@ class Video {
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"title", "author"})
+     * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(name="slug", type="string", length=100, unique=true)
      */
     private $slug;
@@ -392,47 +407,6 @@ class Video {
         return $this->categories;
     }
 
-    /**
-     * Set image
-     *
-     * @param \Mvondo\SiteBundle\Entity\Image $image
-     * @return Video
-     */
-    public function setImage(\Mvondo\SiteBundle\Entity\Image $image = null) {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \Mvondo\SiteBundle\Entity\Image 
-     */
-    public function getImage() {
-        return $this->image;
-    }
-
-    /**
-     * Set author
-     *
-     * @param string $author
-     * @return Video
-     */
-    public function setAuthor($author) {
-        $this->author = $author;
-
-        return $this;
-    }
-
-    /**
-     * Get author
-     *
-     * @return string 
-     */
-    public function getAuthor() {
-        return $this->author;
-    }
 
     /**
      * Set slug
@@ -486,4 +460,96 @@ class Video {
         $this->dateUp = new \DateTime();
     }
 
+
+    /**
+     * Set image_small
+     *
+     * @param string $imageSmall
+     * @return Video
+     */
+    public function setImageSmall($imageSmall)
+    {
+        $this->image_small = $imageSmall;
+
+        return $this;
+    }
+
+    /**
+     * Get image_small
+     *
+     * @return string 
+     */
+    public function getImageSmall()
+    {
+        return $this->image_small;
+    }
+
+    /**
+     * Set image_medium
+     *
+     * @param string $imageMedium
+     * @return Video
+     */
+    public function setImageMedium($imageMedium)
+    {
+        $this->image_medium = $imageMedium;
+
+        return $this;
+    }
+
+    /**
+     * Get image_medium
+     *
+     * @return string 
+     */
+    public function getImageMedium()
+    {
+        return $this->image_medium;
+    }
+
+    /**
+     * Set image_large
+     *
+     * @param string $imageLarge
+     * @return Video
+     */
+    public function setImageLarge($imageLarge)
+    {
+        $this->image_large = $imageLarge;
+
+        return $this;
+    }
+
+    /**
+     * Get image_large
+     *
+     * @return string 
+     */
+    public function getImageLarge()
+    {
+        return $this->image_large;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param string $duration
+     * @return Video
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return string 
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
 }

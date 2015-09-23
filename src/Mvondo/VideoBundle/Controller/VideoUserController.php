@@ -78,7 +78,7 @@ class VideoUserController extends Controller {
         $request->getSession()->getFlashBag()->add('notice', 'Categorie ' . $video->getTitle() . ' deleted');
         $em->remove($video);
         $em->flush();
-        return $this->redirect($this->generateUrl('mvondo_video_list', array('username' => $user->getUsername())));
+        return $this->redirect($this->generateUrl('mvondo_video_user_list', array('username' => $user->getUsername())));
     }
 
 }

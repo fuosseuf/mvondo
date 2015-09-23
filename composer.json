@@ -6,7 +6,10 @@
         "psr-4": {
             "": "src/",
             "SymfonyStandard\\": "app/SymfonyStandard/"
-        }
+        },
+        "psr-3":{
+            "google\\apiclient\\src": "google/apiclient/src/"
+            }
     },
     "require": {
         "php": ">=5.3.9",
@@ -22,7 +25,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
          
         "stof/doctrine-extensions-bundle" : "^1.2",
-        "friendsofsymfony/user-bundle": "dev-master"
+        "friendsofsymfony/user-bundle": "dev-master",
+        "google/apiclient": "^1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

@@ -1,0 +1,12 @@
+services:
+#    mvondo_youtube.example:
+#        class: Mvondo\YoutubeBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    mvondo_youtube.google_client:
+        class: Mvondo\YoutubeBundle\Service\GoogleClient
+        arguments: [%google_developper_key%, %google_client_ID%, %google_client_secret%, %youtube_granted_all%]
+
+    mvondo_youtube.google_youtube:
+        class: Mvondo\YoutubeBundle\Service\Youtube
+        arguments: [@security.context,  @doctrine.orm.entity_manager]

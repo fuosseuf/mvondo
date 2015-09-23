@@ -15,7 +15,6 @@ class VideoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('author', 'text')
             ->add('title', 'text')
             ->add('description', 'textarea')
             ->add('playerKey', 'text')
@@ -34,7 +33,6 @@ class VideoType extends AbstractType
                 'property' => 'name',
                 'multiple' => TRUE
             ))
-            ->add('image', new \Mvondo\SiteBundle\Form\ImageType())
             ->add('country', 'entity', array(
                 'class'=> 'MvondoSiteBundle:Country',
                 'property' => 'name',

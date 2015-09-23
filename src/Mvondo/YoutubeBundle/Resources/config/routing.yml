@@ -1,0 +1,3 @@
+mvondo_youtube_search:
+    path:     /youtube
+    defaults: { _controller: MvondoYoutubeBundle:Youtube:search }
