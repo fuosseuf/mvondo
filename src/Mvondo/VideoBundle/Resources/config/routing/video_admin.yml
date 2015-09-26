@@ -1,0 +1,22 @@
+      
+mvondo_video_admin_list:
+    path:     /list/{page}
+    defaults: { _controller: MvondoVideoBundle:VideoAdmin:index, page: 1 }
+    requirements:
+        page: \d+
+        
+mvondo_video_admin_update:
+    path:     /update/{id}
+    defaults: { _controller: MvondoVideoBundle:VideoAdmin:update }
+    requirements:
+        id: \d+
+    
+mvondo_video_admin_delete:
+    path:     /delete/{id}
+    defaults: { _controller: MvondoVideoBundle:VideoAdmin:delete }
+    requirements:
+        id: \d+
+        
+mvondo_video_admin_add:
+    path:     /add
+    defaults: { _controller: MvondoVideoBundle:VideoAdmin:add}

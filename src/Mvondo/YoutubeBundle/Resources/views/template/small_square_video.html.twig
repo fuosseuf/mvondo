@@ -2,9 +2,9 @@
 <div class=" item cf item-video">
     <!-- thumbnail de la video -->
     <div class="thumb">
-        <a class="clip-link"title="{{ video.title }}" href="{{ path('mvondo_video_view', {'slug': video.slug })}}">
+        <a class="clip-link"title="{{ video.title }}" href="">
             <span class="clip">
-                <img src="{{ video.image }}" alt="{{ video.title }}">
+                <img src="{{ video.imageLarge }}" alt="{{ video.title }}">
                 <span class="vertical-align"></span>
             </span>
 
@@ -14,7 +14,7 @@
     <!-- info de la video -->    
     <div class="data">
         <h2 class="entry-title">
-            <a href="{{ path('mvondo_video_view', {'slug': video.slug })}}" rel="bookmark" title="{{ video.title }}">
+            <a href="" rel="bookmark" title="{{ video.title }}">
                {{ video.title }}
             </a>
         </h2>

@@ -6,35 +6,16 @@
     <h1 class='loop-header'>Dashboard - {{ app.user.username }}</h1>
     {% if videos is defined %}
         <h2>Lists of videos</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Author</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Add Date</th>
-                    <th>Status</th>
-                    <th>thumbnail</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="section-content list-medium">
+            <div class="nag cf">
                 {% for video in videos %}
-                    <tr>
-                        <td>{{ video.id }}</td>
-                        <td>{{ video.author }}</td>
-                        <td>{{ video.title }}</td>
-                        <td>{{ video.description }}</td>
-                        <td>{{ video.dateAdd|date('d-m-y') }}</td>
-                        <td>{% if video.status == true %} activé {% else %} désactivé {% endif %}</td>
-                        <td><img src='{{ app.request.baseUrl }}/{{ video.image.getWeblink() }}' alt='{{ video.image.title }}' width='100' heigth='50'/></td>
-                        <td><a href='{{ path('mvondo_video_view', {'slug':video.slug } ) }}'>Voir</a></td>
-                        <td><a href='{{ path('mvondo_video_user_update', {'id':video.id, 'username': app.user.username } ) }}'>Editer</a></td>
-                        <td><a href='{{ path('mvondo_video_user_delete', {'id':video.id, 'username': app.user.username } ) }}'>Supprimer</a></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                    {% include 'MvondoVideoBundle:template:small_square_video.html.twig' %}
+                    <a href='{{ path('mvondo_video_user_update', {'id':video.id, 'username': app.user.username } ) }}'>Editer</a><br/>
+                    <a href='{{ path('mvondo_video_user_delete', {'id':video.id, 'username': app.user.username } ) }}'>Supprimer</a>
+                    {% endfor %}
+            </div>
+        </div>
+
     {% endif %}    
 
     {% for flashMessage in app.session.flashbag.get('notice') %}
@@ -44,8 +25,8 @@
     {% endfor %}
 
 
-    <div>
+    {#<div>
         {{ form(form) }}
 
-    </div>
+    </div>#}
 {% endblock %}

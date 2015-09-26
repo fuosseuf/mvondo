@@ -4,10 +4,15 @@
 
 {% block body %}
     <h1 class='loop-header'>Category {{ category.name }}</h1>
-        <!-- left content-->
+    <!-- left content-->
     <div id="content">
-        {{ include('MvondoVideoBundle:Modules:last_videos.html.twig') }}
-
+        <div class="section-content grid-small">
+            <div class="nag cf">
+                {% for video in videos %}
+                    {% include 'MvondoVideoBundle:template:small_square_video.html.twig' %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
     <!-- end left content -->
     <!-- sidebar -->
@@ -36,37 +41,4 @@
         </div>
     </div>
     <!-- end sidebar -->
-    <div>
-        {% if videos is not empty %}
-            <h2>Lists of videos</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Author</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Add Date</th>
-                        <th>Status</th>
-                        <th>thumbnail</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for video in videos %}
-                        <tr>
-                            <td>{{ video.id }}</td>
-                            <td>{{ video.author }}</td>
-                            <td>{{ video.title }}</td>
-                            <td>{{ video.description }}</td>
-                            <td>{{ video.dateAdd|date('d-m-y') }}</td>
-                            <td>{% if video.status == true %} activé {% else %} désactivé {% endif %}</td>
-                            <td><img src='{{ app.request.baseUrl }}/{{ video.image.getWeblink() }}' alt='{{ video.image.title }}' width='100' heigth='50'/></td>
-                            <td><a href='{{ path('mvondo_video_view', {'slug':video.slug } ) }}'>Voir</a></td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        {% endif %}  
-
-    </div>
 {% endblock %}

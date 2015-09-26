@@ -71,23 +71,9 @@ class Video {
         /**
      * @var string
      *
-     * @ORM\Column(name="image_small", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255)
      */
-    private $image_small;
-    
-            /**
-     * @var string
-     *
-     * @ORM\Column(name="image_medium", type="string", length=255)
-     */
-    private $image_medium;
-    
-            /**
-     * @var string
-     *
-     * @ORM\Column(name="image_large", type="string", length=255)
-     */
-    private $image_large;
+    private $image;
 
     /**
      * @var string
@@ -462,72 +448,26 @@ class Video {
 
 
     /**
-     * Set image_small
+     * Set image
      *
-     * @param string $imageSmall
+     * @param string $image
      * @return Video
      */
-    public function setImageSmall($imageSmall)
+    public function setImage($image)
     {
-        $this->image_small = $imageSmall;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get image_small
+     * Get image
      *
      * @return string 
      */
-    public function getImageSmall()
+    public function getImage()
     {
-        return $this->image_small;
-    }
-
-    /**
-     * Set image_medium
-     *
-     * @param string $imageMedium
-     * @return Video
-     */
-    public function setImageMedium($imageMedium)
-    {
-        $this->image_medium = $imageMedium;
-
-        return $this;
-    }
-
-    /**
-     * Get image_medium
-     *
-     * @return string 
-     */
-    public function getImageMedium()
-    {
-        return $this->image_medium;
-    }
-
-    /**
-     * Set image_large
-     *
-     * @param string $imageLarge
-     * @return Video
-     */
-    public function setImageLarge($imageLarge)
-    {
-        $this->image_large = $imageLarge;
-
-        return $this;
-    }
-
-    /**
-     * Get image_large
-     *
-     * @return string 
-     */
-    public function getImageLarge()
-    {
-        return $this->image_large;
+        return $this->image;
     }
 
     /**

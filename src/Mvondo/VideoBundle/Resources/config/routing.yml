@@ -5,6 +5,10 @@ mvondo_category:
 mvondo_category_admin:
     resource: "@MvondoVideoBundle/Resources/config/routing/category_admin.yml"
     prefix:   /admin/category
+
+mvondo_video_admin:
+    resource: "@MvondoVideoBundle/Resources/config/routing/video_admin.yml"
+    prefix:   /admin/video
     
 mvondo_video_user:
     resource: "@MvondoVideoBundle/Resources/config/routing/video_user.yml"

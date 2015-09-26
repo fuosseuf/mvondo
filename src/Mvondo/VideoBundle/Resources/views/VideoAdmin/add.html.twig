@@ -1,0 +1,52 @@
+{% extends "::base.html.twig" %}
+
+{% block title %} {{ parent() }} - Youtube Search {% endblock %}
+
+{% block body %}
+    <h1 class='loop-header'>Dashboard/Video</h1>
+    {% if videos is not defined %}
+        <form method="POST" action="{{ path('mvondo_video_admin_add') }}">
+            <fieldset>
+                <legend>Add video to category:</legend>
+                <select name="category">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+
+                </select>
+                <input type ="search" name="keyword"/>
+                <input type="submit" value="YouTube Search"/>
+            </fieldset>
+        </form>
+    {% else %}
+        <h2 class='loop-header'Youtube Search >Select videos to add to category: {{ category.name }}</h2>
+        <div class="section-box">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="name">Results</span>
+                </h2>
+            </div>
+
+            <div class="section-content  list-medium">
+                <div class="nag cf">
+                    {% for video in videos %}
+                        {% include 'MvondoVideoBundle:template:admin_square_video.html.twig' %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <script>
+        function add(key, cat) {
+            json = {
+                        "id": key,
+                        "catid": cat
+                    };
+            console.log(json);
+            $.post("{{ path('mvondo_video_admin_add') }}",json,function (data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+        }
+    </script>
+{% endblock %}

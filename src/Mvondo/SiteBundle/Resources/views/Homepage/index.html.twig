@@ -21,6 +21,7 @@
                 <ul>
                     <li><a href="{{ path('mvondo_category_list') }}" >Categories</a></li>
                     <li><a href="{{ path('mvondo_category_admin_list') }}" >Admin Categories</a></li>
+                    <li><a href="{{ path('mvondo_video_admin_add') }}" >Admin add Videos</a></li>
                         {% if is_granted('ROLE_ARTIST') %}
                         <li><a href="{{ path('mvondo_video_user_list', {'username': app.user.username} ) }}" >User Videos</a></li>
                         {% endif %}
