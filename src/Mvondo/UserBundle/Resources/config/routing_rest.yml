@@ -1,0 +1,4 @@
+users : 
+  type: rest
+  resource:     "MvondoUserBundle:UserRest"
+  name_prefix:  api_

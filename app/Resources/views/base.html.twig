@@ -2,21 +2,20 @@
 <html>
     <head>
         <!-- Meta Tags -->
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="description" content="Promotion de la culture africaine" />
+        <meta name="robots" content="noindex,follow" />
+        {% block meta %}{% endblock %}
 
         <title>{% block title %}Mvondo!{% endblock %}</title>
-
-        <meta name="description" content="African culture promotion">
-        <meta name="robots" content="noindex,follow">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        
         {% stylesheets 
             'bundles/mvondosite/css/*'filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
-        
-
+        <link rel="stylesheet" type="text/css" href="{{ asset('custum/css/custum.css') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
 
@@ -35,12 +34,14 @@
             </div>
 
             {% include '::footer.html.twig' %}
-            
+                  
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
             {% javascripts'@MvondoSiteBundle/Resources/public/js/*' %}
                 <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
-            
             {% block javascripts %}{% endblock %}
+            <script src="{{ asset('custum/js/custum.js') }}"></script>
+
         </div>
         
     </body>

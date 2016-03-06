@@ -1,6 +1,10 @@
 mvondo_site_homepage:
     path:     /
     defaults: { _controller: MvondoSiteBundle:Homepage:index }
+    
+mvondo_site_auth:
+    path:     /authentication
+    defaults: { _controller: MvondoSiteBundle:Homepage:auth }
 
 mvondo_site_contact:
     path:     /contact
@@ -21,3 +25,4 @@ mvondo_site_faq:
 mvondo_site_partners:
     path:     /partners
     defaults: { _controller: MvondoSiteBundle:CMS:partners }
+

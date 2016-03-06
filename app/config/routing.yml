@@ -10,3 +10,8 @@ mvondo_video_bundle:
     
 mvondo_user_bundle:
     resource: "@MvondoUserBundle/Resources/config/routing.yml"
+#REST 
+rest : 
+  type : rest 
+  resource : "routing_rest.yml"
+  prefix : /api

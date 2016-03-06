@@ -1,0 +1,53 @@
+{% extends "::base.html.twig" %}
+
+{% block title %} {{ parent() }} - Dashboard {% endblock %}
+
+{% block body %}
+    <h1 class='loop-header'>Dashboard</h1>
+
+    <div>
+        <h2>Video Synchronize User</h2>
+        {% if authLink is defined %}
+        <p>
+            You have to <a href="{{ authLink }}">authorize</a> Mvondo to access to your youtube account.
+        </p>
+        {% endif %}
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="flash-notice">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+         {% if videos is defined %}
+        <h2 class='loop-header'Youtube Search >Select videos to add to your Mvondo account</h2>
+        <div class="section-box">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="name">Results</span>
+                </h2>
+            </div>
+
+            <div class="section-content  list-medium">
+                <div class="nag cf">
+                    {% for video in videos %}
+                        {% include 'MvondoVideoBundle:template:user_square_video.html.twig' %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    </div>
+        <script>
+        function add(key, cat) {
+            json = {
+                        "id": key,
+                        "catid": cat
+                    };
+            console.log(json);
+            $.post("{{ path('mvondo_video_user_synchronize', {username:"artist"}) }}",json,function (data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+        }
+    </script>
+{% endblock %}

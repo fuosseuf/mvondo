@@ -4,6 +4,10 @@ mvondo_video_user_list:
     defaults: { _controller: MvondoVideoBundle:VideoUser:index, page: 1 }
     requirements:
         page: \d+
+
+mvondo_video_user_add:
+    path:     /add
+    defaults: { _controller: MvondoVideoBundle:VideoUser:add }
         
 mvondo_video_user_update:
     path:     /update/{id}
@@ -16,3 +20,7 @@ mvondo_video_user_delete:
     defaults: { _controller: MvondoVideoBundle:VideoUser:delete }
     requirements:
         id: \d+
+
+mvondo_video_user_synchronize:
+    path:     /synchronize
+    defaults: { _controller: MvondoVideoBundle:VideoUser:synchronize }

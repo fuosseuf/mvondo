@@ -31,5 +31,16 @@ class HomepageController extends Controller
         $em = $this->getDoctrine()->getManager();
     }
     
+    public function authAction(Request $request) {
+        if($request->query->has('code')){ 
+            $client = $this->get('mvondo_youtube.google_client');
+            $client->setRedirectUri("http://www.mvondo.local.fr/app_dev.php/authentication");
+            $client->authenticate($request->query->get('code'));
+            $request->getSession()->set('token', $client->getAccessToken());
+        }
+        return $this->redirect($this->generateUrl('mvondo_video_user_add', array('username' => $this->getUser()->getUsername())));
+        
+    }
+    
 }
 
