@@ -13,7 +13,7 @@ class ModulesController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $videos = $em->getRepository('MvondoVideoBundle:Video')->findAll();
 
-        return $this->render('MvondoVideoBundle:Modules:home_lecteur.html.twig', array(
+        return $this->render('modules/home_lecteur.html.twig', array(
                     'videos' => $videos,
         ));
     }
@@ -22,7 +22,7 @@ class ModulesController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $videos = $em->getRepository('MvondoVideoBundle:Video')->findAll();
 
-        return $this->render('MvondoVideoBundle:Modules:last_videos.html.twig', array(
+        return $this->render('modules/last_videos.html.twig', array(
                     'videos' => $videos,
         ));
     }
@@ -32,7 +32,7 @@ class ModulesController extends Controller {
         $category = $em->getRepository('MvondoVideoBundle:Category')->find($id);
         $video = $em->getRepository('MvondoVideoBundle:Video')->find(3);
 
-        return $this->render('MvondoVideoBundle:Modules:highlight_category.html.twig', array(
+        return $this->render('modules/highlight_category.html.twig', array(
                     'video' => $video,
         ));
     }

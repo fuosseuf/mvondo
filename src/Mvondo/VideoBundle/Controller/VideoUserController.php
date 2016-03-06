@@ -31,7 +31,7 @@ class VideoUserController extends Controller {
             $form = $this->get('form.factory')->create(new VideoType(), new Video());
         }
 
-        return $this->render('MvondoVideoBundle:VideoUser:index.html.twig', array(
+        return $this->render('site/list_video_user.html.twig', array(
                     'videos' => $user->getVideos(),
                     'form' => $form->createView()
         ));
@@ -65,10 +65,10 @@ class VideoUserController extends Controller {
                         $request->getSession()->getFlashBag()->add('notice', 'Video created.');
                 }
             }
-            return $this->render('MvondoVideoBundle:VideoUser:add.html.twig', array('form' => $form->createView()));
+            return $this->render('site/add_video_user.html.twig', array('form' => $form->createView()));
         }
 
-        return $this->render('MvondoVideoBundle:VideoUser:add.html.twig', array('authLink' => $client->createAuthUrl()));
+        return $this->render('site/add_video_user.html.twig', array('authLink' => $client->createAuthUrl()));
     }
 
     public function synchronizeAction(Request $request, $username) {
@@ -96,13 +96,13 @@ class VideoUserController extends Controller {
             }
             $results = $youtube->synchronize();
             $categories = $this->getDoctrine()->getManager()->getRepository('MvondoVideoBundle:Category')->findAll();
-            return $this->render('MvondoVideoBundle:VideoUser:synchronize.html.twig', array(
+            return $this->render('site/synchronize.html.twig', array(
                         'categories' => $categories,
                         'videos' => $results
             ));
         }
 
-        return $this->render('MvondoVideoBundle:VideoUser:synchronize.html.twig', array('authLink' => $client->createAuthUrl()));
+        return $this->render('site/synchronize.html.twig', array('authLink' => $client->createAuthUrl()));
     }
 
     public function deleteAction(Request $request, $id, $username) {

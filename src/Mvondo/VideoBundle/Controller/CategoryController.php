@@ -13,7 +13,7 @@ class CategoryController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('MvondoVideoBundle:Category')->findAll();
 
-        return $this->render('MvondoVideoBundle:Category:index.html.twig', array(
+        return $this->render('site/list_category.html.twig', array(
                     'categories' => $categories,
         ));
     }
@@ -34,7 +34,7 @@ class CategoryController extends Controller {
         }
 
         $categories = $em->getRepository('MvondoVideoBundle:Category')->findAll();
-        return $this->render('MvondoVideoBundle:Category:view.html.twig', array(
+        return $this->render('site/view_category.html.twig', array(
                     'category' => $category,
                     'videos' => $videos,
         ));

@@ -8,6 +8,6 @@ class ContactController extends Controller
 {
     public function contactAction()
     {
-        return $this->render('MvondoSiteBundle:Contact:contact.html.twig');
+        return $this->render('site/contact.html.twig');
     }
 }

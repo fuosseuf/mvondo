@@ -30,7 +30,7 @@ class VideoAdminController extends Controller {
                 $youtube = $this->get('mvondo_youtube.google_youtube');
                 $youtube->setClient($client);
                 $results = $youtube->search($keyword, $category_id);
-                return $this->render('MvondoVideoBundle:VideoAdmin:add.html.twig', array(
+                return $this->render('site/add_admin_video.html.twig', array(
                             'category' => $category,
                             'videos' => $results
                 ));
@@ -39,7 +39,7 @@ class VideoAdminController extends Controller {
 
 
 
-        return $this->render('MvondoVideoBundle:VideoAdmin:add.html.twig', array(
+        return $this->render('site/add_admin_video.html.twig', array(
                     'categories' => $categories
         ));
     }

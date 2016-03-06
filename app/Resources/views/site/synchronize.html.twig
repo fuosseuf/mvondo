@@ -1,4 +1,4 @@
-{% extends "::base.html.twig" %}
+{% extends "layout/base.html.twig" %}
 
 {% block title %} {{ parent() }} - Dashboard {% endblock %}
 
@@ -30,7 +30,7 @@
             <div class="section-content  list-medium">
                 <div class="nag cf">
                     {% for video in videos %}
-                        {% include 'MvondoVideoBundle:template:user_square_video.html.twig' %}
+                        {% include 'template/user_square_video.html.twig' %}
                     {% endfor %}
                 </div>
             </div>

@@ -22,9 +22,9 @@ class HomepageController extends Controller
             
             $request->getSession()->getFlashBag()->add('notice', 'Image bien enregistrée.');
             
-            return $this->render('MvondoSiteBundle:Homepage:index.html.twig', array('img' => $img ));
+            return $this->render('site/homepage.html.twig', array('img' => $img ));
         }
-        return $this->render('MvondoSiteBundle:Homepage:index.html.twig', array('form' => $form->createView() ));
+        return $this->render('site/homepage.html.twig', array('form' => $form->createView() ));
     }
     
     public function menuAction() {

@@ -1,4 +1,4 @@
-{% extends "::base.html.twig" %}
+{% extends "layout/base.html.twig" %}
 
 {% block title %} {{ parent() }} - Dashboard {% endblock %}
 
@@ -9,7 +9,7 @@
         <div class="section-content list-medium">
             <div class="nag cf">
                 {% for video in videos %}
-                    {% include 'MvondoVideoBundle:template:small_square_video.html.twig' %}
+                    {% include 'template/small_square_video.html.twig' %}
                     <a href='{{ path('mvondo_video_user_update', {'id':video.id, 'username': app.user.username } ) }}'>Editer</a><br/>
                     <a href='{{ path('mvondo_video_user_delete', {'id':video.id, 'username': app.user.username } ) }}'>Supprimer</a>
                     {% endfor %}

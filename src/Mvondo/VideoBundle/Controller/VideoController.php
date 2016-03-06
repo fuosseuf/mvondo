@@ -15,7 +15,7 @@ class VideoController extends Controller {
         if (!($video = $em->getRepository('MvondoVideoBundle:Video')->findOneBySlug($slug)))
                 throw $this->createNotFoundException("This video doesn't exist!!");
         
-        return $this->render('MvondoVideoBundle:Video:view.html.twig', array(
+        return $this->render('site/view_video.html.twig', array(
                     'video' => $video
         ));
     }

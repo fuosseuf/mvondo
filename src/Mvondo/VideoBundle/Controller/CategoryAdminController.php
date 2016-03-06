@@ -26,7 +26,7 @@ class CategoryAdminController extends Controller {
 
         $categories = $em->getRepository('MvondoVideoBundle:Category')->findAll();
         
-        return $this->render('MvondoVideoBundle:CategoryAdmin:index.html.twig', array(
+        return $this->render('site/list_admin_category.html.twig', array(
                     'categories' => $categories,
                     'form' => $form->createView()
         ));
@@ -48,7 +48,7 @@ class CategoryAdminController extends Controller {
         }
 
         $categories = $em->getRepository('MvondoVideoBundle:Category')->findAll();
-        return $this->render('MvondoVideoBundle:CategoryAdmin:edit.html.twig', array(
+        return $this->render('site/edit_admin_category.html.twig', array(
                     'form' => $form->createView()
         ));
     }
