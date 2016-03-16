@@ -9,3 +9,7 @@ parameters:
     mailer_user: null
     mailer_password: null
     secret: af6e9d876f55b61bfa368378274fb5344e67647b
+    google_developper_key: AIzaSyDZHzBnzJ5-IYdhuViXzYO54qh24LdJoTQ
+    google_client_id: 204533304785-ebrbi66l18n899q975f0888lcgk8sbh9.apps.googleusercontent.com
+    google_client_secret: 8vDgjTL-0IMdAfN8fFggca9y
+    youtube_granted_all: https://www.googleapis.com/auth/youtube
