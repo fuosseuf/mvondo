@@ -7,8 +7,74 @@ and open the template in the editor.
     Created on : 6 mars 2016, 16:24:03
     Author     : rodrigue
 */
-
+/*== Header
+ *=================================*/
 #header{
-    background: blue;
+    background: #ffffff;
     
 }
+#header .wrap {
+    padding: 24px 0;
+}
+#header-search {
+    margin-left: 57px;
+}
+
+/*== Search Form
+ *=================================*/
+ .search-submit-div {height: 34px;
+}
+ input.search-submit {
+	background:url(../images/search.png) no-repeat 9px 6px #000000 !important ;
+	 border-radius: 0 3px 3px 0;
+	 height:34px;
+}
+ input.search-submit:hover {
+	background:url(../images/search.png) no-repeat 9px -22px #E60203 !important ;
+}
+.search-text-div .search-text{height: 25px;}
+/*= Main Navigation
+ *==================================================================*/
+#main-nav {
+	background:#444 url(../images/bg_menu.png) repeat-x 0 0;
+	border-bottom:3px solid #E60203;
+}
+#main-nav .menu > li.current-menu-item > a{ background:#E60203;
+    border-top: none;
+    margin-top: 0;
+    padding-bottom: 0;
+	}
+#main-nav .menu>li>a:hover {
+	color:#FF3232;
+}
+
+
+
+/*== Video Detatils
+ *=================================*/
+ .wall {
+    background: #1a1a1a url("../images/page-bg-1.png") 0 0;
+    padding: 20px 0;
+    position: relative;
+    text-shadow: none;
+}
+.wall .entry-actions .dp-like-post .like {
+    background: #E60203 url("../../bundles/mvondosite/images/actions.png") no-repeat 10px 6px;
+}
+.fcarousel li.active {
+	border-color:#A50000;
+}
+
+/*== Footer
+ *=================================*/
+#footer {
+	background:#000000 url("../images/footer_design.png") left bottom repeat-x;
+	color:#a9a9a9;
+	text-shadow: none;
+}
+#footer .widget-col-links{color:#a9a9a9;}
+#footbar .wrap {
+    border-bottom: none;
+}
+#footbar .widget-title{color:#ffffff;
+	}
