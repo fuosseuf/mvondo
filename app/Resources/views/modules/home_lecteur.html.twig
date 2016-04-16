@@ -7,7 +7,7 @@
                 <h1 class="entry-title"><a href="{{ path('mvondo_video_view', {'slug': video.slug }) }}">{{ video.title }}</a></h1>
 
                 <div class="entry-actions">
-                    <span class="dp-like-post"><a class="like" href="javascript:void(0);">Like?</a></span>		
+                    <span class="dp-like-post right"><a class="like" href="javascript:void(0);">Kiffer</a></span>	
                 </div>
             </div>        
         {% endfor %}
@@ -18,7 +18,7 @@
             <div class="carousel-list" style="left: 0px; top: 0px;">
                 {% for video in videos %}
                     <div class="item item-video">	
-                        <div class="entry-header wrap cf" {% if(loop.first == false) %}style="display:none"{% endif %}">
+                        <div class="entry-header wrap cf">
                             <div class="screen">
                                 <iframe src="http://www.youtube.com/embed/{{ video.playerKey }}" width="950" height="534"></iframe>
                             </div>
