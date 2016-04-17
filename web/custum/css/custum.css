@@ -77,7 +77,9 @@ and open the template in the editor.
 .fcarousel li.active {
 	border-color:#A50000;
 }
-
+/*== Categrory video
+ *=================================*/
+.loop-actions a{color:#010101}
 /*== Footer
  *=================================*/
 #footer {
