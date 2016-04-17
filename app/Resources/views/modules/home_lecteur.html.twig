@@ -13,47 +13,28 @@
         {% endfor %}
     </div>
 
-    <div class="stage wrap cf" data-ajaxload="1">
-        <div class="carousel" data-autoscroll-interval="" data-jcarousel="true">
-            <div class="carousel-list" style="left: 0px; top: 0px;">
+    <!-- end module home_lecteur -->
+    <div id="tv-player">
+        <div id="tv-header" class="cf wrap">
+            <h1 class="entry-title"><a></a></h1>
+
+            <div class="entry-actions">
+                <span class="dp-like-post right"><a class="like" href="javascript:void(0);">Kiffer</a></span>	
+            </div>
+        </div>
+        <div id="tv-screen" class="cf wrap">
+            <iframe id="tv-sreen-youtube" src="" width="950" height="534"></iframe>
+        </div>
+        <div id="tv-controll" class="cf wrap">
+            <div class="tv-gallery">
                 {% for video in videos %}
-                    <div class="item item-video">	
-                        <div class="entry-header wrap cf">
-                            <div class="screen">
-                                <iframe src="http://www.youtube.com/embed/{{ video.playerKey }}" width="950" height="534"></iframe>
-                            </div>
-                        </div>
-                    </div>
+                    <a  class="tv-channel" data-key="{{ video.playerKey }}" data-link="{{ path('mvondo_video_view', {'slug': video.slug }) }}" data-title="{{ video.title }}" title="{{ video.title }}">
+                        <img src="{{ video.image }}" alt="{{ video.title }}"/>
+                    </a>
                 {% endfor %}
-            </div><!-- end .carousel-list -->
-        </div><!-- end .carousel -->
-    </div>
-
-    <div class="nav">
-        <div class="carousel fcarousel fcarousel-6 wrap cf">
-            <div class="carousel-container">
-                <div class="carousel-clip" data-jcarousel="true" style="width: 876px;">
-                    <ul class="carousel-list" style="left: 0px; top: 0px;">
-                        {% for video in videos %}
-                            <li class="item current item-video {% if loop.first %}active{% endif %}" data-jcarouselcontrol="true">
-                                <div class="thumb">
-                                    <a class="clip-link" title="{{ video.title }}" href="{{ path('mvondo_video_view', {'slug': video.slug }) }}">
-                                        <span class="clip">
-                                            <img src="{{ video.image }}" alt="{{ video.title }}"><span class="vertical-align"></span>
-                                        </span>
-
-                                        <span class="overlay"></span>
-                                    </a>
-                                </div>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div><!-- end .carousel-clip -->
-
-                <a class="carousel-prev" href="#" data-jcarouselcontrol="true"></a>
-                <a class="carousel-next" href="#" data-jcarouselcontrol="true"></a>
-            </div><!-- end .carousel-container -->
-        </div><!-- end .carousel -->
+            </div>
+            <div class="tv-previous"></div>
+            <div class="tv-next"></div>
+        </div>
     </div>
 </div>
-<!-- end module home_lecteur -->

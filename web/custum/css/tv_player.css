@@ -1,0 +1,85 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 17 avr. 2016, 20:48:29
+    Author     : rodrigue
+*/
+
+#tv-player{
+    background: grey;
+    height: 500px;
+}
+
+#tv-header{
+    background: blue;
+    height: 50px;
+}
+
+#tv-screen{
+    background: red;
+    height: 350px;
+}
+
+#tv-controll{
+    position: relative;
+    background: black;
+    height: 110px;
+    overflow: hidden;
+}
+
+.tv-gallery{
+    position: absolute;
+    left: 0;
+    width: 5000px;
+    height: 90px;
+}
+
+.tv-channel{
+    width: 150px;
+    height: 90px;
+    display: inline-block;
+    border: 3px solid #333;
+    margin: 5px 10px 20px 10px;
+    overflow: visible !important;
+    background: #000;
+    -webkit-box-shadow: 0 0 5px #000;
+    box-shadow: 0 0 5px #000;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -ms-transition: all .25s;
+    -o-transition: all .25s;
+    transition: all .25s;
+    padding: 0;
+}
+
+.tv-channel img, .tv-channel a{
+    width: 150px;
+    height: 90px;
+    padding: 0;
+}
+
+.tv-channel:hover{
+    border-color: lightblue;
+}
+
+.tv-previous{
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    height: 90px;
+    width: 30px;
+    background: url(../../bundles/mvondosite/images/s.png) no-repeat -50px -80px;
+}
+.tv-next{
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    height: 90px;
+    width: 30px;
+    background: url(../../bundles/mvondosite/images/s.png) no-repeat -100px -80px;
+}
