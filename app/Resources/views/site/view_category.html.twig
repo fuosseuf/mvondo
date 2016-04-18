@@ -3,9 +3,51 @@
 {% block title %} {{ parent() }} - {{ category.name }} {% endblock %}
 
 {% block body %}
-    <h1 class='loop-header'>Category {{ category.name }}</h1>
-    <!-- left content-->
-    <div id="content">
+	<div id="content">
+		<div class="loop-header">
+				<h1 class="loop-title"><span class="prefix">Category:</span> <em>{{ category.name }}</em></h1>
+				<div class="loop-desc"></div>
+		</div>
+		<!-- left content-->
+    
+		<div class="loop-actions cf">
+				<div class="sort">
+					<span class="prefix">Tri:</span>
+					<span class="orderby"> 
+						<a href="#" title="Trier par date" class="date"><i>Date</i></a> 
+						<span class="sep">|</span> <a href="#" title="Trier par titre" class="title"><i>Titre</i></a> 
+						<span class="sep">|</span> <a href="#" title="Trier par nombre de vues" class="views"><i>Vues</i></a> 
+						<span class="sep">|</span> <a href="#" title="Tri par nombre de recommandations" class="likes current"><i>Favoris</i></a> 
+						<span class="sep">|</span> <a href="#" title="Trier par nombre de commentaires" class="comments"><i>Commentaires</i></a> 
+						<span class="sep">|</span> <a href="#" title="Trier aléatoirement" class="rand"><i>Aléatoire</i></a> 
+					</span>
+					<!-- end .orderby -->
+					<select class="orderby-select">
+						<option value="">Date</option>
+						<option value="">Titre</option>
+						<option value="">Vues</option>
+						<option value="" selected='selected'>Favoris</option>
+						<option value="">Commentaires</option>
+						<option value="">Aléatoire</option>
+					</select>
+					<span class="order">
+						<a class="asc" href="#" title="Trier par ordre ascendant">Trier par ordre ascendant</a>
+					</span>
+					<!-- end .order -->
+				</div>
+				<!-- end .sort -->
+				<div class="view">
+					<span class="prefix">Vue:</span>
+					<a href="#" title="Grille de mini vignettes" data-type="grid-mini" class="grid-mini-link"><i></i></a>
+					<a href="#" title="Grille de petites vignettes" data-type="grid-small" class="grid-small-link"><i></i></a>
+					<a href="#" title="Grille de vignettes moyennes" data-type="grid-medium" class="grid-medium-link"><i></i></a>
+					<a href="#" title="Liste avec petites vignettes" data-type="list-small" class="list-small-link"><i></i></a>
+					<a href="#" title="Liste avec vignettes moyennes" data-type="list-medium" class="list-medium-link"><i></i></a>
+					<a href="#" title="Liste avec grandes vignettes" data-type="list-large" class="list-large-link current"><i></i></a>
+				</div>
+				<!-- end .view -->
+			</div>
+			<!-- end .loop-actions -->	
         <div class="section-content grid-small">
             <div class="nag cf">
                 {% for video in videos %}
