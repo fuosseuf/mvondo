@@ -30,10 +30,21 @@ class CategoryController extends Controller {
         } else {
             $category = new Category();
             $category->setName("All");
-            $videos = $em->getRepository('MvondoVideoBundle:Category')->findBySlug($slug);
+            $videos = $em->getRepository('MvondoVideoBundle:Video')->findAll();
         }
-
-        $categories = $em->getRepository('MvondoVideoBundle:Category')->findAll();
+         $request = $this->container->get('request');
+         if($request->isXmlHttpRequest()){
+             $vids = array();
+             foreach ($videos as $key => $value) {
+                 $vids[$key] = array(
+                     'data-key' => $value->getPlayerKey(),
+                     'data-title' => $value->getTitle(), 
+                     'data-link' => $value->getPlayerKey(),
+                     'data-duree' => $value->getDuration()
+                 );
+             }
+             return new \Symfony\Component\HttpFoundation\JsonResponse($vids);
+         }
         return $this->render('site/view_category.html.twig', array(
                     'category' => $category,
                     'videos' => $videos,

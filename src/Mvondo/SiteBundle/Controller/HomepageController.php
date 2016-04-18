@@ -27,6 +27,7 @@ class HomepageController extends Controller
         return $this->render('site/homepage.html.twig', array('form' => $form->createView() ));
     }
     
+    
     public function menuAction() {
         $em = $this->getDoctrine()->getManager();
     }

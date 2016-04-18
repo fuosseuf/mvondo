@@ -9,25 +9,26 @@ and open the template in the editor.
 */
 
 #tv-player{
-    background: grey;
     height: 500px;
 }
 
 #tv-header{
-    background: blue;
-    height: 50px;
 }
 
 #tv-screen{
-    background: red;
     height: 350px;
+    margin-bottom: 10px;
 }
 
 #tv-controll{
     position: relative;
-    background: black;
     height: 110px;
     overflow: hidden;
+}
+
+.tv-slider{
+    padding: 0 30px;
+    height: 90px;
 }
 
 .tv-gallery{
@@ -82,4 +83,10 @@ and open the template in the editor.
     height: 90px;
     width: 30px;
     background: url(../../bundles/mvondosite/images/s.png) no-repeat -100px -80px;
+}
+
+.webtv-screen{
+    background: url(../images/tv.png) no-repeat center;
+    background-size: 100% 100%;
+    height: 550px;
 }

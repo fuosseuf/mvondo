@@ -1,7 +1,11 @@
 mvondo_site_homepage:
     path:     /
     defaults: { _controller: MvondoSiteBundle:Homepage:index }
-    
+
+mvondo_site_webtv:
+    path:     /webtv
+    defaults: { _controller: MvondoSiteBundle:Webtv:index }
+
 mvondo_site_auth:
     path:     /authentication
     defaults: { _controller: MvondoSiteBundle:Homepage:auth }

@@ -1,0 +1,30 @@
+{% extends "layout/base.html.twig" %}
+
+{% block title %} {{ parent() }} - Dashboard {% endblock %}
+
+{% block body %}
+    <div class="webtv-screen">
+        <div class="cf wrap">
+            <iframe id="tv-screen-youtube" src="" width="950" height="497"></iframe>
+        </div>
+    </div>
+    <div class="webtv-controll">
+        <h1>Télécommande WebTV</h1>
+        <div class="webtv-channels">
+            <h2>Channels</h2>
+            {% for category in categories %}
+                <div class="webtv-channel">
+                    <span>Mvondo TV -{{ category.name }}</span>
+                    <td><a data-href='{{ path('mvondo_category_view', {'slug':category.slug } ) }}'>Voir</a></td>
+                </div>
+            {% endfor %}
+        </div
+        <div class="webtv-current">
+            <h2>En cours</h2>
+            <p></p>
+        </div>
+    </div>
+
+
+    <!-- end left content -->
+{% endblock %}

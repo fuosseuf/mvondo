@@ -1,34 +1,25 @@
 <!-- module home_lecteur -->
 <div class="home-featured-full wall">
-
-    <div class="stage-header cf">
-        {% for video in videos %}       
-            <div class="entry-header wrap cf" {% if(loop.first == false) %}style="display:none"{% endif %}">
-                <h1 class="entry-title"><a href="{{ path('mvondo_video_view', {'slug': video.slug }) }}">{{ video.title }}</a></h1>
-
+    <div id="tv-player">
+        <div id="tv-header" class="cf wrap">
+            <h1 class="entry-title">
+                <a class="tv-clip"></a>
                 <div class="entry-actions">
                     <span class="dp-like-post right"><a class="like" href="javascript:void(0);">Kiffer</a></span>	
                 </div>
-            </div>        
-        {% endfor %}
-    </div>
-
-    <!-- end module home_lecteur -->
-    <div id="tv-player">
-        <div id="tv-header" class="cf wrap">
-            <h1 class="entry-title"><a></a></h1>
-
-            <div class="entry-actions">
-                <span class="dp-like-post right"><a class="like" href="javascript:void(0);">Kiffer</a></span>	
-            </div>
+            </h1>
         </div>
         <div id="tv-screen" class="cf wrap">
-            <iframe id="tv-sreen-youtube" src="" width="950" height="534"></iframe>
+            <iframe id="tv-screen-youtube" src="" width="950" height="350"></iframe>
         </div>
         <div id="tv-controll" class="cf wrap">
             <div class="tv-gallery">
                 {% for video in videos %}
-                    <a  class="tv-channel" data-key="{{ video.playerKey }}" data-link="{{ path('mvondo_video_view', {'slug': video.slug }) }}" data-title="{{ video.title }}" title="{{ video.title }}">
+                    <a  class="tv-channel" 
+                        data-key="{{ video.playerKey }}" 
+                        data-link="{{ path('mvondo_video_view', {'slug': video.slug }) }}" 
+                        data-title="{{ video.title }}" title="{{ video.title }}"
+                        data-duree="{{ video.duration }}">
                         <img src="{{ video.image }}" alt="{{ video.title }}"/>
                     </a>
                 {% endfor %}
@@ -38,3 +29,4 @@
         </div>
     </div>
 </div>
+<!-- end module home_lecteur -->
