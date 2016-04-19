@@ -90,3 +90,7 @@ and open the template in the editor.
     background-size: 100% 100%;
     height: 550px;
 }
+
+.webtv-controll{
+    background: gray;
+}

@@ -8,8 +8,9 @@
             <iframe id="tv-screen-youtube" src="" width="950" height="497"></iframe>
         </div>
     </div>
+    
+    <h1 class="display-controll">Télécommande WebTV</h1>
     <div class="webtv-controll">
-        <h1>Télécommande WebTV</h1>
         <div class="webtv-channels">
             <h2>Channels</h2>
             {% for category in categories %}
@@ -18,10 +19,14 @@
                     <td><a data-href='{{ path('mvondo_category_view', {'slug':category.slug } ) }}'>Voir</a></td>
                 </div>
             {% endfor %}
-        </div
+        </div>
         <div class="webtv-current">
             <h2>En cours</h2>
-            <p></p>
+            <p class="webtv-artist"></p>
+            <p><a class="webtv-song"></a></p>
+            <div class="entry-actions">
+                <span class="dp-like-post right"><a class="like" href="javascript:void(0);">Kiffer</a></span>	
+            </div>
         </div>
     </div>
 

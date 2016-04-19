@@ -39,8 +39,9 @@ class CategoryController extends Controller {
                  $vids[$key] = array(
                      'data-key' => $value->getPlayerKey(),
                      'data-title' => $value->getTitle(), 
-                     'data-link' => $value->getPlayerKey(),
-                     'data-duree' => $value->getDuration()
+                     'data-link' => $this->get('router')->generate('mvondo_video_view', array('slug' => $value->getSlug())),
+                     'data-duree' => $value->getDuration(),
+                     'data-artist' => $value->getUser()->getUserName()
                  );
              }
              return new \Symfony\Component\HttpFoundation\JsonResponse($vids);

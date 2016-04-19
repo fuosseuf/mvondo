@@ -86,53 +86,73 @@ var webtv_controll = function (id_controll, id_screen, id_header) {
     this.screenbox = $(id_screen);
     this.title = $(id_header);
     this.channel = this.div.find('.webtv-channel a');
-
     this.screen = this.screenbox.find('iframe');
+
     this.nbvideos = 0;
     this.rand = 1;
     this.videos = null;
+    this.played = [];
 
-    this.getVideos = function (link, callback) {
+    this.getVideos = function (link) {
         $.ajax({
             type: "GET",
             url: link,
             cache: false,
             success: function (data) {
                 self.videos = data;
-                callback(data);
+                self.nbvideos = data.length;
+                self.rand = Math.floor((Math.random() * self.nbvideos) + 1); console.log(self.videos);
+                self.launchtv(self.rand)
             }
         });
     }
 
+    this.decodeDuration = function (duree) {
+        var tab = duree.split("M");
+        var sec = jQuery.grep(arr, function (n, i) {
+            return (n !== 5 && i > 4);
+        });
+        tab.reverse();
+        //PT1H28M52S
+        var sec = 0;
+    }
+
+    $('.display-controll').click(function () {
+        self.div.toggle();
+    });
+
 
     this.channel.click(function () {
         var link = $(this).attr('data-href');
-        self.getVideos(link, function () {
-
-            var title = self.title.find('h1 a.tv-clip');
-            console.log('------', self.videos);
-            var youtube_key = self.videos[0]['data-key'];
-            var data_title = self.videos[0]['data-title'];
-            var data_link = self.videos[0]['data-link'];
-            var data_duree = self.videos[0]['data-duree'];
-
-            title.attr('href', data_link);
-            title.html(data_title);
-            self.screen.attr('src', 'http://www.youtube.com/embed/' + youtube_key + '?autoplay=1&modestbranding=1&rel=0&showinfo=0');
-            self.screen.empty();
-            self.screen.load();
-        });
+        self.getVideos(link);
     });
 
-    $('.tv-channel:first').trigger('click');
+    this.launchtv = function (id) { console.log(id)
+        var artist = self.title.find('.webtv-artist');
+        var title = self.title.find('.webtv-song');
+        var youtube_key = self.videos[id]['data-key'];
+        var data_title = self.videos[id]['data-title'];
+        var data_link = self.videos[id]['data-link'];
+        var data_duree = self.videos[id]['data-duree'];
+        var data_artist = self.videos[id]['data-artist'];
+
+        title.attr('href', data_link);
+        title.html(data_title);
+        artist.html(data_artist);
+        self.screen.attr('src', 'http://www.youtube.com/embed/' + youtube_key + '?autoplay=1&modestbranding=1&rel=0&showinfo=0');
+        self.screen.empty();
+        self.screen.load();
+        self.played.push(id);
+    }
 
 
-//
 //    setTimeout(function () {
-//        $('.tv-channel:nth-child(' + this.rand + ')').trigger('click');
-//        this.rand = Math.floor((Math.random() * self.nbvideos) + 1);
-//        console.log(this.rand);
-//    }, 10000);
+//        while (self.played.indexOf(self.rand) != null) {
+//            self.rand = Math.floor((Math.random() * self.nbvideos) + 1);
+//        }
+//        self.launchtv(self.rand);
+//        console.log(self.rand, self.played);
+//    }, 50000);
 
 
 }
@@ -140,5 +160,5 @@ var webtv_controll = function (id_controll, id_screen, id_header) {
 
 $(document).ready(function () {
     var tv = new tv_controll("#tv-controll", "#tv-screen", "#tv-header");
-    var webtv = new webtv_controll(".webtv-controll", ".webtv-screen", ".webtv-header");
+    var webtv = new webtv_controll(".webtv-controll", ".webtv-screen", ".webtv-current");
 });
