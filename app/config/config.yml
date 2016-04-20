@@ -115,5 +115,3 @@ fos_rest:
         default_engine: twig
     routing_loader:
         default_format: json
-parameters:
-    google_developper_key: ddd
