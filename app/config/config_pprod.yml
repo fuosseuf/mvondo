@@ -48,3 +48,8 @@ parameters:
     google_client_id: 204533304785-ebrbi66l18n899q975f0888lcgk8sbh9.apps.googleusercontent.com
     google_client_secret: 8vDgjTL-0IMdAfN8fFggca9y
     youtube_granted_all: https://www.googleapis.com/auth/youtube
+    database_host: mvondocofpppd.mysql.db
+    database_port: null
+    database_name: mvondocofpppd
+    database_user: mvondocofpppd
+    database_password: Mvondo2016
