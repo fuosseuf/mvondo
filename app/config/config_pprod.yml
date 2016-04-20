@@ -45,8 +45,8 @@ assetic:
 
 parameters:
     google_developper_key: AIzaSyDZHzBnzJ5-IYdhuViXzYO54qh24LdJoTQ
-    google_client_id: 204533304785-ebrbi66l18n899q975f0888lcgk8sbh9.apps.googleusercontent.com
-    google_client_secret: 8vDgjTL-0IMdAfN8fFggca9y
+    google_client_id: 204533304785-74loks6dkahh20h0go7ig8si810qofgo.apps.googleusercontent.com
+    google_client_secret: ySINKC8sIO8SdTNj6-LfjlME
     youtube_granted_all: https://www.googleapis.com/auth/youtube
     database_host: mvondocofpppd.mysql.db
     database_port: null
