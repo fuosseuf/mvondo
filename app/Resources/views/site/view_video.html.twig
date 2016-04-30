@@ -11,4 +11,46 @@
 
 
     </div>
+        <div id="comment_section">
+            <h3>Commentaires</h3>
+            <div id="comLst"></div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <form method="POST" id="commentForm" action="#" onsubmit="return false;" >
+    
+                <textarea name="comcontent" id="comcontent"></textarea>
+                <button id="btn-primary">OK</button>
+            </form>
+            {% else %}
+                <p>Vous devez &ecirc;tre connect&eacute;s pour pouvoir laisser un commentaire</p>
+            {% endif %}
+        </div>
+            
+        {% block javascripts %}
+  
+  <script>
+      
+          $('#comLst').load('{{path('comment_getcommentLst', {'video_id': video.id})}}');
+          $('#comcontent').keypress(function (e) {
+            if (e.which == 13) {
+              $.post('{{path('comment_ajax_update_comments', {'video_id': video.id})}}', {'comcontent':$('#comcontent').val()}, function(){
+                  $('#comLst').load('{{path('comment_getcommentLst', {'video_id': video.id})}}');
+                  $('#comcontent').val('');
+              })
+            }
+          });
+          //*
+          $('#btn-primary').on('click', function(){
+              
+              $.post('{{path('comment_ajax_update_comments', {'video_id': video.id})}}', {'comcontent':$('#comcontent').val()}, function(){
+                  $('#comLst').load('{{path('comment_getcommentLst', {'video_id': video.id})}}');
+                  $('#comcontent').val('');
+              }
+                      
+                      );
+              //*/
+              //alert('On a clique!!!');
+          });
+      
+  </script>
+{% endblock %}    
 {% endblock %}

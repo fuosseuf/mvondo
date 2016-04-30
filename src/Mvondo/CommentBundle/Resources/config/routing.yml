@@ -1,0 +1,11 @@
+comment_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: CommentBundle:Default:index }
+
+comment_ajax_update_comments:
+    path:    /comment/update/{video_id}
+    defaults: { _controller: CommentBundle:Default:update }
+
+comment_getcommentLst:
+    path: /comment/getLst/{video_id}
+    defaults: { _controller: CommentBundle:Default:getCommentLst }

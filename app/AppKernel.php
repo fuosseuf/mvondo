@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new Mvondo\UserBundle\MvondoUserBundle(),
 
             new Mvondo\YoutubeBundle\MvondoYoutubeBundle(),
+            new Mvondo\CommentBundle\CommentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

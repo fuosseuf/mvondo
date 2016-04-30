@@ -1,0 +1,9 @@
+<ul>
+    {%for c in commLst%}
+        <li><b>{{c.user.username}} :</b> {{c.content}} <i>le {{c.date | date("d/m/Y \\à H:i")}}</i></li>
+    {%endfor%}
+    
+</ul>
+
+
+
