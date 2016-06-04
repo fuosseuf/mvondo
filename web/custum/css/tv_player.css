@@ -9,14 +9,12 @@ and open the template in the editor.
 */
 
 #tv-player{
-    height: 500px;
 }
 
 #tv-header{
 }
 
 #tv-screen{
-    height: 350px;
     margin-bottom: 10px;
 }
 

@@ -13,17 +13,19 @@
             <iframe id="tv-screen-youtube" src="" width="950" height="350"></iframe>
         </div>
         <div id="tv-controll" class="cf wrap">
-            <div class="tv-gallery">
-                {% for video in videos %}
-                    <a  class="tv-channel" 
-                        data-key="{{ video.playerKey }}" 
-                        data-link="{{ path('mvondo_video_view', {'slug': video.slug }) }}" 
-                        data-title="{{ video.title }}" title="{{ video.title }}"
-                        data-duree="{{ video.duration }}">
-                        <img src="{{ video.image }}" alt="{{ video.title }}"/>
-                    </a>
-                {% endfor %}
-            </div>
+            <div class="tv-gallery-bloc">
+				<div class="tv-gallery">
+					{% for video in videos %}
+						<a  class="tv-channel" 
+							data-key="{{ video.playerKey }}" 
+							data-link="{{ path('mvondo_video_view', {'slug': video.slug }) }}" 
+							data-title="{{ video.title }}" title="{{ video.title }}"
+							data-duree="{{ video.duration }}">
+							<img src="{{ video.image }}" alt="{{ video.title }}"/>
+						</a>
+					{% endfor %}
+				</div>
+			</div>
             <div class="tv-previous"></div>
             <div class="tv-next"></div>
         </div>

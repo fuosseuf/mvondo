@@ -8,6 +8,19 @@ and open the template in the editor.
     Author     : Rimanno
 */
 .clr{clear:both}
+.clearfix:after {
+   clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;;
+}
+.clearfix {
+zoom: 1;
+}
 /*== Header
  *=================================*/
 #header{
@@ -63,6 +76,57 @@ and open the template in the editor.
 	}
 #main-nav .menu  .menu-item-1.current-menu-item a:hover{background: #e60203 url("../images/home.png") no-repeat 5px -30px;
 	border-top: 1px solid #292929;}
+/*== web TV
+ *=================================*/	
+#tv-screen-youtube{height:500px;
+	} 
+.tv-gallery-bloc{margin: 0 auto;
+    overflow: hidden;
+    width: 890px;
+}
+.tv-gallery-bloc .tv-gallery { height: 115px;
+	position: relative;
+}
+
+.tv-gallery-bloc .tv-channel:hover {
+    border-color: #A20000;
+}
+/*== Read more
+ *=================================*/
+.section-header .more-link, .more-link-ori {
+	background:#EB0507;
+	background-image:-ms-linear-gradient(top,#ff7878,#e50202);
+	background-image:-moz-linear-gradient(top,#ff7878,#e50202);
+	background-image:-o-linear-gradient(top,#ff7878,#e50202);
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#ff7878),to(#e50202));
+	background-image:-webkit-linear-gradient(top,#ff7878,#e50202);
+	background-image:linear-gradient(top,#ff7878,#e50202);
+	border:1px solid #e50202;
+	color:#ffffff;
+	text-shadow:none;
+	 transition: none;
+}
+.section-header .more-link span {
+}
+.section-header .more-link .mini-arrow-right{
+	border-left-color:#ffffff;
+}
+.section-header .more-link:hover, .more-link-ori:hover {
+	background:#000000;
+	background-image:-ms-linear-gradient(top,#342626,#000000);
+	background-image:-moz-linear-gradient(top,#342626,#000000);
+	background-image:-o-linear-gradient(top,#342626,#000000);
+	background-image:-webkit-gradient(linear,left top,left bottom,from(#342626),to(#000000));
+	background-image:-webkit-linear-gradient(top,#342626,#000000);
+	background-image:linear-gradient(top,#342626,#000000);
+	border:1px solid #DDD;
+	color:#ffffff;
+	text-shadow: 0 1px 0 #645b5b;
+}
+.section-header .more-link:hover .mini-arrow-right{
+	border-left-color:#ffffff;
+}
+
 /*== Video Detatils
  *=================================*/
  .wall {
@@ -80,6 +144,50 @@ and open the template in the editor.
 /*== Categrory video
  *=================================*/
 .loop-actions a{color:#010101}
+/*== Popular Artist
+ *=================================*/
+ #popularartist{}
+ #popularartist a{display: block;
+    float: left;
+    margin: 0 3px 1px 0;
+	}
+ #popularartist a img{border: 3px solid #404040;}
+ #popularartist a:hover img{border:3px solid #B70505;
+	transition: all 400ms ease 0s;
+	}
+ #popularartist .last{margin:0}
+ {}
+/*== About Us
+ *=================================*/
+#popularartist p{text-align:justify;}
+#sidebar .section-header{ border:none;
+    margin-bottom: 47px;}
+/*== Categrory
+ *=================================*/
+#allcategory{}
+#allcategory ul li{background:none;}
+#allcategory ul li .bloca{}
+#allcategory ul li .blocategory1{ float: left;
+    width: 47%;}
+#allcategory ul li .blocategory2{ float: right;
+    width: 47%;
+	}
+#allcategory ul li .bloca a{background: url("../images/list.png") no-repeat 0 7px;
+	color: #111;
+    display: block;
+	font-size: 14px;
+	float:left;
+    padding-left: 16px;
+	}
+#allcategory ul li .bloca a:hover{color:#c90202;
+	text-decoration:underline;
+	}
+#allcategory ul li .bloca span{color: #111;
+    display: block;
+	float:right;
+	font-size: 14px;
+	}
+
 /*== Footer
  *=================================*/
 #footer {

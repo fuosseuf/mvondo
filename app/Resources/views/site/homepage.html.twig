@@ -15,7 +15,7 @@
     <!-- end left content -->
     <!-- sidebar -->
     <div id="sidebar" role="complementary" class="masonry" style="position: relative; min-height: 500px">
-        <div id="text-2" class="widget widget_text masonry-brick" style="position: absolute; top: 0px; left: 0px;">
+        <div id="text-2" class="widget widget_text masonry-brick">
             <div class="widget-header"><h3 class="widget-title">Principales fonctionnalités</h3></div>	
             <div class="textwidget">
                 <ul>
@@ -38,7 +38,105 @@
                 </ul>
             </div>
         </div>
+		<div id="popularartist" class="widget widget_text masonry-brick">
+			<div class="widget-header"><h3 class="widget-title">About MVONDO</h3></div>
+			<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+			<div class="section-header">
+				<a class="more-link" href="#">
+					<span>Read more</span>
+				</a>
+			</div>
+		 </div>
+		<div id="allcategory" class="widget widget_text masonry-brick">
+			<div class="widget-header"><h3 class="widget-title">Category</h3></div>	
+			<ul>
+                <li class="clearfix"><div class="bloca blocategory1"><a href="#" >Animation</a><span>(20)</span></div>
+					<div class="bloca blocategory2"><a href="#" >Music</a><span>(19)</span></div>
+				</li>
+				<li  class="clearfix"><div class="bloca blocategory1"><a href="#" >Art</a><span>(13)</span></div>
+					<div class="bloca blocategory2"><a href="#" >Nature</a><span>(15)</span></div>
+				</li>
+				<li class="clearfix"><div class="bloca blocategory1"><a href="#" >Comedy</a><span>(9)</span></div>
+					<div class="bloca blocategory2"><a href="#" >Sample</a><span>(19)</span></div>
+				</li>
+				<li  class="clearfix"><div class="bloca blocategory1"><a href="#" >Education</a><span>(10)</span></div>
+					<div class="bloca blocategory2"><a href="#" >Science</a><span>(12)</span></div>
+				</li>
+				<li class="clearfix"><div class="bloca blocategory1"><a href="#" >Films</a><span>(25)</span></div>
+					<div class="bloca blocategory2"><a href="#" >Sports</a><span>(16)</span></div>
+				</li>
+				<li  class="clearfix"><div class="bloca blocategory1"><a href="#" >HD</a><span>(5)</span></div>
+					<div class="bloca blocategory2"><a href="#" >Travel</a><span>(17)</span></div>
+				</li>
+				<li  class="clearfix"><div class="bloca blocategory1"><a href="#" >Life</a><span>(12)</span></div>
+					
+				</li>
+			</ul>
+		</div>
+		<div id="popularartist" class="widget widget_text masonry-brick">
+			<div class="widget-header"><h3 class="widget-title">Popular artist</h3></div>	
+			<div class="blocpa">
+				<a class="paimg" href="#" ><img src="{{ asset('custum/images/art1.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg" href="#" ><img src="{{ asset('custum/images/art2.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg last" href="#" ><img src="{{ asset('custum/images/art3.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg" href="#" ><img src="{{ asset('custum/images/art4.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg" href="#" ><img src="{{ asset('custum/images/art5.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg last" href="#" ><img src="{{ asset('custum/images/art6.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg" href="#" ><img src="{{ asset('custum/images/art7.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg" href="#" ><img src="{{ asset('custum/images/art8.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg last" href="#" ><img src="{{ asset('custum/images/art9.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg" href="#" ><img src="{{ asset('custum/images/art10.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg" href="#" ><img src="{{ asset('custum/images/art11.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg last" href="#" ><img src="{{ asset('custum/images/art12.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg" href="#" ><img src="{{ asset('custum/images/art13.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg" href="#" ><img src="{{ asset('custum/images/art14.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg last" href="#" ><img src="{{ asset('custum/images/art15.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg" href="#" ><img src="{{ asset('custum/images/art16.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg" href="#" ><img src="{{ asset('custum/images/art17.jpg') }}" alt="Popular artist"></a>
+				<a class="paimg last" href="#" ><img src="{{ asset('custum/images/art18.jpg') }}" alt="Popular artist"></a>
+			</div>
+		</div>
     </div>
     <!-- end sidebar -->
+	<div class="clr"></div>
+	<div id="bloc_bas">
+        <div class="section-box">
+			<div class="section-header">
+				<h2 class="section-title">
+					<a class="name-link" href="#">
+						<span class="name">Comedy</span>
+					</a>
+				</h2>
+				<a class="more-link" href="{{ path('mvondo_category_view') }}">
+					<span>More <i class="mini-arrow-right"></i></span>
+				</a>
+			</div>
+
+			<div class="section-content grid-small">
+				<div class="nag cf">
+					
+				</div>
+			</div>
+		</div>
+		<div class="clr"></div>
+		<div class="section-box">
+			<div class="section-header">
+				<h2 class="section-title">
+					<a class="name-link" href="#">
+						<span class="name">Films</span>
+					</a>
+				</h2>
+				<a class="more-link" href="{{ path('mvondo_category_view') }}">
+					<span>More <i class="mini-arrow-right"></i></span>
+				</a>
+			</div>
+
+			<div class="section-content grid-small">
+				<div class="nag cf">
+					
+				</div>
+			</div>
+		</div>
+    </div>
 
 {% endblock %}
