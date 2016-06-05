@@ -20,9 +20,9 @@
         </h2>
 
         <p class="stats">
-            {% if views is defined %}<span class="views"><i class="count">0K</i> <span class="suffix">Views</span></span>{% endif %}
-            {% if comments is defined %}<span class="comments"><i class="count">0</i> <span class="suffix">Comments</span></span>{% endif %}
-            {% if count is defined %}<span class="dp-post-likes likes"><i class="count" data-pid="1731">0</i> <span class="suffix">Likes</span></span>{% endif %}
+            {% if views is not defined %}<span class="views"><i class="count">0K</i> <span class="suffix">Views</span></span>{% endif %}
+            {% if comments is not defined %}<span class="comments"><i class="count">0</i> <span class="suffix">Comments</span></span>{% endif %}
+            {% if count is not defined %}<span class="dp-post-likes likes"><i class="count" data-pid="1731">0</i> <span class="suffix">Likes</span></span>{% endif %}
         </p>
     </div>
 </div>

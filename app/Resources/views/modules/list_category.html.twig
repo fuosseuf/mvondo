@@ -1,0 +1,24 @@
+<!-- module list_category -->
+
+<div id="allcategory" class="widget widget_text masonry-brick">
+    <div class="widget-header"><h3 class="widget-title">Catégories</h3></div>	
+    <ul> 
+        {% for key, category in categories %}
+            {% if key is even %}
+                <li class="clearfix">
+                    <div class="bloca blocategory1">
+                        <a href="{{ path('mvondo_category_view', {'slug': category['slug']} ) }}" alt="{{ category['name']}}" >{{ category['name'] }}</a>
+                        <span>({{ category[1] }})</span>
+                    </div>
+                    {% if loop.last %}</li>{% endif %}
+            {% else %}
+                <div class="bloca blocategory2">
+                    <a href="{{ path('mvondo_category_view', {'slug': category['slug']} ) }}" alt="{{ category['name']}}" >{{ category['name'] }}</a>
+                    <span>({{ category[1] }})</span>
+                </div>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+<!-- end module list_category -->

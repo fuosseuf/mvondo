@@ -12,4 +12,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoryRepository extends EntityRepository
 {
+    function listCategoryNbVideos() {
+        return $this->getEntityManager()
+                ->createQuery('SELECT c.name, c.slug, count(v.id) FROM MvondoVideoBundle:Category c JOIN c.videos v GROUP BY c.id')
+                ->getResult();
+    }
 }

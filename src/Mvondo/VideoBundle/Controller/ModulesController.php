@@ -27,6 +27,25 @@ class ModulesController extends Controller {
         ));
     }
 
+    public function list_categoryAction() {
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('MvondoVideoBundle:Category')->listCategoryNbVideos();
+        return $this->render('modules/list_category.html.twig', array(
+                    'categories' => $categories,
+        ));
+    }
+
+    public function category_modAction($slug, $nb) {
+        $em = $this->getDoctrine()->getManager();
+        if (!($category = $em->getRepository('MvondoVideoBundle:Category')->findOneBySlug($slug)))
+            throw $this->createNotFoundException("This category doesn't exist!!");
+
+        $videos = $category->getVideos();
+        return $this->render('modules/category_mod.html.twig', array(
+                    'videoes' => $videos,
+        ));
+    }
+
     public function highlight_categoryAction($id) {
         $em = $this->getDoctrine()->getManager();
         $category = $em->getRepository('MvondoVideoBundle:Category')->find($id);

@@ -2,7 +2,10 @@
     <div class="wrap cf">
         <a href="{{ path('mvondo_site_webtv') }}" class="btn btn-lightblue btn-buynow">Mvondo - WebTV</a>
         <ul id="menu-main-menu" class="menu">
-            <li class="menu-item menu-item-1 current-menu-item"><a href="{{ path('mvondo_site_homepage') }}">Home</a></li>
+            <li class="menu-item menu-item-1 current-menu-item"><a href="{{ path('mvondo_site_homepage') }}">Accueil</a></li>
+            <li class="menu-item"><a href="{{ path('mvondo_category_view', {'slug': 'music'} ) }}" alt="musique" >Musique</a></li>
+            <li class="menu-item"><a href="{{ path('mvondo_category_view', {'slug': 'comedy'} ) }}" alt="comédie" >Comédie</a></li>
+            
             <li class="menu-item"><a href="/tech/index.php" target="_blank" >Espace Tech</a></li>
             <li class="menu-item menu-item-has-children"><a href="#">Menu Parent</a>
                 <ul class="sub-menu">
