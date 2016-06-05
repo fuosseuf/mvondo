@@ -16,6 +16,36 @@ and open the template in the editor.
 
 #tv-screen{
     margin-bottom: 10px;
+    border: 3px solid #333;
+    overflow: visible !important;
+    background: #000;
+    -webkit-box-shadow: 0 0 5px #000;
+    box-shadow: 0 0 5px #000;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -ms-transition: all .25s;
+    -o-transition: all .25s;
+    transition: all .25s;
+    position: relative;
+}
+
+.big-overlay {
+    position:absolute;
+    border:0;
+    top:0;
+    left:0;
+    width:100%;
+    height:90%;
+    background-color:rgba(0,0,0,0.5);
+    background-repeat:no-repeat;
+    background-position:center center;
+    opacity:0;
+    -webkit-transition:.25s;
+    -moz-transition:.25s;
+    -ms-transition:.25s;
+    -o-transition:.25s;
+    transition:.25s;
+    visibility:visible;
 }
 
 #tv-controll{
@@ -52,6 +82,7 @@ and open the template in the editor.
     -o-transition: all .25s;
     transition: all .25s;
     padding: 0;
+    position: relative;
 }
 
 .tv-channel img, .tv-channel a{
@@ -60,28 +91,85 @@ and open the template in the editor.
     padding: 0;
 }
 
-.tv-channel:hover{
-    border-color: lightblue;
+.tv-gallery-bloc .tv-channel:hover {
+    border-color: #777;
 }
 
-.tv-previous{
+.tv-gallery-bloc .tv-channel.active {
+    border-color: #A20000;
+}
+
+
+/*== Common Thumbnail Style
+ *=================================*/
+
+/* Absolute Center(Vertical & Horizontal) Image */
+
+/* Basic Overlay style */
+.tv-channel .overlay {
+    position:absolute;
+    border:0;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.5);
+    background-image:url(../images/icon-play-32_1.png);
+    background-repeat:no-repeat;
+    background-position:center center;
+    opacity:0;
+    -webkit-transition:.25s;
+    -moz-transition:.25s;
+    -ms-transition:.25s;
+    -o-transition:.25s;
+    transition:.25s;
+}
+.tv-channel:hover .overlay {
+    cursor:pointer;
+    z-index:999;
+    opacity:1;
+}
+.ie .tv-channel .overlay{visibility:hidden;}
+.ie .tv-channel:hover .overlay{visibility:visible;}
+.item-video .tv-channel .overlay{
+    background-image:url(../images/icon-play-24.png);
+}
+
+.tv-channel img{width:100%;}
+
+.tv-gallery-bloc .tv-channel.active .overlay {
+    visibility:visible;
+    opacity: 1;
+}
+
+
+.tv-previous, .tv-next{
     cursor: pointer;
     position: absolute;
-    top: 10px;
+    top: 0;
+    height: 100px;
+    width: 30px;
+    display:inline-block;
+    text-indent:-5555em;
+    overflow:hidden;
+    background: url(../images/s.png) no-repeat;
+}
+
+.tv-previous {
+    background-position:-155px -80px;
     left: 0;
-    height: 90px;
-    width: 30px;
-    background: url(../../bundles/mvondosite/images/s.png) no-repeat -50px -80px;
 }
-.tv-next{
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
+.tv-next {
+    background-position:-210px -80px;
     right: 0;
-    height: 90px;
-    width: 30px;
-    background: url(../../bundles/mvondosite/images/s.png) no-repeat -100px -80px;
 }
+.tv-previous:hover {
+    background-position:-155px -188px;
+}
+.tv-next:hover {
+    background-position: -210px -188px;
+}
+
 
 .webtv-screen{
     background: url(../images/tv.png) no-repeat center;

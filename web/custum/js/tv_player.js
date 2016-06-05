@@ -54,7 +54,6 @@ var tv_controll = function (id_controll, id_screen, id_header) {
     });
 
     this.channel.click(function () {
-
         var title = self.title.find('h1 a.tv-clip');
         var youtube_key = $(this).attr('data-key');
         var data_title = $(this).attr('data-title');
@@ -64,7 +63,9 @@ var tv_controll = function (id_controll, id_screen, id_header) {
         title.html(data_title);
         self.screen.attr('src', 'http://www.youtube.com/embed/' + youtube_key + '?autoplay=1&modestbranding=1&rel=0&showinfo=0');
         self.screen.empty();
-        self.screen.load();
+        self.screen.load
+        $('.tv-channel').each(function(){$(this).removeClass('active');});
+        $(this).addClass('active');
     });
 
     $('.tv-channel:first').trigger('click');

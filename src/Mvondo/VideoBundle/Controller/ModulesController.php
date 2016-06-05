@@ -11,7 +11,7 @@ class ModulesController extends Controller {
 
     public function home_lecteurAction() {
         $em = $this->getDoctrine()->getManager();
-        $videos = $em->getRepository('MvondoVideoBundle:Video')->findAll();
+        $videos = $em->getRepository('MvondoVideoBundle:Video')->findAllLimitBy(10);
 
         return $this->render('modules/home_lecteur.html.twig', array(
                     'videos' => $videos,
@@ -20,7 +20,7 @@ class ModulesController extends Controller {
 
     public function last_videosAction() {
         $em = $this->getDoctrine()->getManager();
-        $videos = $em->getRepository('MvondoVideoBundle:Video')->findAll();
+        $videos = $em->getRepository('MvondoVideoBundle:Video')->findAllLimitBy(9);
 
         return $this->render('modules/last_videos.html.twig', array(
                     'videos' => $videos,

@@ -10,7 +10,8 @@
             </h1>
         </div>
         <div id="tv-screen" class="cf wrap">
-            <iframe id="tv-screen-youtube" src="" width="950" height="350"></iframe>
+            <iframe id="tv-screen-youtube" src="" width="945" height="350"></iframe>
+            <span class="big-overlay"></span>
         </div>
         <div id="tv-controll" class="cf wrap">
             <div class="tv-gallery-bloc">
@@ -22,6 +23,7 @@
 							data-title="{{ video.title }}" title="{{ video.title }}"
 							data-duree="{{ video.duration }}">
 							<img src="{{ video.image }}" alt="{{ video.title }}"/>
+                                                        <span class="overlay"></span>
 						</a>
 					{% endfor %}
 				</div>

@@ -135,6 +135,10 @@ zoom: 1;
     position: relative;
     text-shadow: none;
 }
+
+.entry-actions .dp-like-post {
+    background: transparent !important;
+}
 .wall .entry-actions .dp-like-post .like {
     background: #E60203 url("../../bundles/mvondosite/images/actions.png") no-repeat 10px 6px;
 }
@@ -156,7 +160,7 @@ zoom: 1;
 	transition: all 400ms ease 0s;
 	}
  #popularartist .last{margin:0}
- {}
+ 
 /*== About Us
  *=================================*/
 #popularartist p{text-align:justify;}
