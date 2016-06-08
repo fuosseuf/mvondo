@@ -4,10 +4,8 @@ namespace Mvondo\VideoBundle\Controller;
 
 use Mvondo\VideoBundle\Entity\Category;
 use Mvondo\VideoBundle\Form\CategoryType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
-class CategoryController extends Controller {
+class CategoryController extends CacheController {
 
     public function indexAction($page) {
         $em = $this->getDoctrine()->getManager();
@@ -46,10 +44,11 @@ class CategoryController extends Controller {
              }
              return new \Symfony\Component\HttpFoundation\JsonResponse($vids);
          }
+         $response = $this->getPublicResponse(600,600);
         return $this->render('site/view_category.html.twig', array(
                     'category' => $category,
                     'videos' => $videos,
-        ));
+        ), $response);
     }
 
 }

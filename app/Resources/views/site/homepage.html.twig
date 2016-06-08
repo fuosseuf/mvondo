@@ -3,7 +3,7 @@
 {% block title %} {{ parent() }} - Accueil{% endblock %}
 
 {% block home_lecteur %}
-    {{ render(controller('MvondoVideoBundle:Modules:home_lecteur')) }}
+    {{ render_esi(controller('MvondoVideoBundle:Modules:home_lecteur')) }}
 {% endblock %}
 
 {% block body %}

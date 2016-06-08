@@ -2,37 +2,33 @@
 
 namespace Mvondo\VideoBundle\Controller;
 
-use Mvondo\VideoBundle\Entity\Category;
-use Mvondo\VideoBundle\Form\CategoryType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-
-class ModulesController extends Controller {
+class ModulesController extends CacheController {
 
     public function home_lecteurAction() {
         $em = $this->getDoctrine()->getManager();
         $videos = $em->getRepository('MvondoVideoBundle:Video')->findAllLimitBy(10);
-
+        $response = $this->getPublicResponse(600,600);
         return $this->render('modules/home_lecteur.html.twig', array(
                     'videos' => $videos,
-        ));
+        ), $response);
     }
 
     public function last_videosAction() {
         $em = $this->getDoctrine()->getManager();
         $videos = $em->getRepository('MvondoVideoBundle:Video')->findAllLimitBy(9);
-
+        $response = $this->getPublicResponse(600,600);
         return $this->render('modules/last_videos.html.twig', array(
                     'videos' => $videos,
-        ));
+        ), $response);
     }
 
     public function list_categoryAction() {
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('MvondoVideoBundle:Category')->listCategoryNbVideos();
+        $response = $this->getPublicResponse(24*3600,24*3600);
         return $this->render('modules/list_category.html.twig', array(
                     'categories' => $categories,
-        ));
+        ), $response);
     }
 
     public function category_modAction($slug, $nb) {
