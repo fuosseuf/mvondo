@@ -64,7 +64,9 @@ var tv_controll = function (id_controll, id_screen, id_header) {
         self.screen.attr('src', 'http://www.youtube.com/embed/' + youtube_key + '?autoplay=1&modestbranding=1&rel=0&showinfo=0');
         self.screen.empty();
         self.screen.load
-        $('.tv-channel').each(function(){$(this).removeClass('active');});
+        $('.tv-channel').each(function () {
+            $(this).removeClass('active');
+        });
         $(this).addClass('active');
     });
 
@@ -86,13 +88,14 @@ var webtv_controll = function (id_controll, id_screen, id_header) {
     this.div = $(id_controll);
     this.screenbox = $(id_screen);
     this.title = $(id_header);
-    this.channel = this.div.find('.webtv-channel a');
+    this.channel = this.div.find('a.webtv-channel');
     this.screen = this.screenbox.find('iframe');
 
     this.nbvideos = 0;
     this.rand = 1;
     this.videos = null;
     this.played = [];
+    this.autoplay;
 
     this.getVideos = function (link) {
         $.ajax({
@@ -102,59 +105,61 @@ var webtv_controll = function (id_controll, id_screen, id_header) {
             success: function (data) {
                 self.videos = data;
                 self.nbvideos = data.length;
-                self.rand = Math.floor((Math.random() * self.nbvideos) + 1); console.log(self.videos);
+                self.rand = Math.floor((Math.random() * self.nbvideos));
                 self.launchtv(self.rand)
             }
         });
     }
 
     this.decodeDuration = function (duree) {
-        var tab = duree.split("M");
-        var sec = jQuery.grep(arr, function (n, i) {
-            return (n !== 5 && i > 4);
-        });
-        tab.reverse();
-        //PT1H28M52S
-        var sec = 0;
+        var psec = new RegExp('\\d+(?=S)');
+        var pmin = new RegExp('\\d+(?=M)');
+        var ph = new RegExp('\\d+(?=H)');
+        return Number(duree.match(psec)) + Number(duree.match(pmin)) * 60 + Number(duree.match(ph)) * 60 * 60;
     }
 
     $('.display-controll').click(function () {
-        self.div.toggle();
+        self.div.slideToggle("slow");
     });
 
+    $('.display-controll').trigger('click');
 
     this.channel.click(function () {
         var link = $(this).attr('data-href');
         self.getVideos(link);
+        $('a.webtv-channel').each(function () {
+            $(this).removeClass('active');
+        });
+        $(this).addClass('active');
     });
 
-    this.launchtv = function (id) { console.log(id)
+    this.launchtv = function (id) {
         var artist = self.title.find('.webtv-artist');
         var title = self.title.find('.webtv-song');
         var youtube_key = self.videos[id]['data-key'];
         var data_title = self.videos[id]['data-title'];
         var data_link = self.videos[id]['data-link'];
-        var data_duree = self.videos[id]['data-duree'];
+        var data_duree = self.decodeDuration(self.videos[id]['data-duree']);
         var data_artist = self.videos[id]['data-artist'];
 
         title.attr('href', data_link);
-        title.html(data_title);
+        title.html(data_title + ' duree: ' + data_duree + 's');
         artist.html(data_artist);
         self.screen.attr('src', 'http://www.youtube.com/embed/' + youtube_key + '?autoplay=1&modestbranding=1&rel=0&showinfo=0');
         self.screen.empty();
         self.screen.load();
         self.played.push(id);
+        self.play(data_duree);
     }
 
+    this.play = function(duration) {
+        this.autoplay = setTimeout(self.next, duration*1000);
+    }
 
-//    setTimeout(function () {
-//        while (self.played.indexOf(self.rand) != null) {
-//            self.rand = Math.floor((Math.random() * self.nbvideos) + 1);
-//        }
-//        self.launchtv(self.rand);
-//        console.log(self.rand, self.played);
-//    }, 50000);
-
+    this.next = function() {
+        self.rand = Math.floor((Math.random() * self.nbvideos));
+        self.launchtv(self.rand)
+    }
 
 }
 

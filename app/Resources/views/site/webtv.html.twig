@@ -8,25 +8,29 @@
             <iframe id="tv-screen-youtube" src="" width="950" height="497"></iframe>
         </div>
     </div>
+{% endblock %}
+
+{% block large_body %}
     
-    <h1 class="display-controll">Télécommande WebTV</h1>
+    <div class="display-controll">Télécommande WebTV</div>
     <div class="webtv-controll">
-        <div class="webtv-channels">
+        <div class="wrap cf">
+        <div class="webtv-block webtv-channels">
             <h2>Channels</h2>
             {% for category in categories %}
-                <div class="webtv-channel">
-                    <span>Mvondo TV -{{ category.name }}</span>
-                    <td><a data-href='{{ path('mvondo_category_view', {'slug':category.slug } ) }}'>Voir</a></td>
-                </div>
+                <a  class="webtv-channel webtv-block"data-href='{{ path('mvondo_category_view', {'slug':category.slug } ) }}'>
+                   Mvondo TV -{{ category.name }}
+                </a>
             {% endfor %}
         </div>
-        <div class="webtv-current">
+        <div class="webtv-block webtv-current">
             <h2>En cours</h2>
             <p class="webtv-artist"></p>
             <p><a class="webtv-song"></a></p>
             <div class="entry-actions">
                 <span class="dp-like-post right"><a class="like" href="javascript:void(0);">Kiffer</a></span>	
             </div>
+        </div>
         </div>
     </div>
 
