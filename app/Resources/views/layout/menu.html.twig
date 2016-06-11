@@ -2,10 +2,24 @@
     <div class="wrap cf">
         <a href="{{ path('mvondo_site_webtv') }}" class="btn btn-lightblue btn-buynow">Mvondo - WebTV</a>
         <ul id="menu-main-menu" class="menu">
-            <li class="menu-item menu-item-1 current-menu-item"><a href="{{ path('mvondo_site_homepage') }}">Accueil</a></li>
-            <li class="menu-item"><a href="{{ path('mvondo_category_view', {'slug': 'music'} ) }}" alt="musique" >Musique</a></li>
-            <li class="menu-item"><a href="{{ path('mvondo_category_view', {'slug': 'comedy'} ) }}" alt="comédie" >Comédie</a></li>
-            
+            {% if menu is defined %}
+                <li class="menu-item menu-item-1"><a href="{{ path('mvondo_site_homepage') }}">Accueil</a></li>
+                {% if menu.slug == "music" %}
+                    <li class="menu-item current-menu-item"><a href="{{ path('mvondo_category_view', {'slug': 'music'} ) }}" alt="musique" >Musique</a></li>
+                    <li class="menu-item"><a href="{{ path('mvondo_category_view', {'slug': 'comedy'} ) }}" alt="comédie" >Comédie</a></li>
+                {% elseif menu.slug == "comedy" %}
+                <li class="menu-item"><a href="{{ path('mvondo_category_view', {'slug': 'music'} ) }}" alt="musique" >Musique</a></li>
+                    <li class="menu-item current-menu-item"><a href="{{ path('mvondo_category_view', {'slug': 'comedy'} ) }}" alt="comédie" >Comédie</a></li>
+                {% else %}
+                <li class="menu-item"><a href="{{ path('mvondo_category_view', {'slug': 'music'} ) }}" alt="musique" >Musique</a></li>
+                <li class="menu-item"><a href="{{ path('mvondo_category_view', {'slug': 'comedy'} ) }}" alt="comédie" >Comédie</a></li>
+                    <li class="menu-item current-menu-item"><a href="{{ menu.link }}">{{ menu.title }}</a></li>
+                {% endif %}
+            {% else %} 
+                <li class="menu-item menu-item-1 current-menu-item"><a href="{{ path('mvondo_site_homepage') }}">Accueil</a></li>
+                <li class="menu-item"><a href="{{ path('mvondo_category_view', {'slug': 'music'} ) }}" alt="musique" >Musique</a></li>
+                <li class="menu-item"><a href="{{ path('mvondo_category_view', {'slug': 'comedy'} ) }}" alt="comédie" >Comédie</a></li>
+            {% endif %}
             <li class="menu-item"><a href="/tech/index.php" target="_blank" >Espace Tech</a></li>
             <li class="menu-item menu-item-has-children"><a href="#">Menu Parent</a>
                 <ul class="sub-menu">

@@ -22,10 +22,15 @@ class VideoController extends Controller {
         echo $slug;
         
         $form = $this->get('form.factory')->create(new CommentType(), $comment);
-        
+        $menu = array(
+             'link' => $this->generateUrl('mvondo_video_view', array('slug' => $video->getSlug())),
+             'title' => 'Vidéo',
+             'slug' => ''
+         );
         return $this->render('site/view_video.html.twig', array(
                     'form' => $form->createView(),
-                    'video' => $video
+                    'video' => $video,
+                    'menu' => $menu
         ));
     }
 }

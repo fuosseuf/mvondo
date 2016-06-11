@@ -10,9 +10,14 @@ class CategoryController extends CacheController {
     public function indexAction($page) {
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('MvondoVideoBundle:Category')->findAll();
-
+        $menu = array(
+             'link' => $this->generateUrl('mvondo_category_list'),
+             'title' => "Toutes les catégories",
+             'slug' =>''
+         );
         return $this->render('site/list_category.html.twig', array(
                     'categories' => $categories,
+                    'menu' => $menu
         ));
     }
 
@@ -45,9 +50,15 @@ class CategoryController extends CacheController {
              return new \Symfony\Component\HttpFoundation\JsonResponse($vids);
          }
          $response = $this->getPublicResponse(600,600);
+         $menu = array(
+             'link' => $this->generateUrl('mvondo_category_view', array('slug' => $category->getSlug())),
+             'title' => $category->getName(),
+             'slug' =>$category->getSlug()
+         );
         return $this->render('site/view_category.html.twig', array(
                     'category' => $category,
                     'videos' => $videos,
+                    'menu' => $menu,
         ), $response);
     }
 
