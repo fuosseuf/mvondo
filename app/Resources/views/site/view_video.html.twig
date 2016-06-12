@@ -16,7 +16,7 @@
                 </h1>
             </div>
             <div id="tv-screen" class="cf wrap">
-                <iframe src="http://www.youtube.com/embed/{{ video.playerKey }}?autoplay=1&modestbranding=1&rel=0&showinfo=0" width="945" height="500"></iframe>
+                <iframe src="http://www.youtube.com/embed/{{ video.playerKey }}?autoplay=1&modestbranding=1&rel=0&showinfo=0" width="950" height="500"></iframe>
             </div>
         </div>
     </div>
@@ -42,141 +42,46 @@
                             </span>
                         </p>
                     </div>
-                    <div class="">
-                        <p>{{ video.description| truncate(20, true, '...')  }}</p>
+                    <div class="more-infos">
+                        <p>{{ video.description[:100] ~ '...'  }}</p>
                     </div>
+                    <div class="less-infos">
+                        <p>{{ video.description }}</p>
+                    </div>
+                    <br>
                 </div>
             </div>
 
             <div class="section-header satp">
-                <a class="more-link" alt="musique" href="#">
+                <a id="more-infos" class="more-link more-infos" alt="Détails supplémentaires">
                     <span>En savoir plus</span>
+                </a>
+                <a class="more-link less-infos" alt="Moins de détails">
+                    <span>Cacher</span>
                 </a>
             </div>
         </div>
 
-
-        <div id="comment_section">
-            <h3>Commentaires</h3>
-            <div id="comLst"></div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <form method="POST" id="commentForm" action="#" onsubmit="return false;" >
-
-                    <textarea name="comcontent" id="comcontent"></textarea>
-                    <button id="btn-primary">OK</button>
-                </form>
-            {% else %}
-                <p>Vous devez &ecirc;tre connect&eacute;s pour pouvoir laisser un commentaire</p>
-            {% endif %}
-        </div>
         <div id="comments">
             <div class="section-header">
-                <h2 id="comments-title" class="section-title">All the comments <span>(1892)</span></h2>
+                <h2 id="comments-title" class="section-title">Commentaires<span>(1892)</span></h2>
             </div>
             <ul class="comment-list">
                 <li id="comment-2" class="comment byuser comment-author-test bypostauthor even thread-even depth-1 cf">
                     <div id="comment-div-2" class="comment-div cf">
                         <div class="comment-inner">
-                            <div class="comment-avatar">
-                                <img src="{{ asset('custum/images/icon-p.jpg') }}" alt="Popular artist">
-                            </div>
-                            <div class="comment-content">
-                                <input class="docomment" type="text" placeholder="Do your comments" value="" name="s">
-                            </div>
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <div class="comment-avatar">
+                                    <img src="{{ asset('custum/images/icon-p.jpg') }}" alt="Popular artist">
+                                </div>
+                                <div class="comment-content">
+                                    <input id="comcontent" class="docomment" type="text" placeholder="Publier un commentaire" value="" name="comcontent">
+                                </div>
+                            {% else %}
+                                <p>Vous devez &ecirc;tre connect&eacute;s pour pouvoir laisser un commentaire</p>
+                            {% endif %}
                         </div>
-                        <div class="clr"></div>
-                        <div class="comment-inner">
-                            <div class="comment-avatar">
-                                <img src="{{ asset('custum/images/icon-p.jpg') }}" alt="Popular artist">
-                            </div>
-                            <div class="comment-meta">
-                                <span class="comment-author">
-                                    <cite class="tip">Alima DOUDA</cite>
-                                </span>
-                                <a class="comment-time" href="#comment-2">il y a 4 mois</a>
-                            </div>
-                            <div class="comment-content">
-                                <p>Nullam scelerisque facilisis pretium. Vivamus lectus leo, commodo ac sagittis ac, dictum a mi</p>
-                            </div>
-                            <p class="statslike">
-                                <span class="dp-post-likes likes">
-                                    <i class="count">45</i>
-                                </span>
-                                <span class="dp-post-likes unlikes">
-                                    <i class="count">10</i>
-                                </span>
-                            </p>
-                        </div>
-                        <div class="clr"></div>
-                        <div class="comment-inner">
-                            <div class="comment-avatar">
-                                <img src="{{ asset('custum/images/icon-p.jpg') }}" alt="Popular artist">
-                            </div>
-                            <div class="comment-meta">
-                                <span class="comment-author">
-                                    <cite class="tip">FATOU Marie</cite>
-                                </span>
-                                <a class="comment-time" href="#comment-2">il y a 5 mois</a>
-                            </div>
-                            <div class="comment-content">
-                                <p>Nullam scelerisque facilisis pretium. Vivamus lectus leo, commodo ac sagittis ac, dictum a mi</p>
-                            </div>
-                            <p class="statslike">
-                                <span class="dp-post-likes likes">
-                                    <i class="count">40</i>
-                                </span>
-                                <span class="dp-post-likes unlikes">
-                                    <i class="count">2</i>
-                                </span>
-                            </p>
-                        </div>
-                        <div class="clr"></div>
-                        <div class="comment-inner">
-                            <div class="comment-avatar">
-                                <img src="{{ asset('custum/images/icon-p.jpg') }}" alt="Popular artist">
-                            </div>
-                            <div class="comment-meta">
-                                <span class="comment-author">
-                                    <cite class="tip">Henry KONGO</cite>
-                                </span>
-                                <a class="comment-time" href="#comment-2">il y a 5 mois</a>
-                            </div>
-                            <div class="comment-content">
-                                <p>Nullam scelerisque facilisis pretium. Vivamus lectus leo, commodo ac sagittis ac, dictum a mi</p>
-                            </div>
-                            <p class="statslike">
-                                <span class="dp-post-likes likes">
-                                    <i class="count">5</i>
-                                </span>
-                                <span class="dp-post-likes unlikes">
-                                    <i class="count">1</i>
-                                </span>
-                            </p>
-                        </div>
-                        <div class="clr"></div>
-                        <div class="comment-inner">
-                            <div class="comment-avatar">
-                                <img src="{{ asset('custum/images/icon-p.jpg') }}" alt="Popular artist">
-                            </div>
-                            <div class="comment-meta">
-                                <span class="comment-author">
-                                    <cite class="tip">MOUSSA Sisso</cite>
-                                </span>
-                                <a class="comment-time" href="#comment-2">il y a 4 mois</a>
-                            </div>
-                            <div class="comment-content">
-                                <p>Nullam scelerisque facilisis pretium. Vivamus lectus leo, commodo ac sagittis ac, dictum a mi</p>
-                            </div>
-                            <p class="statslike">
-                                <span class="dp-post-likes likes">
-                                    <i class="count">10</i>
-                                </span>
-                                <span class="dp-post-likes unlikes">
-                                    <i class="count">3</i>
-                                </span>
-                            </p>
-                        </div>
-                        <div class="clr"></div>
+                        <div id="comLst"></div>
                     </div>
                 </li>
             </ul>
@@ -250,19 +155,6 @@
                 })
             }
         });
-        //*
-        $('#btn-primary').on('click', function () {
-
-            $.post('{{path('comment_ajax_update_comments', {'video_id': video.id})}}', {'comcontent': $('#comcontent').val()}, function () {
-                $('#comLst').load('{{path('comment_getcommentLst', {'video_id': video.id})}}');
-                $('#comcontent').val('');
-            }
-
-            );
-            //*/
-            //alert('On a clique!!!');
-        });
-
     </script>
 {% endblock %}    
 {% endblock %}

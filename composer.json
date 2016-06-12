@@ -28,8 +28,7 @@
         "friendsofsymfony/user-bundle": "dev-master",
         "google/apiclient": "^1.1",
         "friendsofsymfony/rest-bundle": "^1.7",
-        "jms/serializer-bundle": "dev-master",
-        "twig/extensions": "~1.0"
+        "jms/serializer-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
