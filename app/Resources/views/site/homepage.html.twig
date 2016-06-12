@@ -77,43 +77,8 @@
     <!-- end sidebar -->
     <div class="clr"></div>
     <div id="bloc_bas">
-        <div class="section-box">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <a class="name-link" href= href="{{ path('mvondo_category_view', {'slug': 'comedy'} ) }}" alt="comédie" >
-                        <span class="name">Comédies</span>
-                    </a>
-                </h2>
-                <a class="more-link" href="{{ path('mvondo_category_view') }}">
-                    <span>More <i class="mini-arrow-right"></i></span>
-                </a>
-            </div>
-
-            <div class="section-content grid-small">
-                <div class="nag cf">
-
-                </div>
-            </div>
-        </div>
-        <div class="clr"></div>
-        <div class="section-box">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <a class="name-link" href="#">
-                        <span class="name">Films</span>
-                    </a>
-                </h2>
-                <a class="more-link" href="{{ path('mvondo_category_view') }}">
-                    <span>More <i class="mini-arrow-right"></i></span>
-                </a>
-            </div>
-
-            <div class="section-content grid-small">
-                <div class="nag cf">
-
-                </div>
-            </div>
-        </div>
+        {{ render(controller('MvondoVideoBundle:Modules:category_mod', {'slug': 'comedy'} )) }}
+        {{ render(controller('MvondoVideoBundle:Modules:category_mod', {'slug': 'music'} )) }}
     </div>
 
 {% endblock %}
