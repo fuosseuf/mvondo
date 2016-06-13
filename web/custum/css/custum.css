@@ -297,3 +297,106 @@ input.search-submit:hover {
     float: none;
     text-align: left;
 }
+
+
+/* Add ellipsis to entry title in grid view */ 
+.grid-mix1 .entry-title, .grid-4 .entry-title{ 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+
+/*== Grid View with mix1 Thumbnial
+ *=================================*/
+.grid-mix1 .nag {
+    margin:0 -11px
+}
+.grid-mix1 p {
+    margin:0
+}
+.grid-mix1 .item {
+    width:192px;
+    float:left;
+    margin:0 11px 11px;
+}
+
+.grid-mix1 .thumb {
+    width:192px;
+    height:108px;
+}
+.grid-mix1 .thumb img {
+    width:192px;
+}
+.grid-mix1 .item:first-of-type, .grid-mix1 .item:first-of-type .thumb, .grid-mix1 .item:first-of-type .thumb img {
+    width:406px;
+}
+
+.grid-mix1 .item:first-of-type .thumb{
+    height:270px;
+}
+
+.grid-mix1 .item .thumb .overlay {
+    background-image:url(../images/icon-play-32.png)
+}
+.grid-mix1 .item:first-of-type .thumb .overlay {
+    background-image:url(../images/icon-play-64.png)
+}
+.grid-mix1 .entry-title {
+    height:20px;
+    line-height:20px;
+    overflow:hidden;
+    font-size:12px;
+}
+.grid-mix1 .suffix,.grid-mix1 .entry-meta,.grid-mix1 .entry-summary {
+    display: none
+}
+
+
+/*== Grid View with 4 Thumbnial
+ *=================================*/
+.grid-4 .nag {
+    margin:0 -11px
+}
+.grid-4 p {
+    margin:0
+}
+.grid-4 .item {
+    width:221px;
+    float:left;
+    margin:0 11px 11px;
+}
+
+.grid-4 .thumb {
+    width:221px;
+    height:140px;
+}
+.grid-4 .thumb img {
+    width:221px;
+}
+
+.grid-4 .item .thumb .overlay {
+    background-image:url(../images/icon-play-32.png)
+}
+
+.grid-4 .entry-title {
+    height:20px;
+    line-height:20px;
+    overflow:hidden;
+    font-size:12px;
+}
+.grid-4 .suffix,.grid-4 .entry-meta,.grid-4 .entry-summary {
+    display: none
+}
+
+/*********************/
+#main .content {
+    width: 620px;
+    float: left;
+}
+
+#main .sidebar {
+    width: 300px;
+    float: right;
+}

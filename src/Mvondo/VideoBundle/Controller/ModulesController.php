@@ -15,7 +15,7 @@ class ModulesController extends CacheController {
 
     public function last_videosAction() {
         $em = $this->getDoctrine()->getManager();
-        $videos = $em->getRepository('MvondoVideoBundle:Video')->findAllLimitBy(9);
+        $videos = $em->getRepository('MvondoVideoBundle:Video')->findAllLimitBy(6);
         $response = $this->getPublicResponse(600, 600);
         return $this->render('modules/last_videos.html.twig', array(
                     'videos' => $videos,
@@ -31,7 +31,7 @@ class ModulesController extends CacheController {
                         ), $response);
     }
 
-    public function category_modAction($slug, $nb = 3) {
+    public function category_modAction($slug, $nb = 4) {
         $em = $this->getDoctrine()->getManager();
         if (!($category = $em->getRepository('MvondoVideoBundle:Category')->findOneBySlug($slug)))
             throw $this->createNotFoundException("This category doesn't exist!!");

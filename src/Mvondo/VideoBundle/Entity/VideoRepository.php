@@ -14,7 +14,7 @@ class VideoRepository extends EntityRepository {
 
     public function findAllLimitBy($limit) {
         return $this->getEntityManager()
-                        ->createQuery('SELECT v FROM MvondoVideoBundle:Video v')
+                        ->createQuery('SELECT v FROM MvondoVideoBundle:Video v ORDER BY v.id DESC')
                         ->setMaxResults($limit)
                         ->getResult();
     }

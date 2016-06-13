@@ -18,11 +18,6 @@
             </a>
         </h4>
 
-        <p class="meta">
-            <span class="author">Added by <a href="" title="Posts by {{ video.user.firstname }} {{ video.user.lastname }}" rel="author">{{ video.user.firstname }} {{ video.user.lastname }}</a></span>
-            <span class="time">2 years ago</span>
-        </p>
-
         <p class="stats">
             {% if views is not defined %}<span class="views"><i class="count">0K</i> <span class="suffix">Views</span></span>{% endif %}
             {% if comments is not defined %}<span class="comments"><i class="count">0</i> <span class="suffix">Comments</span></span>{% endif %}
