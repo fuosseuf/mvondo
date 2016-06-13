@@ -1,0 +1,3 @@
+mvondo_research_view:
+    path:   /
+    defaults: { _controller: MvondoVideoBundle:Research:research }

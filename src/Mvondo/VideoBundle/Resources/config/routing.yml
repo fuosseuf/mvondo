@@ -17,3 +17,7 @@ mvondo_video_user:
 mvondo_video:
     resource: "@MvondoVideoBundle/Resources/config/routing/video.yml"
     prefix:   /video
+    
+mvondo_research:
+    resource: "@MvondoVideoBundle/Resources/config/routing/research.yml"
+    prefix:   /research
