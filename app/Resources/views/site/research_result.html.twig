@@ -1,0 +1,88 @@
+{% extends "layout/base.html.twig" %}
+
+{% block title %} {{ parent() }} - Resultats de recherche {% endblock %}
+
+{% block body %}
+	<div id="content">
+		<div class="loop-header">
+				<h1 class="loop-title"><span class="prefix">R&eacute;sultats de recherche pour</span> <em>{{ s }}</em></h1>
+				<div class="loop-desc"></div>
+		</div>
+		<!-- left content-->
+    
+		<div class="loop-actions cf">
+                    {#
+				<div class="sort">
+					<span class="prefix">Tri:</span>
+					<span class="orderby"> 
+						<a href="#" title="Trier par date" class="date"><i>Date</i></a> 
+						<span class="sep">|</span> <a href="#" title="Trier par titre" class="title"><i>Titre</i></a> 
+						<span class="sep">|</span> <a href="#" title="Trier par nombre de vues" class="views"><i>Vues</i></a> 
+						<span class="sep">|</span> <a href="#" title="Tri par nombre de recommandations" class="likes current"><i>Favoris</i></a> 
+						<span class="sep">|</span> <a href="#" title="Trier par nombre de commentaires" class="comments"><i>Commentaires</i></a> 
+						<span class="sep">|</span> <a href="#" title="Trier aléatoirement" class="rand"><i>Aléatoire</i></a> 
+					</span>
+					<!-- end .orderby -->
+					<select class="orderby-select">
+						<option value="">Date</option>
+						<option value="">Titre</option>
+						<option value="">Vues</option>
+						<option value="" selected='selected'>Favoris</option>
+						<option value="">Commentaires</option>
+						<option value="">Aléatoire</option>
+					</select>
+					<span class="order">
+						<a class="asc" href="#" title="Trier par ordre ascendant">Trier par ordre ascendant</a>
+					</span>
+					<!-- end .order -->
+				</div>
+                    #}
+				<!-- end .sort -->
+				<div class="view">
+					<span class="prefix">Vue:</span>
+					<a href="#" title="Grille de mini vignettes" data-type="grid-mini" class="grid-mini-link"><i></i></a>
+					<a href="#" title="Grille de petites vignettes" data-type="grid-small" class="grid-small-link"><i></i></a>
+					<a href="#" title="Grille de vignettes moyennes" data-type="grid-medium" class="grid-medium-link"><i></i></a>
+					<a href="#" title="Liste avec petites vignettes" data-type="list-small" class="list-small-link"><i></i></a>
+					<a href="#" title="Liste avec vignettes moyennes" data-type="list-medium" class="list-medium-link"><i></i></a>
+					<a href="#" title="Liste avec grandes vignettes" data-type="list-large" class="list-large-link current"><i></i></a>
+				</div>
+				<!-- end .view -->
+			</div>
+			<!-- end .loop-actions -->	
+        <div class="section-content grid-small">
+            <div class="nag cf">  
+                {% for video in videos %}
+                    {% include 'template/small_square_video.html.twig' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- end left content -->
+    <!-- sidebar -->
+    <div id="sidebar" role="complementary" class="masonry" style="position: relative; min-height: 500px">
+        <div id="text-2" class="widget widget_text masonry-brick" style="position: absolute; top: 0px; left: 0px;">
+            <div class="widget-header"><h3 class="widget-title">Principales fonctionnalités</h3></div>	
+            <div class="textwidget">
+                <ul>
+                    <li><a href="{{ path('mvondo_category_list') }}" >Categories</a></li>
+                    <li><a href="{{ path('mvondo_category_admin_list') }}" >Admin Categories</a></li>
+                        {% if is_granted('ROLE_ARTIST') %}
+                        <li><a href="{{ path('mvondo_video_user_list', {'username': app.user.username} ) }}" >User Videos</a></li>
+                        {% endif %}
+                    <li><a href="{{ path('fos_user_group_list') }}" >Admin Group User</a></li>
+                    <li><em>Pages CMS</em>
+                        <ul>
+                            <li><a href="{{ path('mvondo_site_help') }}">Help!</a></li>
+                            <li><a href="{{ path('mvondo_site_aboutus') }}">About Us</a></li>
+                            <li><a href="{{ path('mvondo_site_partners') }}">Partners</a></li>
+                            <li><a href="{{ path('mvondo_site_faq') }}">F.A.Q</a></li>
+                            <li><a href="{{ path('mvondo_site_contact') }}">Contact</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end sidebar -->
+{% endblock %}
