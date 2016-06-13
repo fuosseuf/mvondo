@@ -26,8 +26,8 @@ class ResearchController extends Controller{
         $em=  $this->getDoctrine()->getManager();
         $rep_v=$em->getRepository('MvondoVideoBundle:Video');
         $query=$rep_v->createQueryBuilder('v')
-                ->where('v.title LIKE :title OR v.description LIKE :description')
-                ->setParameters(array('title'=>'%'.$s.'%', 'description'=>'%'.$s.'%'))
+                ->where('UPPER(v.title) LIKE :title OR UPPER(v.description) LIKE :description')
+                ->setParameters(array('title'=>'%'.strtoupper ($s).'%', 'description'=>'%'.strtoupper ($s).'%'))
                 ->getQuery();
         
         $videos=$query->getResult();
