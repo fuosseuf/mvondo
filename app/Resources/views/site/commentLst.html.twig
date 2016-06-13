@@ -1,8 +1,30 @@
 <ul>
     {%for c in commLst%}
-        <li><b>{{c.user.username}} :</b> {{c.content}} <i>le {{c.date | date("d/m/Y \\à H:i")}}</i></li>
+        <div class="clr"></div>
+        <div class="comment-inner">
+            <div class="comment-avatar">
+                <img src="{{ asset('custum/images/icon-p.jpg') }}" alt="Popular artist">
+            </div>
+            <div class="comment-meta">
+                <span class="comment-author">
+                    <cite class="tip">{{c.user.username}}</cite>
+                </span>
+                <a class="comment-time" href="#comment-2">le {{c.date | date("d/m/Y \\à H:i")}}</a>
+            </div>
+            <div class="comment-content">
+                <p>{{c.content}}</p>
+            </div>
+            <p class="statslike">
+                <span class="dp-post-likes likes">
+                    <i class="count">45</i>
+                </span>
+                <span class="dp-post-likes unlikes">
+                    <i class="count">10</i>
+                </span>
+            </p>
+        </div>
     {%endfor%}
-    
+
 </ul>
 
 

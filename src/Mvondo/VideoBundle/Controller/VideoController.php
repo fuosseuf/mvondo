@@ -19,7 +19,6 @@ class VideoController extends Controller {
                 throw $this->createNotFoundException("This video doesn't exist!!");
         
         $comment=new Comment();
-        echo $slug;
         
         $form = $this->get('form.factory')->create(new CommentType(), $comment);
         $menu = array(

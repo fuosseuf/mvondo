@@ -5,5 +5,22 @@
  */
 
 $(document).ready(function () {
+    $('a.more-infos').click(function(){
+        $('.more-infos').each(function(){ 
+            $(this).hide();
+        });
+        $('.less-infos').each(function(){ 
+            $(this).show();
+        });
+    });
+    $('a.less-infos').click(function(){
+        $('.less-infos').each(function(){ 
+            $(this).hide();
+        });
+        $('.more-infos').each(function(){ 
+            $(this).show();
+        });
+    });
+    $('a.less-infos').trigger('click');
 
 });

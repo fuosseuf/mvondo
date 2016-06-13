@@ -1,10 +1,10 @@
 <!-- Item small rectangle video -->
-<li class="item cf item-video">
+<div class="item cf item-video">
 
     <div class="thumb">
         <a class="clip-link"title="{{ video.title }}" href="{{ path('mvondo_video_view', {'slug': video.slug })}}">
             <span class="clip">
-                <img src="{{ video.imageSmall }}" alt="{{ video.title }}">
+                <img src="{{ video.image }}" alt="{{ video.title }}">
                 <span class="vertical-align"></span>
             </span>
 
@@ -29,5 +29,5 @@
             {% if count is not defined %}<span class="dp-post-likes likes"><i class="count" data-pid="1731">0</i> <span class="suffix">Likes</span></span>{% endif %}
         </p>
     </div>
-</li>
+</div>
 <!-- end Item small rectangle video -->

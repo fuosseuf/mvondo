@@ -1,22 +1,23 @@
-<!-- module last_videos -->
+<!-- module category_mod -->
 <div class="section-box">
     <div class="section-header">
         <h2 class="section-title">
-            <a class="name-link" href="{{ path('mvondo_category_view') }}">
-                <span class="name">Vidéos Récentes</span>
+            <a class="name-link" alt="comédie" >
+                <span class="name">{{category.name}}</span>
             </a>
         </h2>
-        <a class="more-link" href="{{ path('mvondo_category_view') }}">
-            <span>plus <i class="mini-arrow-right"></i></span>
+        <a class="more-link" href="{{ path('mvondo_category_view', {'slug': category.slug} ) }}">
+            <span>More <i class="mini-arrow-right"></i></span>
         </a>
     </div>
 
-    <div class="section-content grid-small">
+    <div class="section-content grid-medium">
         <div class="nag cf">
             {% for video in videos %}
-                {% include 'template/small_square_video.html.twig' %}
+                {% include 'template/small_rect_video.html.twig' %}
             {% endfor %}
         </div>
     </div>
 </div>
-<!-- end module home_lecteur -->
+<div class="clr"></div>
+<!-- end module category_mod -->

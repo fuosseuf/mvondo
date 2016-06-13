@@ -1,56 +1,160 @@
 {% extends "layout/base.html.twig" %}
 
-{% block title %} {{ parent() }} - Dashboard {% endblock %}
+{% block title %} {{ parent() }} - {{ video.title }} {% endblock %}
+{% block home_lecteur %}
 
+    <div class="home-featured-full wall">
+        <div id="tv-player">
+            <div id="tv-header" class="cf wrap">
+                <h1 class="entry-title">
+                    <a class="tv-clip">{{ video.title }}</a>
+                    <div class="entry-actions">
+                        <span class="dp-like-post right">
+                            <a class="like" href="javascript:void(0);">Kiffer</a>
+                        </span>
+                    </div>
+                </h1>
+            </div>
+            <div id="tv-screen" class="cf wrap">
+                <iframe src="http://www.youtube.com/embed/{{ video.playerKey }}?autoplay=1&modestbranding=1&rel=0&showinfo=0" width="950" height="500"></iframe>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
 {% block body %}
-    <h1 class='loop-header'>Dashboard</h1>
-    
-    <div>
-        <h2>{{ video.title }}</h2>
-        <iframe src="http://www.youtube.com/embed/{{ video.playerKey }}" width="640" height="385"></iframe>
 
+    <div id="content">
+        <div class="section-box related-posts">
+            <div class="section-header">
+                <h3 class="section-title">Détails</h3>
+            </div>
+            <div class="section-content grid-mini">
+                <div class="nag cf">
+                    <div class="comment-inner">
+                        <p class="entry-meta">
+                            <span class="comment-author">
+                                <cite class="fn">Ajouté par</cite>
+                            </span>
+                            <a class="comment-time" href="#" title="Posts by {{ video.user.firstname }} {{ video.user.lastname }}" rel="author">{{ video.user.firstname }} {{ video.user.lastname }}</a>
+                            <span class="comment-author">
+                                <cite class="fn">le {{ video.dateAdd|date('d F, Y',"Europe/Paris") }}</cite>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="more-infos">
+                        <p>{{ video.description[:100] ~ '...'  }}</p>
+                    </div>
+                    <div class="less-infos">
+                        <p>{{ video.description }}</p>
+                    </div>
+                    <br>
+                </div>
+            </div>
+
+            <div class="section-header satp">
+                <a id="more-infos" class="more-link more-infos" alt="Détails supplémentaires">
+                    <span>En savoir plus</span>
+                </a>
+                <a class="more-link less-infos" alt="Moins de détails">
+                    <span>Cacher</span>
+                </a>
+            </div>
+        </div>
+
+        <div id="comments">
+            <div class="section-header">
+                <h2 id="comments-title" class="section-title">Commentaires<span>(1892)</span></h2>
+            </div>
+            <ul class="comment-list">
+                <li id="comment-2" class="comment byuser comment-author-test bypostauthor even thread-even depth-1 cf">
+                    <div id="comment-div-2" class="comment-div cf">
+                        <div class="comment-inner">
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <div class="comment-avatar">
+                                    <img src="{{ asset('custum/images/icon-p.jpg') }}" alt="Popular artist">
+                                </div>
+                                <div class="comment-content">
+                                    <input id="comcontent" class="docomment" type="text" placeholder="Publier un commentaire" value="" name="comcontent">
+                                </div>
+                            {% else %}
+                                <p>Vous devez &ecirc;tre connect&eacute;s pour pouvoir laisser un commentaire</p>
+                            {% endif %}
+                        </div>
+                        <div id="comLst"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
     </div>
-        <div id="comment_section">
-            <h3>Commentaires</h3>
-            <div id="comLst"></div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <form method="POST" id="commentForm" action="#" onsubmit="return false;" >
-    
-                <textarea name="comcontent" id="comcontent"></textarea>
-                <button id="btn-primary">OK</button>
-            </form>
-            {% else %}
-                <p>Vous devez &ecirc;tre connect&eacute;s pour pouvoir laisser un commentaire</p>
-            {% endif %}
+
+    <div id="sidebar" class="masonry">
+        <div id="recentadded" class="widget widget_text masonry-brick">
+            <div class="widget-header"><h3 class="widget-title">Reccend added</h3></div>	
+            <div class="blocpa">
+                <div class="eltra" href="#" >
+                    <a href="#" >
+                        <img src="{{ asset('custum/images/art1.jpg') }}" alt="Popular artist">
+                    </a>
+                    <p><a href="#" >Lorem ipsum dollar amet</a></p>
+                    <span>2 years ago</span>
+                </div>
+                <div class="eltra" href="#" >
+                    <a href="#" >
+                        <img src="{{ asset('custum/images/art2.jpg') }}" alt="Popular artist">
+                    </a>
+                    <p><a href="#" >Lorem ipsum dollar amet</a></p>
+                    <span>2 years ago</span>
+                </div>
+                <div class="eltra last" href="#" >
+                    <a href="#" >
+                        <img src="{{ asset('custum/images/art6.jpg') }}" alt="Popular artist">
+                    </a>
+                    <p><a href="#" >Lorem ipsum dollar amet</a></p>
+                    <span>2 years ago</span>
+                </div>
+
+                <div class="eltra" href="#" >
+                    <a href="#" >
+                        <img src="{{ asset('custum/images/art4.jpg') }}" alt="Popular artist">
+                    </a>
+                    <p><a href="#" >Lorem ipsum dollar amet</a></p>
+                    <span>2 years ago</span>
+                </div>
+                <div class="eltra" href="#" >
+                    <a href="#" >
+                        <img src="{{ asset('custum/images/art9.jpg') }}" alt="Popular artist">
+                    </a>
+                    <p><a href="#" >Lorem ipsum dollar amet</a></p>
+                    <span>2 years ago</span>
+                </div>
+                <div class="eltra last" href="#" >
+                    <a href="#" >
+                        <img src="{{ asset('custum/images/art8.jpg') }}" alt="Popular artist">
+                    </a>
+                    <p><a href="#" >Lorem ipsum dollar amet</a></p>
+                    <span>2 years ago</span>
+                </div>
+            </div>
         </div>
-            
-        {% block javascripts %}
-  
-  <script>
-      
-          $('#comLst').load('{{path('comment_getcommentLst', {'video_id': video.id})}}');
-          $('#comcontent').keypress(function (e) {
+    </div>
+
+</div>	
+
+{% block javascripts %}
+
+    <script>
+
+        $('#comLst').load('{{path('comment_getcommentLst', {'video_id': video.id})}}');
+        $('#comcontent').keypress(function (e) {
             if (e.which == 13) {
-              $.post('{{path('comment_ajax_update_comments', {'video_id': video.id})}}', {'comcontent':$('#comcontent').val()}, function(){
-                  $('#comLst').load('{{path('comment_getcommentLst', {'video_id': video.id})}}');
-                  $('#comcontent').val('');
-              })
+                $.post('{{path('comment_ajax_update_comments', {'video_id': video.id})}}', {'comcontent': $('#comcontent').val()}, function () {
+                    $('#comLst').load('{{path('comment_getcommentLst', {'video_id': video.id})}}');
+                    $('#comcontent').val('');
+                })
             }
-          });
-          //*
-          $('#btn-primary').on('click', function(){
-              
-              $.post('{{path('comment_ajax_update_comments', {'video_id': video.id})}}', {'comcontent':$('#comcontent').val()}, function(){
-                  $('#comLst').load('{{path('comment_getcommentLst', {'video_id': video.id})}}');
-                  $('#comcontent').val('');
-              }
-                      
-                      );
-              //*/
-              //alert('On a clique!!!');
-          });
-      
-  </script>
+        });
+    </script>
 {% endblock %}    
 {% endblock %}
