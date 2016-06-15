@@ -54,6 +54,13 @@ class User extends BaseUser {
     /**
      * @var array
      *
+     * @ORM\OneToMany(targetEntity="Mvondo\VideoBundle\Entity\Video", mappedBy="user")
+     */
+    private $events;
+
+    /**
+     * @var array
+     *
      * @ORM\OneToMany(targetEntity="Mvondo\UserBundle\Entity\Followers", mappedBy="artist")
      */
     private $fans;
@@ -389,4 +396,37 @@ class User extends BaseUser {
         $this->dateUp = new \DateTime();
     }
 
+
+    /**
+     * Add events
+     *
+     * @param \Mvondo\VideoBundle\Entity\Video $events
+     * @return User
+     */
+    public function addEvent(\Mvondo\VideoBundle\Entity\Video $events)
+    {
+        $this->events[] = $events;
+
+        return $this;
+    }
+
+    /**
+     * Remove events
+     *
+     * @param \Mvondo\VideoBundle\Entity\Video $events
+     */
+    public function removeEvent(\Mvondo\VideoBundle\Entity\Video $events)
+    {
+        $this->events->removeElement($events);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
 }

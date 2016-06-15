@@ -27,6 +27,13 @@ class Country
      * @ORM\OneToMany(targetEntity="Mvondo\VideoBundle\Entity\Video", mappedBy="country")
      */
     private $videos;
+
+    /**
+     * @var array
+     *
+     * @ORM\OneToMany(targetEntity="Mvondo\EventBundle\Entity\Video", mappedBy="country")
+     */
+    private $events;
     
             /**
      * @var array
@@ -176,5 +183,38 @@ class Country
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add events
+     *
+     * @param \Mvondo\EventBundle\Entity\Video $events
+     * @return Country
+     */
+    public function addEvent(\Mvondo\EventBundle\Entity\Video $events)
+    {
+        $this->events[] = $events;
+
+        return $this;
+    }
+
+    /**
+     * Remove events
+     *
+     * @param \Mvondo\EventBundle\Entity\Video $events
+     */
+    public function removeEvent(\Mvondo\EventBundle\Entity\Video $events)
+    {
+        $this->events->removeElement($events);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvents()
+    {
+        return $this->events;
     }
 }

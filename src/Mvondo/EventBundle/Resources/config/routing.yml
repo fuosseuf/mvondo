@@ -1,0 +1,3 @@
+mvondo_event_homepage:
+    path:     /events
+    defaults: { _controller: MvondoEventBundle:Event:index }
