@@ -1,0 +1,29 @@
+<!-- module highlight category -->
+<div class="section-box">
+    <div class="section-header">
+        <h2 class="section-title">
+            <a class="name-link">
+                <span class="name">Prochainement</span>
+            </a>
+        </h2>
+        <a class="more-link" href="{{ path('mvondo_event_homepage') }}" alt="Plus d'évênements" >
+            <span>Plus<i class="mini-arrow-right"></i></span>
+        </a>
+    </div>
+
+    <div class="section-content list-large">
+        <div class="nag cf event_highlight" style='background-image: url({{event.getFlyer().getWeblink()}})'>
+            <h2>{{ event.title }}</h2>
+        </div>
+    </div>
+    <div id='eventSlider'>
+        <img src='' alt=""/>
+        <div class='sideSlder'>
+            <img class='thumbnail' src='' alt=''/>
+        </div>
+        <div class='bottomSlider'>
+            <h1></h1>
+        </div>
+    </div>
+</div>
+<!-- end module highlight category -->
