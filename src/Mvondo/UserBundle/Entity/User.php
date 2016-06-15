@@ -54,10 +54,10 @@ class User extends BaseUser {
     /**
      * @var array
      *
-     * @ORM\OneToMany(targetEntity="Mvondo\VideoBundle\Entity\Video", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Mvondo\EventBundle\Entity\Event", mappedBy="user")
      */
     private $events;
-
+ 
     /**
      * @var array
      *
@@ -116,6 +116,7 @@ class User extends BaseUser {
         $this->dateUp = new \DateTime();
         $this->fans = new \Doctrine\Common\Collections\ArrayCollection();
         $this->artists = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->events = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -396,14 +397,14 @@ class User extends BaseUser {
         $this->dateUp = new \DateTime();
     }
 
-
+    
     /**
      * Add events
      *
-     * @param \Mvondo\VideoBundle\Entity\Video $events
+     * @param \Mvondo\EventBundle\Entity\Event $events
      * @return User
      */
-    public function addEvent(\Mvondo\VideoBundle\Entity\Video $events)
+    public function addEvent(\Mvondo\EventBundle\Entity\Event $events)
     {
         $this->events[] = $events;
 
@@ -413,9 +414,9 @@ class User extends BaseUser {
     /**
      * Remove events
      *
-     * @param \Mvondo\VideoBundle\Entity\Video $events
+     * @param \Mvondo\EventBundle\Entity\Event $events
      */
-    public function removeEvent(\Mvondo\VideoBundle\Entity\Video $events)
+    public function removeEvent(\Mvondo\EventBundle\Entity\Event $events)
     {
         $this->events->removeElement($events);
     }

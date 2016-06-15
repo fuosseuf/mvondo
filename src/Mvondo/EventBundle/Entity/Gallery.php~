@@ -37,4 +37,44 @@ class Gallery {
         return $this->id;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add images
+     *
+     * @param \Mvondo\SiteBundle\Entity\Image $images
+     * @return Gallery
+     */
+    public function addImage(\Mvondo\SiteBundle\Entity\Image $images)
+    {
+        $this->images[] = $images;
+
+        return $this;
+    }
+
+    /**
+     * Remove images
+     *
+     * @param \Mvondo\SiteBundle\Entity\Image $images
+     */
+    public function removeImage(\Mvondo\SiteBundle\Entity\Image $images)
+    {
+        $this->images->removeElement($images);
+    }
+
+    /**
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImages()
+    {
+        return $this->images;
+    }
 }

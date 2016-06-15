@@ -4,6 +4,32 @@
 
 {% block body %}
     
-<h1 class="loop-title"><em>Agenda</em></h1>
+    <div id="content">
 
+        <h1 class='loop-header'>Liste des évênements</h1>
+        {% if events is defined %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>thumbnail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for event in events %}
+                        <tr>
+                            <td>{{ event.id }}</td>
+                            <td>{{ event.title }}</td>
+                            <td>{{ event.description }}</td>
+                            <td><img src='{{ app.request.baseUrl }}/{{ event.getFlyer().getWeblink() }}' alt='{{ event.getFlyer().title }}' width='100' heigth='50'/></td>
+                            <td><a href="#">Voir</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}  
+
+    </div>
 {% endblock %}

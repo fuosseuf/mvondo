@@ -193,4 +193,27 @@ class Image {
         return '../' . $this->getUploadDir() . '/' . $this->id . '.' . $this->path;
     }
 
+
+    /**
+     * Set gallery
+     *
+     * @param \Mvondo\EventBundle\Entity\Gallery $gallery
+     * @return Image
+     */
+    public function setGallery(\Mvondo\EventBundle\Entity\Gallery $gallery = null)
+    {
+        $this->gallery = $gallery;
+
+        return $this;
+    }
+
+    /**
+     * Get gallery
+     *
+     * @return \Mvondo\EventBundle\Entity\Gallery 
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
 }

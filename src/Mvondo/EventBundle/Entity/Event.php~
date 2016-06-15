@@ -112,6 +112,14 @@ class Event {
      * @ORM\Column(name="contact", type="string", length=255)
      */
     private $contact;
+    
+        /**
+     * @var boolean
+     *
+     * @ORM\Column(name="canceled", type="boolean")
+     */
+    private $canceled;
+    
 
     /**
      * @var string
@@ -119,6 +127,16 @@ class Event {
      * @ORM\Column(name="website", type="text")
      */
     private $website;
+    
+        /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->dateAdd = new \DateTime();
+        $this->dateUp = new \DateTime();
+        $this->canceled = FALSE;
+    }
+    
 
     /**
      * Get id
@@ -409,5 +427,28 @@ class Event {
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set gallery
+     *
+     * @param \Mvondo\EventBundle\Entity\Gallery $gallery
+     * @return Event
+     */
+    public function setGallery(\Mvondo\EventBundle\Entity\Gallery $gallery = null)
+    {
+        $this->gallery = $gallery;
+
+        return $this;
+    }
+
+    /**
+     * Get gallery
+     *
+     * @return \Mvondo\EventBundle\Entity\Gallery 
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
     }
 }

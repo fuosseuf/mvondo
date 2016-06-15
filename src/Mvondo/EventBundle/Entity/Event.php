@@ -109,16 +109,34 @@ class Event {
     /**
      * @var string
      *
-     * @ORM\Column(name="contact", type="string", length=255)
+     * @ORM\Column(name="contact", type="string", length=255, nullable=true)
      */
     private $contact;
+    
+        /**
+     * @var boolean
+     *
+     * @ORM\Column(name="canceled", type="boolean")
+     */
+    private $canceled;
+    
 
     /**
      * @var string
      *
-     * @ORM\Column(name="website", type="text")
+     * @ORM\Column(name="website", type="text", nullable=true)
      */
     private $website;
+    
+        /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->dateAdd = new \DateTime();
+        $this->dateUp = new \DateTime();
+        $this->canceled = FALSE;
+    }
+    
 
     /**
      * Get id
@@ -432,5 +450,28 @@ class Event {
     public function getGallery()
     {
         return $this->gallery;
+    }
+
+    /**
+     * Set canceled
+     *
+     * @param boolean $canceled
+     * @return Event
+     */
+    public function setCanceled($canceled)
+    {
+        $this->canceled = $canceled;
+
+        return $this;
+    }
+
+    /**
+     * Get canceled
+     *
+     * @return boolean 
+     */
+    public function getCanceled()
+    {
+        return $this->canceled;
     }
 }
