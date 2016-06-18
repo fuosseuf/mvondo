@@ -35,6 +35,13 @@ class CategoryController extends CacheController {
             $category->setName("All");
             $videos = $em->getRepository('MvondoVideoBundle:Video')->findAll();
         }
+        
+        foreach($videos as $video){
+            if($video){
+                $kiff=$em->getRepository('CommentBundle:Kiff')->findBy(array('video'=>$video));
+                $video->setKiffCount(count($kiff));
+            }
+        }
          $request = $this->container->get('request');
          if($request->isXmlHttpRequest()){
              $vids = array();
