@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Mvondo\CommentBundle\Entity\Comment;
 use Mvondo\CommentBundle\Form\CommentType;
+use Mvondo\CommentBundle\Entity\Kiff;
 
 class VideoController extends Controller {
 
@@ -17,6 +18,10 @@ class VideoController extends Controller {
         
         if (!($video = $em->getRepository('MvondoVideoBundle:Video')->findOneBySlug($slug)))
                 throw $this->createNotFoundException("This video doesn't exist!!");
+        
+        $kiff=$em->getRepository('CommentBundle:Kiff')->findBy(array('video'=>$video, 'user'=>  $this->getUser()))?true:false;
+        
+       
         
         $comment=new Comment();
         
@@ -29,7 +34,39 @@ class VideoController extends Controller {
         return $this->render('site/view_video.html.twig', array(
                     'form' => $form->createView(),
                     'video' => $video,
-                    'menu' => $menu
+                    'menu' => $menu,
+                    'kiff' => $kiff
         ));
     }
+    
+    public function updateLikeAction(){
+        $em = $this->getDoctrine()->getManager();
+        
+        $request = $this->container->get('request');
+        if($request->isXmlHttpRequest()){
+             $video_id=$request->get('video_id');
+             $video = $em->getRepository('MvondoVideoBundle:Video')->find($video_id);
+             
+             $kiff=$em->getRepository('CommentBundle:Kiff')->findBy(array('video'=>$video, 'user'=>  $this->getUser()));
+             
+             if($kiff){
+                 foreach ($kiff as $k){
+                    $em->remove($k);
+                 }
+                 $em->flush();
+                 $ret=false;
+             }else{
+                 $kiff=new Kiff();
+                 $kiff->setUser($this->getUser());
+                 $kiff->setVideo($video);
+                 $em->persist($kiff);
+                 $em->flush();
+                 $ret=true;
+             }
+            
+        }
+        return new \Symfony\Component\HttpFoundation\JsonResponse($ret);
+    }
+    
+    
 }
