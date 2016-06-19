@@ -37,4 +37,7 @@ $(document).ready(function () {
     });
     $('a.less-infos').trigger('click');
 
+    $('iframe').contents().find('.ytp-watermark').hide();
+    var head = jQuery("iframe").contents().find("video").css('display', 'none'); 
+
 });

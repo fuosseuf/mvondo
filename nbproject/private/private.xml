@@ -12,11 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/media/www-dev/private/Mvondo/app/Resources/views/modules/category_mod.html.twig</file>
-            <file>file:/media/www-dev/private/Mvondo/app/Resources/views/template/small_rect_video.html.twig</file>
-            <file>file:/media/www-dev/private/Mvondo/src/Mvondo/VideoBundle/Controller/ModulesController.php</file>
-            <file>file:/media/www-dev/private/Mvondo/app/Resources/views/site/homepage.html.twig</file>
-            <file>file:/media/www-dev/private/Mvondo/app/Resources/views/template/small_square_video.html.twig</file>
+            <file>file:/media/www-dev/private/Mvondo/app/Resources/views/modules/last_events.html.twig</file>
+            <file>file:/media/www-dev/private/Mvondo/web/custum/css/custum.css</file>
+            <file>file:/media/www-dev/private/Mvondo/src/Mvondo/EventBundle/Controller/ModulesController.php</file>
+            <file>file:/media/www-dev/private/Mvondo/app/Resources/views/modules/list_category.html.twig</file>
+            <file>file:/media/www-dev/private/Mvondo/web/custum/js/custum.js</file>
+            <file>file:/media/www-dev/private/Mvondo/web/custum/js/tv_player.js</file>
         </group>
     </open-files>
 </project-private>
