@@ -138,6 +138,8 @@ class Video {
      * @Assert\NotBlank(message="Please, upload the video.")
      */
     private $file;
+    
+    private $kiffCount;
 
     /**
      * Get id
@@ -578,5 +580,22 @@ class Video {
     public function getUploadDir() {
         return 'uploads/temp';
     }
+    
+    /**
+     * 
+     * @return int
+     */
+    public function getKiffCount() {
+        return $this->kiffCount;
+    }
+
+    /**
+     * 
+     * @param int $kiffCount
+     */
+    public function setKiffCount($kiffCount) {
+        $this->kiffCount = $kiffCount;
+    }
+
 
 }

@@ -2,3 +2,7 @@
 mvondo_video_view:
     path:     /{slug}
     defaults: { _controller: MvondoVideoBundle:Video:view }
+    
+mvondo_video_update_like:
+    path:     update_like/
+    defaults: { _controller: MvondoVideoBundle:Video:updateLike }
