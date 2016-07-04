@@ -16,7 +16,13 @@ class DefaultController extends Controller
         
         $em = $this->getDoctrine()->getManager();
         $video=$em->getRepository("MvondoVideoBundle:Video")->find($video_id);
-        $commLst=$em->getRepository("CommentBundle:Comment")->findBy(array('video'=>$video));
+        $lst=$em->getRepository("CommentBundle:Comment")->findBy(array('video'=>$video));
+        $commLst=array();
+        foreach($lst as $comm){
+            if(is_null($comm->getParent())){
+                $commLst[]=$comm;
+            }
+        }
         
         //*/
         //if($request->isXmlHttpRequest()) {
@@ -31,19 +37,38 @@ class DefaultController extends Controller
         //return new Response(json_encode($response));
     }
     
+    public function getAnsLstAction(){
+        $comment_id=$this->getRequest()->get('commentparentid');
+        $em = $this->getDoctrine()->getManager();
+        $comment=$em->getRepository('CommentBundle:Comment')->find($comment_id);
+        $lst=$em->getRepository("CommentBundle:Comment")->findBy(array('parent'=>$comment));
+        return $this->render('site/commentAnsLst.html.twig', array("commLst"=>$lst));
+    }
+    
     public function updateAction( $video_id){
         
         $em = $this->getDoctrine()->getManager();
         $video=$em->getRepository("MvondoVideoBundle:Video")->find($video_id);
         $content=$this->getRequest()->get('comcontent');
+        $parentid=$this->getRequest()->get('commentparentid');
         
         $comment=new \Mvondo\CommentBundle\Entity\Comment();
         
         $comment->setContent($content);
         $comment->setVideo($video);
         $comment->setUser($this->getUser());
+        
+        if($parentid){
+            $parent=$em->getRepository('CommentBundle:Comment')->find($parentid);
+            $comment->setParent($parent);
+            
+        }
         $em->persist($comment);
         $em->flush();
+        
+        if($parent){
+            $childLst=$em->getRepository('CommentBundle:Comment')->findBy(array('parent'=> $parent));
+        }
         /*
         $em = $this->getDoctrine()->getManager();
         
@@ -74,7 +99,7 @@ class DefaultController extends Controller
         
         $commentsLst=$em->getRepository("CommentBundle:Comment")->findBy(array("video" => $video));
         //*/
-        $response=array('code'=>200, 'success'=>true);
+        $response=array('code'=>200, 'success'=>true, 'children'=>$childLst);
         
         return new \Symfony\Component\HttpFoundation\Response(json_encode($response));   
         

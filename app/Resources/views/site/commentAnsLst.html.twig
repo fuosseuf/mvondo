@@ -1,0 +1,23 @@
+{# empty Twig template #}
+<ul>
+    
+    {%for c in commLst %}
+        <div class="clr"></div>
+        <div class="comment-inner">
+            <div class="comment-avatar">
+                <img src="{{ asset('custum/images/icon-p.jpg') }}" alt="Popular artist">
+            </div>
+        </div>
+        <div class="comment-meta">
+            <span class="comment-author">
+                <cite class="tip">{{c.user.username}}</cite>
+            </span>
+            <a class="comment-time" href="#comment-2">le {{c.date | date("d/m/Y \\à H:i")}}</a>
+        </div>
+        <div class="comment-content">
+            <p>{{c.content}}</p>
+        </div>
+
+        <!-- <li>{{c.content}}</li> -->
+    {%endfor%}
+</ul>
