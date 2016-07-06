@@ -13,19 +13,60 @@
             </div>
             <div class="comment-content">
                 <p>{{c.content}}</p>
+                <div id='answerlist-{{c.id}}'>
+                </div>
+                <script>
+                    $('#answerlist-'+{{c.id}}).load('{{path('comment_getanstLst')}}', {'commentparentid': {{c.id}}});
+                </script>
             </div>
             <p class="statslike">
+                <!--
                 <span class="dp-post-likes likes">
                     <i class="count">45</i>
                 </span>
                 <span class="dp-post-likes unlikes">
                     <i class="count">10</i>
                 </span>
+                -->
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <span>
+                    <i class="count"><a id='answer-{{c.id}}' class='answerlink'>R&eacute;pondre</a></i>
+                </span>
             </p>
+            <input id="answerontent-{{c.id}}" class="docomment commentanswer" type="text" placeholder="Repondre au commentaire" value="" name="anscontent-{{c.id}}">
+            {%endif%}
         </div>
+        
     {%endfor%}
 
 </ul>
+    <script>
+        $('.commentanswer').hide();
+        $('.answerlink').on('click', function(){
+            var id=$(this).attr('id').split('-')[1];
+            $('#answerontent-'+id).show();
+            $(this).hide();
+        });
+        
+        
+        //*
+         $('.commentanswer').keypress(function (e) {
+            if (e.which == 13) {
+                var id=$(this).attr('id').split('-')[1];
+                //answerComment(id);
+                //*
+                $.post('{{path('comment_ajax_update_comments', {'video_id': video_id})}}', 
+                {'comcontent': $(this).val(), 'commentparentid': id}, function () {
+                    $('.commentanswer').hide();
+                    $('#answerlist-'+id).load('{{path('comment_getanstLst')}}', {'commentparentid': id});
+                    $('#answer-'+id).show()
+                });
+                //*
+                
+            }
+        });
+        //*/
+    </script>
 
 
 

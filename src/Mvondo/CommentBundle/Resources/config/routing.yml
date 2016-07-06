@@ -9,3 +9,7 @@ comment_ajax_update_comments:
 comment_getcommentLst:
     path: /comment/getLst/{video_id}
     defaults: { _controller: CommentBundle:Default:getCommentLst }
+    
+comment_getanstLst:
+    path: /comment/getAnsLst
+    defaults: { _controller: CommentBundle:Default:getAnsLst }
