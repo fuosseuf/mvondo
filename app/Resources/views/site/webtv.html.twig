@@ -3,34 +3,40 @@
 {% block title %} {{ parent() }} - Dashboard {% endblock %}
 
 {% block body %}
-    <div class="webtv-screen">
-        <div class="cf wrap">
-            <iframe id="tv-screen-youtube" src="" width="950" height="497"></iframe>
+    <div id="webtv-page">
+        <div class="right command">Télécommande</div>
+        <div class="layer">
+            <span class="close">fermer</span>
+        </div>
+        <div class="webtv-screen">
+            <div class="cf wrap">
+                <iframe id="tv-screen-youtube" src="" width="950" height="497"></iframe>
+            </div>
         </div>
     </div>
 {% endblock %}
 
 {% block large_body %}
-    
+
     <div class="display-controll">Télécommande WebTV</div>
     <div class="webtv-controll">
         <div class="wrap cf">
-        <div class="webtv-block webtv-channels">
-            <h2>Channels</h2>
-            {% for category in categories %}
-                <a  class="webtv-channel webtv-block"data-href='{{ path('mvondo_category_view', {'slug':category.slug } ) }}'>
-                   Mvondo TV -{{ category.name }}
-                </a>
-            {% endfor %}
-        </div>
-        <div class="webtv-block webtv-current">
-            <h2>En cours</h2>
-            <p class="webtv-artist"></p>
-            <p><a class="webtv-song"></a></p>
-            <div class="entry-actions">
-                <span class="dp-like-post right"><a class="like" href="javascript:void(0);">Kiffer</a></span>	
+            <div class="webtv-block webtv-channels">
+                <h2>Channels</h2>
+                {% for category in categories %}
+                    <a  class="webtv-channel webtv-block"data-href='{{ path('mvondo_category_view', {'slug':category.slug } ) }}'>
+                        Mvondo TV -{{ category.name }}
+                    </a>
+                {% endfor %}
             </div>
-        </div>
+            <div class="webtv-block webtv-current">
+                <h2>En cours</h2>
+                <p class="webtv-artist"></p>
+                <p><a class="webtv-song"></a></p>
+                <div class="entry-actions">
+                    <span class="dp-like-post right"><a class="like" href="javascript:void(0);">Kiffer</a></span>	
+                </div>
+            </div>
         </div>
     </div>
 

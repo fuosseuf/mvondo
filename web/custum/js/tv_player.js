@@ -167,4 +167,7 @@ var webtv_controll = function (id_controll, id_screen, id_header) {
 $(document).ready(function () {
     var tv = new tv_controll("#tv-controll", "#tv-screen", "#tv-header");
     var webtv = new webtv_controll(".webtv-controll", ".webtv-screen", ".webtv-current");
+    $(".command, .close").click(function(){
+        $(".layer").slideToggle('slow');
+    });
 });
