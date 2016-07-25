@@ -21,6 +21,8 @@ class VideoController extends Controller {
         
         $kiff=$em->getRepository('CommentBundle:Kiff')->findBy(array('video'=>$video, 'user'=>  $this->getUser()))?true:false;
         
+        $commentCount=count($em->getRepository('CommentBundle:Comment')->findBy(array('video'=>$video, 'parent'=>null)));
+        
        
         
         $comment=new Comment();
@@ -35,6 +37,7 @@ class VideoController extends Controller {
                     'form' => $form->createView(),
                     'video' => $video,
                     'menu' => $menu,
+                    'commentCount'=>$commentCount,
                     'kiff' => $kiff
         ));
     }
