@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="mvondo_group")
- * @ORM\HasLifecycleCallbacks
  */
 class Group extends BaseGroup {
 
@@ -25,11 +24,7 @@ class Group extends BaseGroup {
      * @ORM\OneToMany(targetEntity="Mvondo\UserBundle\Entity\User", mappedBy="group")
      */
     private $users;
-    
-       /** @var string
-     *
-     * @ORM\Column(name="path", type="string", length=255)
-     */
+
     private $role;
 
     /**
@@ -81,5 +76,28 @@ class Group extends BaseGroup {
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     * @return Group
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+        return $this->setRoles(array($role));
+        
+    }
+
+    /**
+     * Get role
+     *
+     * @return string 
+     */
+    public function getRole()
+    {
+        return $this->roles[0];
     }
 }

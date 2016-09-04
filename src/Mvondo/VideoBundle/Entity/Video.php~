@@ -4,6 +4,7 @@ namespace Mvondo\VideoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Video
@@ -53,22 +54,21 @@ class Video {
      */
     private $country;
 
-
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
-    
-        /**
+
+    /**
      * @var string
      *
      * @ORM\Column(name="duration", type="string", length=10)
      */
     private $duration;
-    
-        /**
+
+    /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255)
@@ -131,9 +131,11 @@ class Video {
      * @ORM\Column(name="deleted", type="boolean")
      */
     private $deleted;
-    
+
     /**
      * @var file
+     * 
+     * @Assert\NotBlank(message="Please, upload the video.")
      */
     private $file;
 
@@ -398,7 +400,6 @@ class Video {
         return $this->categories;
     }
 
-
     /**
      * Set slug
      *
@@ -451,15 +452,13 @@ class Video {
         $this->dateUp = new \DateTime();
     }
 
-
     /**
      * Set image
      *
      * @param string $image
      * @return Video
      */
-    public function setImage($image)
-    {
+    public function setImage($image) {
         $this->image = $image;
 
         return $this;
@@ -470,8 +469,7 @@ class Video {
      *
      * @return string 
      */
-    public function getImage()
-    {
+    public function getImage() {
         return $this->image;
     }
 
@@ -481,8 +479,7 @@ class Video {
      * @param string $duration
      * @return Video
      */
-    public function setDuration($duration)
-    {
+    public function setDuration($duration) {
         $this->duration = $duration;
 
         return $this;
@@ -493,8 +490,93 @@ class Video {
      *
      * @return string 
      */
-    public function getDuration()
-    {
+    public function getDuration() {
         return $this->duration;
     }
+
+    /**
+     * Get file
+     * 
+     * @return file 
+     */
+    public function getFile() {
+        return $this->file;
+    }
+
+    /**
+     * Set file
+     * 
+     * @param Uploadedfile $file 
+     * @return Video 
+     */
+    public function setFile($file) {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Upload file
+     * 
+     * @return boolean 
+     */
+    public function Upload() {
+        if ($this->file == null)
+            return false;
+
+        $name = $this->getFilename();
+        if (file_exists($this->getUploadRootDir() . '/' . $name))
+            unlink($this->getUploadRootDir() . '/' . $name);
+
+        $this->file->move($this->getUploadRootDir(), $name);
+    }
+
+    /**
+     * get upload directory from bundle directory
+     * 
+     * @return string
+     */
+    public function getUploadRootDir() {
+        return __DIR__ . '/../../../../web/uploads/temp';
+    }
+
+    
+    /**
+     * get upload file path
+     * 
+     * @return string
+     */
+    public function getPath() {
+        return $this->getUploadRootDir() . '/'.$this->getFilename();
+    }
+    
+    /**
+     * get upload directory from bundle directory
+     * 
+     * @return string
+     */
+    public function getFilename() {
+        return $this->user->getUsername() . '_temp_video2.mp4' ;//. $this->file->guessExtension();
+    }
+
+    /**
+     * get upload directory from web directory
+     * 
+     * @return string
+     */
+    public function deleteFile() {
+        $name = $this->getFilename();
+        if (file_exists($this->getUploadRootDir() . '/' . $name))
+            unlink($this->getUploadRootDir() . '/' . $name);
+    }
+
+    /**
+     * get upload directory from web directory
+     * 
+     * @return string
+     */
+    public function getUploadDir() {
+        return 'uploads/temp';
+    }
+
 }

@@ -1,0 +1,25 @@
+<!-- module last_videos -->
+<div class="section-box">
+    <div class="section-header">
+        <h2 class="section-title">
+            <a class="name-link" href="{{ path('mvondo_event_homepage') }}">
+                <span class="name">À venir</span>
+            </a>
+        </h2>
+    </div>
+
+    <div>
+            {% for event in events %}
+                <div class="event_mod">
+                    <div class="event_date"><span>{{event.dateEvent|date("d")}}</span><br>{{event.dateEvent|date("F")}}</div>
+                    <div class="event_desc">
+                        <h3><a href="{{ path('mvondo_event_homepage') }}">{{event.title}}</a></h3>
+                        <p>Au <span>{{event.location}}</span></p>
+                        <p>À <span>{{event.hour|date("H:m")}}</span></p>
+                    </div>
+                </div>
+                    <div class="clearfix"></div>
+            {% endfor %}
+        </div>
+</div>
+<!-- end module home_lecteur -->

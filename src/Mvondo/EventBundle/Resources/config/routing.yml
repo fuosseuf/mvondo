@@ -1,0 +1,30 @@
+mvondo_event_homepage:
+    path:     /events
+    defaults: { _controller: MvondoEventBundle:Event:index }
+    
+mvondo_event_admin_type:
+    path:   /admin/events/type
+    defaults: { _controller: MvondoEventBundle:Event:type }
+
+mvondo_event_user_add:
+    path:   /profile/{username}/events/add
+    defaults: { _controller: MvondoEventBundle:Event:add }
+    
+mvondo_event_user_update:
+    path:   /profile/{username}/events/update/{id}
+    defaults: { _controller: MvondoEventBundle:Event:update }
+    requirements:
+        id: \d*
+        
+mvondo_event_user_delete:
+    path:   /profile/{username}/events/delete/{id}
+    defaults: { _controller: MvondoEventBundle:Event:delete }
+    requirements:
+        id: \d*
+        
+mvondo_event_user_list:
+    path:   /profile/{username}/events/list
+    defaults: { _controller: MvondoEventBundle:Event:list }
+
+    
+

@@ -23,6 +23,13 @@ class Image {
     private $id;
 
     /**
+     * @var gallery
+     *
+     * @ORM\ManyToOne(targetEntity="Mvondo\EventBundle\Entity\Gallery", inversedBy="images")
+     */
+    private $gallery;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="path", type="string", length=255)
@@ -176,14 +183,37 @@ class Image {
     protected function getUploadRootDir() {
         return __DIR__ . '/../../../../web/uploads/img';
     }
-    
+
     /**
      * get weblink
      * 
      * @return string
      */
     public function getWeblink() {
-        return '../'.$this->getUploadDir().'/'.$this->id.'.'.$this->path;
+        return '../' . $this->getUploadDir() . '/' . $this->id . '.' . $this->path;
     }
 
+
+    /**
+     * Set gallery
+     *
+     * @param \Mvondo\EventBundle\Entity\Gallery $gallery
+     * @return Image
+     */
+    public function setGallery(\Mvondo\EventBundle\Entity\Gallery $gallery = null)
+    {
+        $this->gallery = $gallery;
+
+        return $this;
+    }
+
+    /**
+     * Get gallery
+     *
+     * @return \Mvondo\EventBundle\Entity\Gallery 
+     */
+    public function getGallery()
+    {
+        return $this->gallery;
+    }
 }

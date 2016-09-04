@@ -400,3 +400,55 @@ input.search-submit:hover {
     width: 300px;
     float: right;
 }
+
+.event_mod{
+    border: 1px solid #000000;
+    height: 80px;
+    margin: 10px 0;
+    border-radius: 3px;
+}
+
+.event_date{
+    background: #000000;
+    padding: 5px;
+    height: 70px;
+    width: 70px;
+    color: #A20000;
+    font-weight: bolder;
+    float: left;
+    text-align: center;
+    border-radius: 3px 0 0 3px;
+    text-shadow: none;
+    line-height: 1.1;
+    font-size: 16px;
+}
+
+.event_date span{
+    font-size: 48px;
+}
+
+.event_desc{
+    padding: 5px;
+    height: 70px;
+    width: 69%;
+    float: right;
+}
+.event_desc p, .event_desc h3{
+    margin: 0 0 7px 0
+}
+.event_desc a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.event_desc a:hover{
+    color: #A20000;
+}
+
+.event_highlight{
+    height: 405px;
+    background-size: 100% 100%;
+    padding: 10px;
+}
+
+.ytp-watermark{ display: none}

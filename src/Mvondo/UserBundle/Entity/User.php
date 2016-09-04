@@ -54,6 +54,13 @@ class User extends BaseUser {
     /**
      * @var array
      *
+     * @ORM\OneToMany(targetEntity="Mvondo\EventBundle\Entity\Event", mappedBy="user")
+     */
+    private $events;
+ 
+    /**
+     * @var array
+     *
      * @ORM\OneToMany(targetEntity="Mvondo\UserBundle\Entity\Followers", mappedBy="artist")
      */
     private $fans;
@@ -109,6 +116,7 @@ class User extends BaseUser {
         $this->dateUp = new \DateTime();
         $this->fans = new \Doctrine\Common\Collections\ArrayCollection();
         $this->artists = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->events = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -389,4 +397,37 @@ class User extends BaseUser {
         $this->dateUp = new \DateTime();
     }
 
+    
+    /**
+     * Add events
+     *
+     * @param \Mvondo\EventBundle\Entity\Event $events
+     * @return User
+     */
+    public function addEvent(\Mvondo\EventBundle\Entity\Event $events)
+    {
+        $this->events[] = $events;
+
+        return $this;
+    }
+
+    /**
+     * Remove events
+     *
+     * @param \Mvondo\EventBundle\Entity\Event $events
+     */
+    public function removeEvent(\Mvondo\EventBundle\Entity\Event $events)
+    {
+        $this->events->removeElement($events);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
 }
