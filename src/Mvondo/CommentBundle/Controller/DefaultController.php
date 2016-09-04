@@ -66,9 +66,12 @@ class DefaultController extends Controller
         $em->persist($comment);
         $em->flush();
         
-        if($parent){
+        if(isset($parent) && $parent){
             $childLst=$em->getRepository('CommentBundle:Comment')->findBy(array('parent'=> $parent));
+        }else{
+            $childLst=array();
         }
+        
         /*
         $em = $this->getDoctrine()->getManager();
         
